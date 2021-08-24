@@ -1,0 +1,21 @@
+import { NgModule } from '@angular/core'
+import { Routes } from '@angular/router'
+import { NativeScriptRouterModule } from '@nativescript/angular'
+import { LoginComponent } from './Login/Login.component'
+import { RegisterComponent } from './Register/Register.component';
+import { ForgotPasswordComponent } from './Forgot-Password/Forgot-Password.component';
+import { DashboardComponent } from './Dashboard/Dashboard.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'dashboard', component: DashboardComponent },
+]
+
+@NgModule({
+  imports: [NativeScriptRouterModule.forRoot(routes)],
+  exports: [NativeScriptRouterModule],
+})
+export class AppRoutingModule {}

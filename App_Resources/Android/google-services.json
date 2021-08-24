@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "160010861440",
+    "project_id": "icheckit-6a8bb",
+    "storage_bucket": "icheckit-6a8bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160010861440:android:23fe4ff5e5807b793f5f65",
+        "android_client_info": {
+          "package_name": "org.nativescript.iCheckit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160010861440-u18fsckpiejsj0n8hhg3m537bdjim4no.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-a3V5oYmQDHiYhZLGlBF5XIMbxHmOtnE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160010861440-u18fsckpiejsj0n8hhg3m537bdjim4no.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
