@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core'
 import { Observable } from '@nativescript/core';
 // NativeScript 7+
-import { firebase } from "@nativescript/firebase";
+import { firebase, firestore } from "@nativescript/firebase";
+const usersCollection = firestore.collection('users')
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { firebase } from "@nativescript/firebase";
 export class AuthService {
 
    constructor() {
-       
+
    }
    /*
    getUserData() {
@@ -18,11 +19,18 @@ export class AuthService {
     .catch(error => console.log("Trouble in paradise: " + error));
    }
    */
-   registerWithEmailAndPassword(email,password,contactNumber,displayName) {
+   registerWithEmailAndPassword(email,password,displayName,contactNumber) {
     firebase.createUser({
         email: email,
         password: password
       })
+      .then(() => {
+          return usersCollection.add({
+            email: email,
+            displayName: displayName,
+            contactNumber: contactNumber,
+      })
+    })
       .then(
           function (user) {
             alert('You have succesfully created an account!')
