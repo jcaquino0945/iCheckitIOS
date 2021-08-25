@@ -17,9 +17,14 @@ userData;
 		firebase.getCurrentUser()
 		.then(user => this.userData = user)
 		.catch(error => console.log("Trouble in paradise: " + error));
-
-		this.auth.registerWithEmailAndPassword('juancarlos.aquino.iics@ust.gmail.com','test12345','Miguel UST','12345');
 	}
 
+	register() {
+		this.auth.createAccount('juancarlos.aquino.iics@ust.gmail.com','test12345','Miguel UST','123456');
+	}
+
+	login() {
+		this.auth.test()
+	}
 	
 }

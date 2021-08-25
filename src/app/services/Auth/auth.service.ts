@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core'
 import { Observable } from '@nativescript/core';
 // NativeScript 7+
 import { firebase, firestore } from "@nativescript/firebase";
-const usersCollection = firestore.collection('users')
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +17,7 @@ export class AuthService {
     .then(user => console.log("User uid: " + user.uid))
     .catch(error => console.log("Trouble in paradise: " + error));
    }
-   */
+   
    registerWithEmailAndPassword(email,password,displayName,contactNumber) {
     firebase.createUser({
         email: email,
@@ -39,9 +38,49 @@ export class AuthService {
             alert('There has been an issue with the creation of your account')
           }
       );
-    
+   }
+   */
+
+   createAccount(email,password,displayName,contactNumber) {
+    firebase.createUser({
+        email: email,
+        password: password
+      }).then(
+          function (user) {
+            firebase.updateProfile({displayName: displayName}).then(
+                  function () {
+                    // called when update profile was successful
+                    console.log(user.uid)
+                    const data = {
+                        uid: user.uid,
+                        contactNumber: contactNumber,
+                        email: email,
+                        displayName: displayName,
+                        createdAt: Date.now(),
+                        role: 'Student'
+                    }
+                    return firestore.collection('users').doc(user.uid).set(data)
+                    .then(res => alert('You have succesfully created an account'))
+                    .catch(error => console.log(error));
+                  },
+                  function (errorMessage) {
+                    console.log(errorMessage);
+                  }
+              );
+          },
+          function (errorMessage) {
+            alert('There has been an issue with the creation of your account');
+          }
+      );
    }
 
+   test() {
+    return firestore.collection('users').get({ source: "server" }).then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+        });
+      });
+   }
 
    login(email,password) {
     firebase.login(
