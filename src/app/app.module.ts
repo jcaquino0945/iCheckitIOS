@@ -8,12 +8,17 @@ import { LoginComponent } from './Login/Login.component';
 import { RegisterComponent } from './Register/Register.component';
 import { ForgotPasswordComponent } from './Forgot-Password/Forgot-Password.component';
 import { DashboardComponent } from './Dashboard/Dashboard.component';
+//new Imports for Data Binding
+import { NativeScriptFormsModule } from '@nativescript/angular';
+
 @NgModule({
   bootstrap: [AppComponent],
   imports: [
-    AppRoutingModule, 
-    NativeScriptModule, 
-    NativeScriptUISideDrawerModule],
+    AppRoutingModule,
+    NativeScriptModule,
+    NativeScriptUISideDrawerModule,
+    NativeScriptFormsModule
+  ],
   declarations: [
     AppComponent,
     LoginComponent,
