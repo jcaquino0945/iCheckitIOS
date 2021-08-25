@@ -38,7 +38,7 @@ _password = "";
     console.log (
       this._email,
       this._password
-
     );
+	this.auth.login(this._email,this._password);
   }
 }
