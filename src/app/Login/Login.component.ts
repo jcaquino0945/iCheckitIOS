@@ -12,6 +12,10 @@ import { firebase } from "@nativescript/firebase";
 export class LoginComponent implements OnInit {
 //userData;
 //WAG MUNA TANGGALIN MGA NAKA COMMENT
+
+_email = "";
+_password = "";
+
 	constructor(private auth:AuthService) { }
 
 	ngOnInit() {
@@ -29,4 +33,12 @@ export class LoginComponent implements OnInit {
 		this.auth.test()
 	}
 	*/
+
+  public tapLogin() {
+    console.log (
+      this._email,
+      this._password
+
+    );
+  }
 }

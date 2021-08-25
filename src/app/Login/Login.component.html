@@ -4,3 +4,34 @@
 <button text="Log in" class="btn-registrationButton" (tap)="login()" ></button>
 a-->
 
+
+<FlexboxLayout class="page">
+    <StackLayout class="form">
+
+
+    <!-- <Image class="logo" src="~/app/images/logo.png"></Image> -->
+    <Label class="header" text="Proceed with your"></Label>
+    <Label class="header-login" text="Login"></Label>
+
+<StackLayout class="input-field">
+
+    <TextField class="input" hint="Enter your email" [(ngModel)]="_email"></TextField>
+    <StackLayout class="hr-light"></StackLayout>
+    <TextField class="input" hint="Enter your password" secure="True" [(ngModel)]="_password"></TextField>
+    <StackLayout class="hr-light"></StackLayout>
+
+</StackLayout>
+
+    <button text="Login" class="btn btn-primary" (tap)="tapLogin()"></button>
+    <Label text="Forgot password?" class="login-label" ></Label>
+    <Label text = "create account" class="login-label"  ></Label>
+
+
+</StackLayout>
+
+
+
+
+</FlexboxLayout>
+
+
