@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from '../services/Auth/auth.service';
+import { firebase } from "@nativescript/firebase";
 
 
 @Component({
@@ -17,19 +18,20 @@ export class RegisterComponent implements OnInit {
   _password = "";
 
 
-  public constructor() { }
+  public constructor(
+    private auth:AuthService
+  ) { }
+
+	ngOnInit() {
+   }
 
   public tapRegister() {
     console.log (
       this._fullname,
       this._email,
       this._contactNum,
-      this._password
+      this._password);
 
-      );
-
-
-
+      this.auth.createAccount(this._email,this._password,this._fullname,this._password);
   }
-	ngOnInit() { }
 }

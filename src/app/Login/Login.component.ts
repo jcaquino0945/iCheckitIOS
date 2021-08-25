@@ -10,15 +10,17 @@ import { firebase } from "@nativescript/firebase";
 })
 
 export class LoginComponent implements OnInit {
-userData;
+//userData;
+//WAG MUNA TANGGALIN MGA NAKA COMMENT
 	constructor(private auth:AuthService) { }
 
 	ngOnInit() {
+		/*
 		firebase.getCurrentUser()
 		.then(user => this.userData = user)
-		.catch(error => console.log("Trouble in paradise: " + error));
+		.catch(error => console.log("Trouble in paradise: " + error)); */
 	}
-
+	/*
 	register() {
 		this.auth.createAccount('juancarlos.aquino.iics@ust.gmail.com','test12345','Miguel UST','123456');
 	}
@@ -26,5 +28,5 @@ userData;
 	login() {
 		this.auth.test()
 	}
-	
+	*/
 }
