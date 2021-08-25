@@ -8,7 +8,7 @@ import { DashboardComponent } from './Dashboard/Dashboard.component';
 import { MyProfileComponent } from './MyProfile/MyProfile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/forgot-password', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },

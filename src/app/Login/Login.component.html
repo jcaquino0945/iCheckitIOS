@@ -23,8 +23,8 @@ a-->
 </StackLayout>
 
     <button text="Login" class="btn btn-primary" (tap)="tapLogin()"></button>
-    <Label text="Forgot password?" class="login-label" ></Label>
-    <Label text = "create account" class="login-label"  ></Label>
+    <Label text="Forgot password?" class="login-label" [nsRouterLink]="['/forgot-password']"></Label>
+    <Label text = "create account" class="login-label"  [nsRouterLink]="['/register']"></Label>
 
 
 </StackLayout>

@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core'
 import { Observable } from '@nativescript/core';
 // NativeScript 7+
 import { firebase, firestore } from "@nativescript/firebase";
+import { RouterExtensions } from '@nativescript/angular'
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
-   constructor() {
+   constructor(private routerExtensions: RouterExtensions) {
 
    }
    /*
@@ -92,6 +93,13 @@ export class AuthService {
         }
         })
         .then(result => JSON.stringify(result))
+        .then(() => {
+          this.routerExtensions.navigate(['dashboard'], {
+            transition: {
+              name: 'fade',
+            },
+          })
+        })
         .catch(error => console.log(error));
     }
     
