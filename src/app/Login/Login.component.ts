@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/Auth/auth.service';
+import { firebase } from "@nativescript/firebase";
 
 @Component({
 	moduleId: module.id,
@@ -8,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class LoginComponent implements OnInit {
+userData;
+	constructor(private auth:AuthService) { }
 
-	constructor() { }
+	ngOnInit() {
+		firebase.getCurrentUser()
+		.then(user => this.userData = user)
+		.catch(error => console.log("Trouble in paradise: " + error));
 
-	ngOnInit() { }
+		//this.auth.registerWithEmailAndPassword('juancarlos.aquino.iics@ust.gmail.com','test12345');
+	}
 
 	
 }

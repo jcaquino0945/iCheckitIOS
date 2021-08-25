@@ -8,6 +8,7 @@ import {
 } from 'nativescript-ui-sidedrawer'
 import { filter } from 'rxjs/operators'
 import { Application } from '@nativescript/core'
+import { firebase } from "@nativescript/firebase";
 
 @Component({
   selector: 'ns-app',
@@ -22,6 +23,23 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    firebase.init({
+      onAuthStateChanged: function(data) { // optional but useful to immediately re-logon the user when they re-visit your app
+          console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
+          if (data.loggedIn) {
+            console.log("user's email address: " + (data.user.email ? data.user.email : "N/A"));
+          }
+        }
+      // Optionally pass in properties for database, authentication and cloud messaging,
+      // see their respective docs.
+    }).then(
+      () => {
+        console.log("firebase.init done");
+      },
+      error => {
+        console.log(`firebase.init error: ${error}`);
+      }
+    );
     this._activatedUrl = '/home'
     this._sideDrawerTransition = new SlideInOnTopTransition()
 
