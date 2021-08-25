@@ -1,3 +1,67 @@
-.Login {
+/* .Login {
+
+} */
+.page {
+
+    flex-direction: column;
+    background-color: maroon;
+    height: 900;
+    width: fit-content;
 
 }
+
+.form {
+    margin-left: 20;
+    margin-right: 20;
+    margin-top: 60;
+
+    vertical-align: middle;
+    background-color: white;
+    height: 600;
+
+}
+.logo {
+    margin-bottom: 12;
+    font-weight: bold;
+    height: 90;
+    margin-right: 230;
+    margin-top: 30;
+
+
+}
+.header {
+    font-size: 20;
+    margin-left: 20;
+
+}
+.header-login {
+    font-size: 40;
+    margin-bottom: 60;
+    margin-left: 20;
+}
+.input-field {
+    margin-bottom: 10;
+    padding-top: 10;
+
+}
+.input {
+    font-size: 13;
+    placeholder-color: #A8A8A8;
+    padding-top: 10;
+
+}
+.btn-primary {
+    padding: 10 10 10 10;
+    margin: 70 5 15 5;
+    background-color: maroon;
+    width: 250;
+    font-size: 20;
+    color: white;
+}
+.login-label {
+    color: #A8A8A8;
+    horizontal-align: center;
+
+}
+
+

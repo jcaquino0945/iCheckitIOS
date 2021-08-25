@@ -9,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class ForgotPasswordComponent implements OnInit {
 
+  _email = "";
+
 	constructor() { }
 
 	ngOnInit() { }
+
+  public tapSubmit() {
+    console.log (this._email);
+  }
 }
