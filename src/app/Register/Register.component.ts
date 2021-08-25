@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
 	moduleId: module.id,
 	selector: 'Register',
@@ -9,7 +11,25 @@ import { Component, OnInit } from '@angular/core';
 
 export class RegisterComponent implements OnInit {
 
-	constructor() { }
+  _fullname = "";
+  _email = "";
+  _contactNum = "";
+  _password = "";
 
+
+  public constructor() { }
+
+  public tapRegister() {
+    console.log (
+      this._fullname,
+      this._email,
+      this._contactNum,
+      this._password
+
+      );
+
+
+
+  }
 	ngOnInit() { }
 }

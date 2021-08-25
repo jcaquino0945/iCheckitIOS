@@ -1,1 +1,38 @@
-<Label class="Register" text="Hello RegisterComponent!"></Label>
+<FlexboxLayout class="page">
+    <StackLayout class="form">
+
+
+    <Button text="Back" class="btn-back"></Button>
+    <Label class="header" text="Proceed with your"></Label>
+    <Label class="header-registration" text="Registration"></Label>
+
+
+
+<StackLayout class="input-field">
+
+
+    <TextField class="input"  hint="Enter your email:" [(ngModel)]="_email" ></TextField>
+    <StackLayout class="hr-light"></StackLayout>
+
+    <TextField class="input" hint="Enter your Fullname:"[(ngModel)]="_fullname"></TextField>
+    <StackLayout class="hr-light"></StackLayout>
+
+    <TextField class="input" hint="Enter your Contact Number:" [(ngModel)]="_contactNum"></TextField>
+    <StackLayout class="hr-light"></StackLayout>
+
+    <TextField class="input" hint="Enter your password"  secure="true" [(ngModel)]="_password"></TextField>
+    <StackLayout class="hr-light"></StackLayout>
+
+    <TextField class="input" hint="Confirm your Password"></TextField>
+    <StackLayout class="hr-light"></StackLayout>
+
+
+    <button text="Sign Up" class="btn-registrationButton" (tap)="tapRegister()" ></button>
+</StackLayout>
+</StackLayout>
+
+</FlexboxLayout>
+
+
+
+
