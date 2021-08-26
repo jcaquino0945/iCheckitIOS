@@ -1,37 +1,51 @@
 <FlexboxLayout class="page">
-    <StackLayout class="form">
+    <Image src="~/app/images/USTBackground.png"  stretch="aspectFill" class="bg-image"></Image>
+</FlexboxLayout>
+
+    <FlexboxLayout class="form">
+    <StackLayout>
+        <Button text="Back" class="btn-back"></Button>
+        <Label class="header" text="Proceed with your"></Label>
+        <Label class="header-registration" text="Registration"></Label>
 
 
-    <Button text="Back" class="btn-back"></Button>
-    <Label class="header" text="Proceed with your"></Label>
-    <Label class="header-registration" text="Registration"></Label>
 
+    <StackLayout class="input-field">
+        <Label text="Enter Email:" class="email-text"></Label>
+        <TextField class="input"  hint="Enter your email:" [(ngModel)]="_email" ></TextField>
+        <StackLayout class="hr-light"></StackLayout>
+    </StackLayout>
 
+    <StackLayout class="input-field">
+        <Label text="Enter Full Name:" class="FullName-text"></Label>
+        <TextField class="input" hint="Enter your Fullname:"[(ngModel)]="_fullname"></TextField>
+        <StackLayout class="hr-light"></StackLayout>
+    </StackLayout>
 
-<StackLayout class="input-field">
+    <StackLayout class="input-field">
+        <Label text="Enter Contact Number:" class="contactNum-text"></Label>
+        <TextField class="input" hint="Enter your Contact Number:" [(ngModel)]="_contactNum"></TextField>
+        <StackLayout class="hr-light"></StackLayout>
+    </StackLayout>
 
+    <StackLayout class="input-field">
+        <Label text="Password:" class="password-text"></Label>
+        <TextField class="input" hint="Enter your password"  secure="true" [(ngModel)]="_password"></TextField>
+        <StackLayout class="hr-light"></StackLayout>
+    </StackLayout>
 
-    <TextField class="input"  hint="Enter your email:" [(ngModel)]="_email" ></TextField>
-    <StackLayout class="hr-light"></StackLayout>
+    <StackLayout class="input-field">
+        <Label text="Confirm Password" class="confirmPass-text"></Label>
+        <TextField class="input" secure="True" hint="Confirm your Password"></TextField>
+        <StackLayout class="hr-light"></StackLayout>
+    </StackLayout>
 
-    <TextField class="input" hint="Enter your Fullname:"[(ngModel)]="_fullname"></TextField>
-    <StackLayout class="hr-light"></StackLayout>
-
-    <TextField class="input" hint="Enter your Contact Number:" [(ngModel)]="_contactNum"></TextField>
-    <StackLayout class="hr-light"></StackLayout>
-
-    <TextField class="input" hint="Enter your password"  secure="true" [(ngModel)]="_password"></TextField>
-    <StackLayout class="hr-light"></StackLayout>
-
-    <TextField class="input" hint="Confirm your Password"></TextField>
-    <StackLayout class="hr-light"></StackLayout>
 
 
     <button text="Sign Up" class="btn-registrationButton" (tap)="tapRegister()" ></button>
-</StackLayout>
-</StackLayout>
 
-</FlexboxLayout>
+    </StackLayout>
+    </FlexboxLayout>
 
 
 

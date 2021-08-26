@@ -6,32 +6,42 @@ a-->
 
 
 <FlexboxLayout class="page">
-    <StackLayout class="form">
+    <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="bg-image"></Image>
+</FlexboxLayout>
 
-
-    <!-- <Image class="logo" src="~/app/images/logo.png"></Image> -->
+    <FlexboxLayout class="form">
+    <StackLayout>
+    <Image class="logo" src="~/app/images/logo.png"></Image>
     <Label class="header" text="Proceed with your"></Label>
     <Label class="header-login" text="Login"></Label>
 
-<StackLayout class="input-field">
 
+    <StackLayout class="input-field">
+        <Label text="Email" class="email-text"></Label>
     <TextField class="input" hint="Enter your email" [(ngModel)]="_email"></TextField>
     <StackLayout class="hr-light"></StackLayout>
+    </StackLayout>
+
+    <StackLayout class="input-field">
+        <Label text="Password" class="password-text"></Label>
+        <!-- ICONS FOR EMAIL <Label class="fas"  text="&#xf2bd;" ></Label> -->
     <TextField class="input" hint="Enter your password" secure="True" [(ngModel)]="_password"></TextField>
     <StackLayout class="hr-light"></StackLayout>
+    </StackLayout>
 
-</StackLayout>
-
+    <StackLayout class="input-field">
     <button text="Login" class="btn btn-primary" (tap)="tapLogin()"></button>
     <Label text="Forgot password?" class="login-label" ></Label>
     <Label text = "create account" class="login-label"  ></Label>
 
+    </StackLayout>
+    </StackLayout>
 
-</StackLayout>
+    </FlexboxLayout>
 
 
 
 
-</FlexboxLayout>
+
 
 
