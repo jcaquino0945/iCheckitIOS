@@ -9,6 +9,7 @@ import { RegisterComponent } from './Register/Register.component';
 import { ForgotPasswordComponent } from './Forgot-Password/Forgot-Password.component';
 import { DashboardComponent } from './Dashboard/Dashboard.component';
 import { MyProfileComponent } from './MyProfile/MyProfile.component';
+import { ConfirmNewPasswordComponent } from './confirm-new-password/confirm-new-password.component'
 //new Imports for Data Binding
 import { NativeScriptFormsModule } from '@nativescript/angular';
 
@@ -25,7 +26,8 @@ import { NativeScriptFormsModule } from '@nativescript/angular';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    DashboardComponent
+    DashboardComponent,
+    ConfirmNewPasswordComponent
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })
