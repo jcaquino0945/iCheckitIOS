@@ -27,7 +27,8 @@ import { NativeScriptFormsModule } from '@nativescript/angular';
     RegisterComponent,
     ForgotPasswordComponent,
     DashboardComponent,
-    ConfirmNewPasswordComponent
+    ConfirmNewPasswordComponent,
+    MyProfileComponent
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })
