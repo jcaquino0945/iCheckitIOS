@@ -6,6 +6,7 @@ import { RegisterComponent } from './Register/Register.component';
 import { ForgotPasswordComponent } from './Forgot-Password/Forgot-Password.component';
 import { DashboardComponent } from './Dashboard/Dashboard.component';
 import { MyProfileComponent } from './MyProfile/MyProfile.component';
+import { ConfirmNewPasswordComponent } from './confirm-new-password/confirm-new-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'my-profile', component: MyProfileComponent },
+  { path: 'confirm-new-password', component: ConfirmNewPasswordComponent},
 ]
 
 @NgModule({
