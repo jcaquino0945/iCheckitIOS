@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
 	moduleId: module.id,
 	selector: 'confirm-new-password',
@@ -9,7 +10,16 @@ import { Component, OnInit } from '@angular/core';
 
 export class ConfirmNewPasswordComponent implements OnInit {
 
+  _newPassword = "";
+  _confirmNewPassword = "";
 	constructor() { }
 
 	ngOnInit() { }
+
+  public tapChangepass() {
+    console.log (
+      this._newPassword,
+      this._confirmNewPassword
+    );
+  }
 }
