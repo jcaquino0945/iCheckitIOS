@@ -8,7 +8,8 @@ import {
 } from 'nativescript-ui-sidedrawer'
 import { filter } from 'rxjs/operators'
 import { Application } from '@nativescript/core'
-import { firebase } from "@nativescript/firebase";
+import { firebase } from "@nativescript/firebase"
+import { Theme } from '@nativescript/theme'
 
 @Component({
   selector: 'ns-app',
@@ -23,6 +24,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (Application.android) {
+      try {
+        Theme.setMode(Theme.Light);
+      } catch (e) {
+        console.log("Error setting Theme to light mode", e);
+      }
+    }
+
     firebase.init({
       onAuthStateChanged: function(data) { // optional but useful to immediately re-logon the user when they re-visit your app
           console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");

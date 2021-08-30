@@ -1,3 +1,6 @@
+import { ChangePasswordComponent } from './MyProfile/ChangePassword/ChangePassword.component';
+import { EditProfileComponent } from './MyProfile/EditProfile/EditProfile.component';
+import { DeleteAccountComponent } from './MyProfile/DeleteAccount/DeleteAccount.component';
 import { NgModule } from '@angular/core'
 import { Routes } from '@angular/router'
 import { NativeScriptRouterModule } from '@nativescript/angular'
@@ -16,6 +19,9 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'confirm-new-password', component: ConfirmNewPasswordComponent},
+  { path: 'delete-acc', component: DeleteAccountComponent},
+  { path: 'edit-profile', component: EditProfileComponent},
+  { path: 'change-pass', component: ChangePasswordComponent},
 ]
 
 @NgModule({

@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Dialogs } from '@nativescript/core';
 import { Router } from '@angular/router';
 import { EventData } from '@nativescript/core';
+import { ChangePasswordComponent } from './ChangePassword/ChangePassword.component';
+import { DeleteAccountComponent } from './DeleteAccount/DeleteAccount.component';
+import { EditProfileComponent } from './EditProfile/EditProfile.component';
+import { ViewContainerRef } from '@angular/core';
+import { ModalDialogService } from '@nativescript/angular';
 @Component({
-	moduleId: module.id,
 	selector: 'MyProfile',
 	templateUrl: './MyProfile.component.html',
 	styleUrls: ['./MyProfile.component.css']
@@ -11,31 +15,42 @@ import { EventData } from '@nativescript/core';
 
 export class MyProfileComponent implements OnInit {
 
-	constructor(private router: Router) { }
+	constructor(private router: Router, private modal: ModalDialogService, private vcRef: ViewContainerRef) { }
 
 	ngOnInit() { }
 
-	onDel(args: EventData) {
-		const confirmOptions = {
-		  title: 'Delete',
-		  message: 'Are you sure you to delete your account?',
-		  okButtonText: 'Yes',
-		  cancelButtonText: 'No',
-		  cancelable: true,
-		}
-	
-		Dialogs.confirm(confirmOptions).then(result => {
-		  alert("Account has been deleted")
-		})
-	}
-	onChange() {
-		// this.router.navigate(["/change-password"])
-		console.log("change pass")
+	onChangePass() {
+		let options = {
+			context: {},
+			fullscreen: false,
+			viewContainerRef: this.vcRef
+		};
+		this.modal.showModal(ChangePasswordComponent, options).then(res => {
+			console.log(res);
+		});
 	  }
 	
 	  onEdit() {
-		// this.router.navigate(["/edit-profile"])
-		console.log("edit profile")
-
+		let options = {
+			context: {},
+			fullscreen: false,
+			viewContainerRef: this.vcRef
+		};
+		this.modal.showModal(EditProfileComponent, options).then(res => {
+			console.log(res);
+		});
+	}
+	  
+	
+	
+	  onDel() {
+		let options = {
+			context: {},
+			fullscreen: false,
+			viewContainerRef: this.vcRef,
+		};
+		this.modal.showModal(DeleteAccountComponent, options).then(res => {
+			console.log(res);
+		});
 	  }
 }
