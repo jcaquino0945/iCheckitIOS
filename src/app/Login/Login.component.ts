@@ -13,7 +13,7 @@ import { Router } from "@angular/router"
 export class LoginComponent implements OnInit {
 //userData;
 //WAG MUNA TANGGALIN MGA NAKA COMMENT
-
+userData;
 _email = "";
 _password = "";
 //nameError:Boolean;
@@ -21,10 +21,6 @@ _password = "";
 
 	ngOnInit() {
 		//this.nameError = false;
-		/*
-		firebase.getCurrentUser()
-		.then(user => this.userData = user)
-		.catch(error => console.log("Trouble in paradise: " + error)); */
 	}
 	/*
 	register() {
