@@ -100,10 +100,13 @@ export class AuthService {
             },
           })
         })
-        .catch(error => console.log(error));
+        .catch(() => alert('may mali'));
     }
-    
-
+    /*
+    forgotPassword(email) {
+      firebase.sendPasswordResetEmail(email)
+    }
+    */
     logout() {
         firebase.logout();
     }

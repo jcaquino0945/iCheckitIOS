@@ -16,10 +16,11 @@ export class LoginComponent implements OnInit {
 
 _email = "";
 _password = "";
-
+//nameError:Boolean;
 	constructor(private auth:AuthService, private router: Router) { }
 
 	ngOnInit() {
+		//this.nameError = false;
 		/*
 		firebase.getCurrentUser()
 		.then(user => this.userData = user)
@@ -40,6 +41,11 @@ _password = "";
       this._email,
       this._password
     );
+	/*
+	if (this._email == '') {
+		this.nameError = true;
+	}
+	*/
 	this.auth.login(this._email,this._password);
   }
   public tapforgotPass() {
