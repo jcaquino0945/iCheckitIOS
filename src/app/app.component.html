@@ -13,60 +13,45 @@ https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawe
 
     <ScrollView row="1" class="nt-drawer__body">
       <StackLayout>
-        <GridLayout
+        <GridLayout columns="auto, *" class="nt-drawer__list-item nav-item"
+          [class.-selected]="isComponentSelected('/dashboard')" (tap)="onNavItemTap('/dashboard')">
+          <Label col="0" text="&#xf46d;" class="nt-icon fas h3"></Label>
+          <Label col="1" text="My Tasks" class="p-r-10s h3 item"></Label>
+        </GridLayout>
+
+        <!-- dagdag to start-->
+        <!-- <GridLayout
           columns="auto, *"
           class="nt-drawer__list-item"
-          [class.-selected]="isComponentSelected('/dashboard')"
-          (tap)="onNavItemTap('/dashboard')"
+          [class.-selected]="isComponentSelected('/login')"
+          (tap)="onNavItemTap('/login')"
         >
           <Label col="0" text="&#xf015;" class="nt-icon fas"></Label>
-          <Label col="1" text="Home" class="p-r-10"></Label>
+          <Label col="1" text="Login" class="p-r-10"></Label>
+        </GridLayout> -->
+        <!-- dagdag to end-->
+
+        <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item"
+          [class.-selected]="isComponentSelected('/my-profile')" (tap)="onNavItemTap('/my-profile')">
+          <Label col="0" text="&#xf2bd;" class="nt-icon fas h3"></Label>
+          <Label col="1" text="My Profile" class="p-r-10 h3 item"></Label>
         </GridLayout>
 
-        <GridLayout
-          columns="auto, *"
-          class="nt-drawer__list-item"
-          [class.-selected]="isComponentSelected('/my-profile')"
-          (tap)="onNavItemTap('/my-profile')"
-        >
-          <Label col="0" text="&#xf1ea;" class="nt-icon far"></Label>
-          <Label col="1" text="Browse" class="p-r-10"></Label>
+        <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item"
+          [class.-selected]="isComponentSelected('/faqs')" (tap)="onNavItemTap('/faqs')">
+          <Label col="0" text="&#xf086;" class="nt-icon fas h3"></Label>
+          <Label col="1" text="Frequently Asked Questions" class="p-r-10s h3 item"></Label>
         </GridLayout>
 
-        <GridLayout
-          columns="auto, *"
-          class="nt-drawer__list-item"
-          [class.-selected]="isComponentSelected('/search')"
-          (tap)="onNavItemTap('/search')"
-        >
-          <Label col="0" text="&#xf002;" class="nt-icon fas"></Label>
-          <Label col="1" text="Search" class="p-r-10"></Label>
+        <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item"
+          [class.-selected]="isComponentSelected('/contact-us')" (tap)="onNavItemTap('/contact-us')">
+          <Label col="0" text="&#xf2b9;" class="nt-icon fas h3"></Label>
+          <Label col="1" text="Contact Us" class="p-r-10s h3 item"></Label>
         </GridLayout>
 
-        <GridLayout
-          columns="auto, *"
-          class="nt-drawer__list-item"
-          [class.-selected]="isComponentSelected('/featured')"
-          (tap)="onNavItemTap('/featured')"
-        >
-          <Label col="0" text="&#xf005;" class="nt-icon fas"></Label>
-          <Label col="1" text="Featured" class="p-r-10"></Label>
-        </GridLayout>
-
-        <StackLayout class="hr"></StackLayout>
-
-        <GridLayout
-          columns="auto, *"
-          class="nt-drawer__list-item"
-          [class.-selected]="isComponentSelected('/settings')"
-          (tap)="onNavItemTap('/settings')"
-        >
-          <Label col="0" text="&#xf013;" class="nt-icon fas"></Label>
-          <Label col="1" text="Settings" class="p-r-10"></Label>
-        </GridLayout>
       </StackLayout>
     </ScrollView>
   </GridLayout>
 
-  <page-router-outlet tkMainContent actionBarVisibility="never"> </page-router-outlet>
+  <page-router-outlet tkMainContent actionBarVisibility="never"></page-router-outlet>
 </RadSideDrawer>

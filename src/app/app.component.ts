@@ -14,6 +14,7 @@ import { Theme } from '@nativescript/theme'
 @Component({
   selector: 'ns-app',
   templateUrl: 'app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   private _activatedUrl: string
