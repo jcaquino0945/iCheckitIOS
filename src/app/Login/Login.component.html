@@ -17,22 +17,27 @@ a-->
 
 
     <StackLayout class="input-field">
-        <Label text="Email" class="email-text"></Label>
-    <TextField class="input" hint="Enter your email" [(ngModel)]="_email"></TextField>
+    <GridLayout columns="*, *, auto" rows="auto, auto" colspan="2" >
+    <Label text="Email" class="email-text"></Label>
+    <TextField class="input" hint="Enter your email" colspan="2" [(ngModel)]="_email"></TextField>
     <StackLayout class="hr-light"></StackLayout>
-    </StackLayout>
+    <Label class="fas"  text="&#xf2bd;" colspan="2" ></Label>
+    </GridLayout>
 
-    <StackLayout class="input-field">
+
+    <GridLayout columns="auto, *, auto" colspan="2" rows="auto, 1" >
         <Label text="Password" class="password-text"></Label>
-        <!-- ICONS FOR EMAIL <Label class="fas"  text="&#xf2bd;" ></Label> -->
-    <TextField class="input" hint="Enter your password" secure="True" [(ngModel)]="_password"></TextField>
+
+    <TextField class="input" hint="Enter your password" secure="True" colspan="2" [(ngModel)]="_password"></TextField>
+    <Label class="fas"  text="&#xf2bd;" colspan="2" ></Label>
     <StackLayout class="hr-light"></StackLayout>
+    </GridLayout>
     </StackLayout>
 
     <StackLayout class="input-field">
     <button text="Login" class="btn btn-primary" (tap)="tapLogin()"></button>
-    <Label text="Forgot password?" class="login-label" [nsRouterLink]="['/forgot-password']"></Label>
-    <Label text = "create account" class="login-label"  [nsRouterLink]="['/register']"></Label>
+    <Label text="Forgot password?" class="login-label-forgotPass" (tap)="tapforgotPass()"></Label>
+    <Label text = "create account" class="login-label-createAcc"  (tap)="tapcreateAcc()"></Label>
 
     </StackLayout>
     </StackLayout>

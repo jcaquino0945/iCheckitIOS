@@ -16,20 +16,32 @@
     background-color: white;
     flex-direction: column;
 }
-.btn-back {
-    background-color: #B7152F;
-    color: white;
-    width: 50;
-    height: 40;
-    margin-top: -3;
-    horizontal-align: left;
-    margin-left: 1;
 
+.nav-back {
+    color: black;
+    margin-left: 45;
+    font-size: 17;
+    margin-top: 3;
+    padding-top: 10;
+    padding-bottom: 15;
+    font-family: Abel;
+}
+.fas {
+    font-size: 17;
+    margin-left: 1;
+    margin-top: 15;
+    padding-right: 10;
+
+}
+.fas {
+    font-size: 17;
+    margin-right: 35;
+    horizontal-align: right;
 
 }
 .header {
     font-size: 20;
-    margin-left: 5;
+    margin-left: 30;
     horizontal-align: left;
     padding-bottom: -3;
     padding-top: 2;
@@ -40,7 +52,7 @@
     font-size: 40;
     margin-bottom: 10;
     horizontal-align: left;
-    margin-left: 5;
+    margin-left: 30;
     margin-bottom: 20;
     font-family: Antonio-SemiBold;
 }
@@ -49,40 +61,42 @@
     padding-top: 5;
     margin-top: 10;
 } */
+
 .input {
     font-size: 13;
     placeholder-color: #A8A8A8;
     font-family: Abel-Regular;
-    padding-top: 10;
-    margin-left: 35;
-    margin-right: 35;
+    padding-top: 18;
+    margin-left: 40;
+    margin-right: 40;
+    padding-bottom: 0;
 }
 .email-text {
-    margin-left: 35;
+    margin-left: 40;
     font-family: Abel-Regular;
     font-size: 15;
     margin-bottom: -15;
 }
 .FullName-text {
-    margin-left: 35;
+    margin-left: 40;
     font-family: Abel-Regular;
     font-size: 15;
     margin-bottom: -15;
 }
 .contactNum-text {
-    margin-left: 35;
+    margin-left: 40;
     font-family: Abel-Regular;
     font-size: 15;
     margin-bottom: -15;
 }
 .password-text {
-    margin-left: 35;
+    margin-left: 40;
     font-family: Abel-Regular;
     font-size: 15;
     margin-bottom: -15;
 }
 .confirmPass-text {
-    margin-left: 35;
+    margin-left: 40;
     font-family: Abel-Regular;
     font-size: 15;
     margin-bottom: -15;

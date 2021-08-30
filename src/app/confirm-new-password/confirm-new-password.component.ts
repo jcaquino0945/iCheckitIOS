@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router"
 
 @Component({
 	moduleId: module.id,
@@ -9,7 +10,22 @@ import { Component, OnInit } from '@angular/core';
 
 export class ConfirmNewPasswordComponent implements OnInit {
 
-	constructor() { }
+  _newPassword = "";
+  _confirmNewPassword = "";
+
+	public constructor(private router: Router){
+
+   }
 
 	ngOnInit() { }
+
+  public tapChangepass() {
+    console.log (
+      this._newPassword,
+      this._confirmNewPassword
+    );
+  }
+  public tapBack() {
+    this.router.navigate(["/forgot-password"])
+  }
 }
