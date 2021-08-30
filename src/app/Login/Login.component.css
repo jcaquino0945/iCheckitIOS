@@ -10,10 +10,14 @@
 .bg-image {
     opacity: .3;
 }
+.login-wrapper {
+    padding-bottom: 0;
+}
 .fas {
-    horizontal-align: right;
-    margin-right: 35;
     font-size: 17;
+    margin-right: 35;
+    horizontal-align: right;
+    margin-top: 15;
 }
 .form {
     margin-left: 23;
@@ -33,9 +37,9 @@
     height: 90;
     margin-right: 230;
     margin-top: 30;
-
-
+    horizontal-align: left;
 }
+
 .header {
     font-size: 20;
     margin-left: 20;
@@ -65,7 +69,7 @@
 .input {
     font-size: 13;
     placeholder-color: #A8A8A8;
-    padding-top: 10;
+    padding-top: 18;
     font-family: Abel-Regular;
     margin-left: 35;
     margin-right: 35;
@@ -78,11 +82,16 @@
     color: white;
     font-family: Antonio-Regular;
 }
-.login-label {
+
+.login-label-forgotPass {
     color: #A8A8A8;
     horizontal-align: center;
     font-family: Abel-Regular;
-    padding-bottom: 8;
+    padding-bottom: 0;
 }
-
-
+.login-label-createAcc {
+    color: #A8A8A8;
+    horizontal-align: center;
+    font-family: Abel-Regular;
+    padding-bottom: 30;
+}

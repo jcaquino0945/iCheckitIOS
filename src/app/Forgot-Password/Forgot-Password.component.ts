@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router"
 
 @Component({
 	moduleId: module.id,
@@ -11,11 +12,14 @@ export class ForgotPasswordComponent implements OnInit {
 
   _email = "";
 
-	constructor() { }
+	public constructor(private router: Router) { }
 
 	ngOnInit() { }
 
   public tapSubmit() {
     console.log (this._email);
+  }
+  public tapBack(){
+    this.router.navigate(["/login"])
   }
 }

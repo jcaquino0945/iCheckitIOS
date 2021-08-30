@@ -3,43 +3,60 @@
 </FlexboxLayout>
 
     <FlexboxLayout class="form">
+    <StackLayout class="backNavigation">
+        <GridLayout columns="auto, *, auto" rows="auto, auto" >
+            <Label text="&#xf053;" class="fas" ></Label>
+            <Label text="Back" class="nav-back" (tap)="tapBack()"></Label>
+
+        </GridLayout>
+    </StackLayout>
+
+
     <StackLayout>
-        <Button text="Back" class="btn-back"></Button>
         <Label class="header" text="Proceed with your"></Label>
         <Label class="header-registration" text="Registration"></Label>
 
 
-
+    <FlexboxLayout class="textInput">
     <StackLayout class="input-field">
-        <Label text="Enter Email:" class="email-text"></Label>
-        <TextField class="input"  hint="Enter your email:" [(ngModel)]="_email" ></TextField>
+
+        <GridLayout columns="*, *" rows="auto, auto" colspan="2">
+        <Label text="Enter Email:" class="email-text" col="0"></Label>
+        <Label class="fas"  text="&#xf2bd;"  colspan="2"></Label>
+        <TextField class="input"  hint="Enter your email:" [(ngModel)]="_email" colspan="2"></TextField>
         <StackLayout class="hr-light"></StackLayout>
-    </StackLayout>
+        </GridLayout>
 
-    <StackLayout class="input-field">
+        <GridLayout columns="*, *, auto" rows="auto, 1" colspan="2">
         <Label text="Enter Full Name:" class="FullName-text"></Label>
-        <TextField class="input" hint="Enter your Fullname:"[(ngModel)]="_fullname"></TextField>
+        <Label class="fas"  text="&#xf2bd;"  colspan="2"></Label>
+        <TextField class="input" hint="Enter your Fullname:"[(ngModel)]="_fullname" colspan="2"></TextField>
         <StackLayout class="hr-light"></StackLayout>
-    </StackLayout>
+        </GridLayout>
 
-    <StackLayout class="input-field">
+        <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
         <Label text="Enter Contact Number:" class="contactNum-text"></Label>
-        <TextField class="input" hint="Enter your Contact Number:" [(ngModel)]="_contactNum"></TextField>
+        <Label class="fas"  text="&#xf2bd;"  colspan="2"></Label>
+        <TextField class="input" hint="Enter your Contact Number:" [(ngModel)]="_contactNum"colspan="2"></TextField>
         <StackLayout class="hr-light"></StackLayout>
-    </StackLayout>
+        </GridLayout>
 
-    <StackLayout class="input-field">
+        <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
         <Label text="Password:" class="password-text"></Label>
-        <TextField class="input" hint="Enter your password"  secure="true" [(ngModel)]="_password"></TextField>
+        <Label class="fas"  text="&#xf2bd;"  colspan="2"></Label>
+        <TextField class="input" hint="Enter your password"  secure="true" [(ngModel)]="_password" colspan="2"></TextField>
         <StackLayout class="hr-light"></StackLayout>
-    </StackLayout>
+        </GridLayout>
 
-    <StackLayout class="input-field">
+        <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2" >
         <Label text="Confirm Password" class="confirmPass-text"></Label>
-        <TextField class="input" secure="True" hint="Confirm your Password"></TextField>
+        <Label class="fas"  text="&#xf2bd;"  colspan="2"></Label>
+        <TextField class="input" secure="True" hint="Confirm your Password" colspan="2"></TextField>
         <StackLayout class="hr-light"></StackLayout>
-    </StackLayout>
+        </GridLayout>
 
+    </StackLayout>
+    </FlexboxLayout>
 
 
     <button text="Sign Up" class="btn-registrationButton" (tap)="tapRegister()" ></button>
