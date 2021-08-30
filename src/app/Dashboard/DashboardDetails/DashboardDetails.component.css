@@ -1,0 +1,92 @@
+.section-1 {
+    vertical-align: bottom;
+}
+
+.title,
+.date,
+.que,
+.ans {
+    padding-left: 30;
+    font-family: "Antonio-Regular";
+
+}
+
+.title,
+.date {
+    color: white;
+}
+
+.icon {
+    color: white;
+    margin-top: 11;
+
+}
+
+.nav-button {
+    color: white;
+}
+
+.top-img {
+    opacity: 0.5;
+}
+
+.top {
+    background-color: red;
+    opacity: 0.9;
+
+}
+
+
+.task-content {
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.task-status {
+    background-color: yellow;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: white;
+}
+
+.task-deadline {
+    background-color: gray;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: white;
+}
+
+.task-deadline,
+.task-status,
+.title-1,
+.title-2 {
+    font-family: "Antonio-Regular";
+}
+
+.task-media {
+    width: 200;
+    height: 200;
+    margin-left: 10;
+}
+
+
+
+.text-submit {
+    justify-content: center;
+    vertical-align: bottom;
+    color: white;
+    background: red;
+    font-family: "Antonio-Regular";
+}
+
+.task-details {
+    font-family: "Abel-Regular";
+    line-height: 13;
+    font-weight: 400;
+}
+
+.rectangle {
+    width: 2;
+    height: auto;
+    background: #32557f;
+}

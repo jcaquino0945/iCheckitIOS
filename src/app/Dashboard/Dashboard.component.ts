@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
 import { Application } from '@nativescript/core'
@@ -10,12 +11,16 @@ import { Application } from '@nativescript/core'
 
 export class DashboardComponent implements OnInit {
 
-	constructor() { }
+	constructor(private router: Router) { }
 
 	ngOnInit() { }
 
 	onDrawerButtonTap(): void {
 		const sideDrawer = <RadSideDrawer>Application.getRootView()
 		sideDrawer.showDrawer()
-	  }
+	}
+
+	onDetails(){
+		this.router.navigate(['/dashboard-details'])
+	}
 }

@@ -1,3 +1,108 @@
-.Dashboard {
+.all-tasks {
+    background-color: red;
+}
 
+h1,
+h2 {
+    padding-left: 5px;
+}
+
+.nav-button {
+    color: white;
+}
+
+.top-img {
+    opacity: 0.5;
+}
+
+.top {
+    background-color: red;
+    opacity: 0.9;
+
+}
+
+.section-1 {
+    vertical-align: bottom;
+}
+
+.title,
+.date,
+.que,
+.ans {
+    font-family: "Antonio-Regular";
+
+}
+
+.title,
+.date {
+    color: white;
+}
+
+.list-group-item {
+    padding-left: 20;
+    font-family: "Antonio-Regular";
+    font-size: medium;
+}
+
+.task-details,
+.task-deadline {
+    font-family: "Antonio-Regular";
+    font-size: 18;
+}
+
+.rectangle-late,
+.rectangle-pending,
+.rectangle-ok,
+.rectangle-approval {
+    width: 3;
+    height: auto;
+    margin-right: 10;
+}
+
+.rectangle-late {
+    background: red;
+}
+
+.rectangle-pending {
+    background: yellow;
+}
+
+.rectangle-approval {
+    background: orange;
+}
+
+.rectangle-ok {
+    background: green;
+}
+
+.task-deadline {
+    color: gray;
+    font-size: 13;
+}
+
+
+
+.icon-late,
+.icon-pending,
+.icon-ok,
+.icon-approval {
+    margin-left: 150;
+    margin-top: 13;
+}
+
+.icon-late {
+    margin-left: 156;
+    color: red;
+}
+
+.icon-pending {
+    color: yellow;
+}
+
+.icon-approval {
+    color: orange;
+}
+
+.icon-ok {
+    color: green
 }

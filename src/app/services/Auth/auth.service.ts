@@ -11,27 +11,6 @@ export class AuthService {
 
    constructor(private routerExtensions: RouterExtensions) {
 
-    firebase.init({
-      onAuthStateChanged: function(data) { // optional but useful to immediately re-logon the user when they re-visit your app
-          console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
-          if (data.loggedIn) {
-            alert('logged in')
-            console.log("user's email address: " + (data.user.email ? data.user.email : "N/A"));
-          }
-          if (!data.loggedIn) {
-            alert('logged out')
-          }
-        }
-      // Optionally pass in properties for database, authentication and cloud messaging,
-      // see their respective docs.
-    }).then(
-      () => {
-        console.log("firebase.init done");
-      },
-      error => {
-        console.log(`firebase.init error: ${error}`);
-      }
-    );
    }
    /*
    getUserData() {
