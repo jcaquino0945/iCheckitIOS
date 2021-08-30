@@ -16,8 +16,8 @@ https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawe
         <GridLayout
           columns="auto, *"
           class="nt-drawer__list-item"
-          [class.-selected]="isComponentSelected('/home')"
-          (tap)="onNavItemTap('/home')"
+          [class.-selected]="isComponentSelected('/dashboard')"
+          (tap)="onNavItemTap('/dashboard')"
         >
           <Label col="0" text="&#xf015;" class="nt-icon fas"></Label>
           <Label col="1" text="Home" class="p-r-10"></Label>
@@ -26,8 +26,8 @@ https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawe
         <GridLayout
           columns="auto, *"
           class="nt-drawer__list-item"
-          [class.-selected]="isComponentSelected('/browse')"
-          (tap)="onNavItemTap('/browse')"
+          [class.-selected]="isComponentSelected('/my-profile')"
+          (tap)="onNavItemTap('/my-profile')"
         >
           <Label col="0" text="&#xf1ea;" class="nt-icon far"></Label>
           <Label col="1" text="Browse" class="p-r-10"></Label>

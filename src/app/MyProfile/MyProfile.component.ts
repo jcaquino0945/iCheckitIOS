@@ -1,5 +1,6 @@
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Component, OnInit } from '@angular/core';
-import { Dialogs } from '@nativescript/core';
+import { Dialogs, Application } from '@nativescript/core';
 import { Router } from '@angular/router';
 import { EventData } from '@nativescript/core';
 import { ChangePasswordComponent } from './ChangePassword/ChangePassword.component';
@@ -18,6 +19,11 @@ export class MyProfileComponent implements OnInit {
 	constructor(private router: Router, private modal: ModalDialogService, private vcRef: ViewContainerRef) { }
 
 	ngOnInit() { }
+
+	onDrawerButtonTap(): void {
+		const sideDrawer = <RadSideDrawer>Application.getRootView()
+		sideDrawer.showDrawer()
+	}
 
 	onChangePass() {
 		let options = {

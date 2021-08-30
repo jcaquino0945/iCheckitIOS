@@ -1,3 +1,4 @@
+import { DashboardDetailsComponent } from './Dashboard/DashboardDetails/DashboardDetails.component';
 import { DeleteAccountComponent } from './MyProfile/DeleteAccount/DeleteAccount.component';
 import { ChangePasswordComponent } from './MyProfile/ChangePassword/ChangePassword.component';
 import { EditProfileComponent } from './MyProfile/EditProfile/EditProfile.component';
@@ -34,7 +35,8 @@ import { NativeScriptFormsModule } from '@nativescript/angular';
     MyProfileComponent,
     EditProfileComponent,
     ChangePasswordComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    DashboardDetailsComponent
   ],
   providers: [
     ModalDialogService,
