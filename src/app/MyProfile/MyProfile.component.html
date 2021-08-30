@@ -1,6 +1,6 @@
 <ScrollView>
     <StackLayout>
-  
+   
       <GridLayout>
         <Label class="fas p-10 h2 nav-button" text="&#xf0c9;"></Label>
         <StackLayout class="top">
@@ -46,7 +46,7 @@
         </GridLayout>
   
         <FlexboxLayout flexDirection="column">
-          <Button class="btn btn-primary p-r-10 change" (tap)="onChange()">
+          <Button class="btn btn-primary p-r-10 change" (tap)="onChangePass()">
             <FormattedString>
               <Span text="&#xf023; " textWrap="true" class="m-t-1 p-10 fas"></Span>
               <Span text="Change Password" textWrap="true" class="change-pass"></Span>
@@ -58,7 +58,7 @@
               <Span text="Edit My Profile" textWrap="true" class="edit-profile"></Span>
             </FormattedString>
           </Button>
-          <Button class="btn btn-primary del m-t-20" text="Delete Account" (tap)="onDel($event)">
+          <Button class="btn btn-primary del m-t-20" text="Delete Account" (tap)="onDel()">
             <FormattedString>
               <Span text="&#xf2ed; " textWrap="true" class="m-t-1 p-10 fas"></Span>
               <Span text="[WARNING] " style="color: red;" textWrap="true" class="h3 delete-acc"></Span>
@@ -66,7 +66,6 @@
             </FormattedString>
           </Button>
         </FlexboxLayout>
-  
       </FlexboxLayout>
     </StackLayout>
   </ScrollView>

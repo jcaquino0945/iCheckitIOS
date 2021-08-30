@@ -13,9 +13,17 @@
 }
 
 .nav-button {
-    z-index: -1;
-    position: relative;
     color: white;
+}
+
+.top-img {
+    opacity: 0.5;
+}
+
+.top {
+    background-color: red;
+    opacity: 0.9;
+
 }
 
 .prof-name {
@@ -35,8 +43,11 @@
 .info {
     font-family: "Abel-Regular";
     border-radius: 10;
+    background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
 
 .section-1 {
     vertical-align: bottom;
@@ -61,14 +72,7 @@
 
 }
 
-.top-img {
-    opacity: 0.5;
-}
 
-.top {
-    background-color: red;
-    opacity: 0.9;
-}
 
 .task-late {
     background-color: red;
@@ -80,6 +84,11 @@
     background-color: yellow;
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.task-pending Label,
+.task-late Label {
+    color: white;
 }
 
 /* .task-pending,
@@ -131,4 +140,15 @@
     border-bottom-width: 1;
     */
     text-align: left;
+}
+
+
+.delete-acc,
+.edit-profile,
+.change-pass {
+    color: black;
+}
+
+.icon {
+    color: black;
 }
