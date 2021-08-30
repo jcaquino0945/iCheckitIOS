@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/Auth/auth.service';
 import { firebase } from "@nativescript/firebase";
+import { Router } from "@angular/router"
 
 @Component({
 	moduleId: module.id,
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 _email = "";
 _password = "";
 
-	constructor(private auth:AuthService) { }
+	constructor(private auth:AuthService, private router: Router) { }
 
 	ngOnInit() {
 		/*
@@ -40,5 +41,11 @@ _password = "";
       this._password
 
     );
+  }
+  public tapforgotPass() {
+    this.router.navigate(["/forgot-password"]);
+  }
+  public tapcreateAcc() {
+    this.router.navigate(["/register"]);
   }
 }

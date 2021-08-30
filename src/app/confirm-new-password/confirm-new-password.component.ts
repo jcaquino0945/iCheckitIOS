@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from "@angular/router"
 
 @Component({
 	moduleId: module.id,
@@ -12,7 +12,10 @@ export class ConfirmNewPasswordComponent implements OnInit {
 
   _newPassword = "";
   _confirmNewPassword = "";
-	constructor() { }
+
+	public constructor(private router: Router){
+
+   }
 
 	ngOnInit() { }
 
@@ -21,5 +24,8 @@ export class ConfirmNewPasswordComponent implements OnInit {
       this._newPassword,
       this._confirmNewPassword
     );
+  }
+  public tapBack() {
+    this.router.navigate(["/forgot-password"])
   }
 }
