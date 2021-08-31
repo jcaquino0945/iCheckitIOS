@@ -1,3 +1,5 @@
+import { AuthService } from './../services/Auth/auth.service';
+import { ChangePasswordComponent } from './../MyProfile/ChangePassword/ChangePassword.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,11 +13,13 @@ export class ForgotPasswordComponent implements OnInit {
 
   _email = "";
 
-	constructor() { }
+	constructor(private auth: AuthService) { }
 
 	ngOnInit() { }
 
   public tapSubmit() {
     console.log (this._email);
+	this.auth.changePassword(this._email)
   }
+
 }
