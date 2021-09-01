@@ -11,6 +11,7 @@ import { Router } from "@angular/router"
 export class ForgotPasswordComponent implements OnInit {
 
   _email = "";
+  // emailError = "";
 
 	public constructor(private router: Router) { }
 
@@ -18,6 +19,10 @@ export class ForgotPasswordComponent implements OnInit {
 
   public tapSubmit() {
     console.log (this._email);
+    // if (this._email.length == 0)
+    // this.emailError = "Email field is required and cannot be empty";
+    // if (this._email.length > 0)
+    // this.emailError = "";
   }
   public tapBack(){
     this.router.navigate(["/login"])
