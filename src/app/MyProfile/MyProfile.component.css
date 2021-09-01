@@ -1,3 +1,154 @@
-.MyProfile {
+/* First part of the profile page (image and name) */
+.prof {
+    background-color: red;
+    height: 200;
+    width: 100%;
+}
 
+.prof-img,
+.prof-name {
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+
+.nav-button {
+    color: white;
+}
+
+.top-img {
+    opacity: 0.5;
+}
+
+.top {
+    background-color: red;
+    opacity: 0.9;
+
+}
+
+.prof-name {
+    color: white;
+}
+
+.prof-img {
+    margin-top: 50;
+}
+
+/* 2nd part */
+.task-number {
+    flex-direction: column;
+}
+
+
+.info {
+    font-family: "Abel-Regular";
+    border-radius: 10;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+.section-1 {
+    vertical-align: bottom;
+}
+
+.title,
+.date,
+.que,
+.ans {
+    padding-left: 30;
+    font-family: "Antonio-Regular";
+
+}
+
+.title,
+.date {
+    color: white;
+}
+
+.icon {
+    color: white;
+
+}
+
+
+
+.task-late {
+    background-color: red;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.task-pending {
+    background-color: yellow;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.task-pending Label,
+.task-late Label {
+    color: white;
+}
+
+/* .task-pending,
+.task-late {
+    width: 150;
+    height: 150;
+} */
+
+.task-pending,
+.task-late,
+.delete-acc,
+.edit-profile,
+.change-pass,
+.prof-name {
+    font-family: "Antonio-Regular";
+}
+
+
+.task-late,
+.task-pending {
+    border-radius: 10;
+}
+
+.num,
+.title-2 {
+    font-family: "Antonio-Regular";
+}
+
+/* .main-content {
+    background-color: #E5E5E5;
+} */
+
+.change,
+.edit {
+    border-left-color: #4C4A4A;
+    border-left-width: 24;
+    /* border-right-width: 1;
+    border-top-width: 1;
+    border-bottom-width: 1; */
+    text-align: left;
+
+}
+
+.del {
+    border-left-color: #F00000;
+    border-left-width: 24;
+    /* border-right-width: 1;
+    border-top-width: 1;
+    border-bottom-width: 1;
+    */
+    text-align: left;
+}
+
+
+.delete-acc,
+.edit-profile,
+.change-pass {
+    color: black;
+}
+
+.icon {
+    color: black;
 }

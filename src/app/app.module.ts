@@ -1,5 +1,8 @@
+import { DeleteAccountComponent } from './MyProfile/DeleteAccount/DeleteAccount.component';
+import { ChangePasswordComponent } from './MyProfile/ChangePassword/ChangePassword.component';
+import { EditProfileComponent } from './MyProfile/EditProfile/EditProfile.component';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
-import { NativeScriptModule } from '@nativescript/angular'
+import { ModalDialogService, NativeScriptModule } from '@nativescript/angular'
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +30,14 @@ import { NativeScriptFormsModule } from '@nativescript/angular';
     RegisterComponent,
     ForgotPasswordComponent,
     DashboardComponent,
-    ConfirmNewPasswordComponent
+    ConfirmNewPasswordComponent,
+    MyProfileComponent,
+    EditProfileComponent,
+    ChangePasswordComponent,
+    DeleteAccountComponent
+  ],
+  providers: [
+    ModalDialogService,
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })

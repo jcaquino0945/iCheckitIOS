@@ -14,12 +14,25 @@ export class LoginComponent implements OnInit {
 //userData;
 //WAG MUNA TANGGALIN MGA NAKA COMMENT
 
+emailError = "";
+passwordError = "";
+
 _email = "";
 _password = "";
 
-	constructor(private auth:AuthService, private router: Router) { }
+	constructor(private auth:AuthService, private router: Router) {
+
+
+  }
+// this.signInError = "email cannot be empty";
+  //   	/*
+	// if (this._email == '') {
+	// 	this.nameError = true;
+	// }
+	// */
 
 	ngOnInit() {
+		//this.nameError = false;
 		/*
 		firebase.getCurrentUser()
 		.then(user => this.userData = user)
@@ -39,9 +52,19 @@ _password = "";
     console.log (
       this._email,
       this._password
-
     );
+    if (this._email.length == 0)
+    this.emailError = "Email field is required and cannot be empty";
+    if (this._password.length == 0)
+    this.passwordError = "Password field is required and cannot be empty";
+    if (this._email.length > 0)
+    this.emailError = "";
+    if (this._password.length > 0)
+    this.passwordError = "";
+
+	this.auth.login(this._email,this._password);
   }
+
   public tapforgotPass() {
     this.router.navigate(["/forgot-password"]);
   }

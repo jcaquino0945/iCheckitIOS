@@ -19,7 +19,7 @@
 
     <FlexboxLayout class="textInput">
     <StackLayout class="input-field">
-
+        <Label *ngIf="emailError" text= "{{emailError}}" class="login-error-email" ></Label>
         <GridLayout columns="*, *" rows="auto, auto" colspan="2">
         <Label text="Enter Email:" class="email-text" col="0"></Label>
         <Label class="fas"  text="&#xf2bd;"  colspan="2"></Label>
@@ -27,6 +27,7 @@
         <StackLayout class="hr-light"></StackLayout>
         </GridLayout>
 
+        <Label *ngIf="fullnameError"  text="{{fullnameError}}"class="login-error" ></Label>
         <GridLayout columns="*, *, auto" rows="auto, 1" colspan="2">
         <Label text="Enter Full Name:" class="FullName-text"></Label>
         <Label class="fas"  text="&#xf2bd;"  colspan="2"></Label>
@@ -34,6 +35,7 @@
         <StackLayout class="hr-light"></StackLayout>
         </GridLayout>
 
+        <Label *ngIf="contactnumError" text= "{{contactnumError}}" class="login-error" ></Label>
         <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
         <Label text="Enter Contact Number:" class="contactNum-text"></Label>
         <Label class="fas"  text="&#xf2bd;"  colspan="2"></Label>
@@ -41,6 +43,7 @@
         <StackLayout class="hr-light"></StackLayout>
         </GridLayout>
 
+        <Label *ngIf="passwordError" text= "{{passwordError}}" class="login-error" ></Label>
         <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
         <Label text="Password:" class="password-text"></Label>
         <Label class="fas"  text="&#xf2bd;"  colspan="2"></Label>
@@ -48,13 +51,14 @@
         <StackLayout class="hr-light"></StackLayout>
         </GridLayout>
 
+        <Label *ngIf="confirmPasswordError" text= "{{confirmPasswordError}}" class="login-error" ></Label>
         <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2" >
         <Label text="Confirm Password" class="confirmPass-text"></Label>
         <Label class="fas"  text="&#xf2bd;"  colspan="2"></Label>
-        <TextField class="input" secure="True" hint="Confirm your Password" colspan="2"></TextField>
+        <TextField class="input" secure="True" hint="Confirm your Password" colspan="2" ></TextField>
         <StackLayout class="hr-light"></StackLayout>
         </GridLayout>
-
+        <StackLayout class="form-spacing"></StackLayout>
     </StackLayout>
     </FlexboxLayout>
 
