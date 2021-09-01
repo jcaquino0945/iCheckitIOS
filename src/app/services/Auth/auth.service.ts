@@ -16,7 +16,7 @@ export class AuthService {
     .then(user => console.log("User uid: " + user.uid))
     .catch(error => console.log("Trouble in paradise: " + error));
    }
-   
+
    registerWithEmailAndPassword(email,password,displayName,contactNumber) {
     firebase.createUser({
         email: email,

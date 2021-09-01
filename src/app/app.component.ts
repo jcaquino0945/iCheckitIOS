@@ -19,21 +19,12 @@ import { Theme } from '@nativescript/theme'
 export class AppComponent implements OnInit {
   private _activatedUrl: string
   private _sideDrawerTransition: DrawerTransitionBase
-
   constructor(private router: Router, private routerExtensions: RouterExtensions) {
     // Use the component constructor to inject services.
   }
 
   ngOnInit(): void {
     firebase.init({
-      onAuthStateChanged: function(data) { // optional but useful to immediately re-logon the user when they re-visit your app
-          console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
-          if (data.loggedIn) {
-            console.log("user's email address: " + (data.user.email ? data.user.email : "N/A"));
-          }
-          if (!data.loggedIn) {
-          }
-        }
       // Optionally pass in properties for database, authentication and cloud messaging,
       // see their respective docs.
     }).then(
@@ -44,7 +35,23 @@ export class AppComponent implements OnInit {
         console.log(`firebase.init error: ${error}`);
       }
     );
-    
+  // configure a listener:
+    var listener = {
+      onAuthStateChanged: function(data) {
+        console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
+        if (data.loggedIn) {
+          this.router.navigate(["/dashboard"]);
+        } else if (!data.loggedIn) {
+          alert('You session has expired. Please login again');
+          this.router.navigate(["/login"]);
+        }
+      },
+      thisArg: this
+    };
+
+     // add the listener:
+  firebase.addAuthStateListener(listener);
+
     if (Application.android) {
       try {
         Theme.setMode(Theme.Light);

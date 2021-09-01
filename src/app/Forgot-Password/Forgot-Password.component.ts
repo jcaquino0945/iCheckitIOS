@@ -13,6 +13,7 @@ import { Router } from "@angular/router"
 export class ForgotPasswordComponent implements OnInit {
 
   _email = "";
+  // emailError = "";
 
 	constructor(
 		private auth: AuthService,
