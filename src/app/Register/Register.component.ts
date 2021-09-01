@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
 
 
 
-      this.auth.createAccount(this._email,this._password,this._fullname,this._password);
+      this.auth.createAccount(this._email,this._password,this._fullname, this._contactNum);
   }
   public tapBack() {
     this.router.navigate(['/login']);
