@@ -3,12 +3,16 @@ import { Observable } from "@nativescript/core";
 // NativeScript 7+
 import { firebase, firestore } from "@nativescript/firebase";
 import { RouterExtensions } from "@nativescript/angular";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-  constructor(private routerExtensions: RouterExtensions) {}
+  constructor(
+    private routerExtensions: RouterExtensions,
+    private router: Router
+  ) {}
   /*
    getUserData() {
      firebase.getCurrentUser()
@@ -38,6 +42,13 @@ export class AuthService {
       );
    }
    */
+
+  getUserData() {
+    return firebase
+      .getCurrentUser()
+      .then(user => console.log("User uid: " + user.uid))
+      .catch(error => console.log("Trouble in paradise: " + error));
+  }
 
   createAccount(email, password, displayName, contactNumber) {
     firebase
@@ -116,10 +127,53 @@ export class AuthService {
     firebase
       .sendPasswordResetEmail(email)
       .then(() => alert("Password reset email sent"))
-      .catch(error =>
-        alert("Error sending password reset email: " + error)
+      .catch(error => alert("Error sending password reset email: " + error));
+  }
+
+  updatePassword(email, oldPass, newPass) {
+    firebase
+      .login({
+        type: firebase.LoginType.PASSWORD,
+        passwordOptions: {
+          email: email,
+          password: oldPass
+        }
+      })
+      .then(() => {
+        firebase
+          .updatePassword(newPass)
+          .then(() => alert("Password updated"))
+          .catch(error => alert("Error updating password: " + error));
+      });
+  }
+
+  editProfile(displayName) {
+    firebase
+      .updateProfile({
+        displayName: displayName,
+        photoURL: " "
+      })
+      .then(
+        function() {
+          console.log("Updated display");
+        },
+        function(errorMessage) {
+          console.log(errorMessage);
+        }
       );
   }
+
+  deleteAccount():Promise<any>{
+    return firebase.deleteUser().then(
+      function() {
+        alert("deleted");
+      },
+      function(errorMessage) {
+        console.log(errorMessage);
+      }
+    );
+  }
+
   /*
   addData() {
     return this.citiesCollection.add({
