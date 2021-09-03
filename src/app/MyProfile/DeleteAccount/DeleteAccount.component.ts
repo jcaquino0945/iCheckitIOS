@@ -17,12 +17,15 @@ export class DeleteAccountComponent implements OnInit {
   ngOnInit() {}
 
   onUpdate() {
-    this.auth
-      .deleteAccount()
-      .then(() => {
-        this.modalDialogParams.closeCallback("delete");
-      })
-      .then(() => this.router.navigate(["/login"]));
+    // this.auth
+    //   .deleteAccount()
+    //   .then(() => {
+    //     this.modalDialogParams.closeCallback("delete");
+    //   })
+    //   .then(() => this.router.navigate(["/login"]));
+
+    this.auth.deleteAccount();
+    this.modalDialogParams.closeCallback();
   }
 
   goBack() {
