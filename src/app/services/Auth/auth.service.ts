@@ -163,16 +163,39 @@ export class AuthService {
       );
   }
 
-  deleteAccount():Promise<any>{
-    return firebase.deleteUser().then(
-      function() {
-        alert("deleted");
+  deleteAccount() {
+    firebase.deleteUser()
+    .then(() => {
+      alert("Deleted")
+        this.routerExtensions.navigate(["login"], {
+          transition: {
+            name: "fade" 
+          }
+        });
       },
       function(errorMessage) {
         console.log(errorMessage);
       }
     );
   }
+
+  // deleteAccount(): Promise<any> {
+  //   return firebase.deleteUser().then(
+  //     function() {
+  //       alert("deleted");
+  //       // this.routerExtensions.navigate(["/login"]);
+  //       this.routerExtensions.navigate(["dashboard"], {
+  //         transition: {
+  //           name: "fade"
+  //         }
+  //       });
+  //     })
+  //     },
+  //     function(errorMessage) {
+  //       console.log(errorMessage);
+  //     }
+  //   );
+  // }
 
   /*
   addData() {
