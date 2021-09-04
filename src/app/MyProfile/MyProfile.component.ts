@@ -34,15 +34,15 @@ export class MyProfileComponent implements OnInit {
           firestore
             .collection("users")
             .doc(this.userData.uid)
-            .onSnapshot(doc => {
+            .get({ source: "cache" }).then(doc => {
               if (doc.exists) {
-                // console.log("Document data:", JSON.stringify(doc.data()));
-                this.userDetails = JSON.stringify(doc.data());
-                console.log(this.userDetails);
+                console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                this.userDetails = doc.data();
               } else {
                 console.log("No such document!");
               }
             });
+          
       })
       .catch(error => console.log("Trouble in paradise: " + error));
   }

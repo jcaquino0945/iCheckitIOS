@@ -14,13 +14,13 @@
   ></Label>
   <Label text="Full Name" textWrap="true" class="h2"></Label>
   <TextField
-    hint="Enter full name"
+    hint="{{ userDetails.displayName }}"
     secure="False"
     [(ngModel)]="_fullName"
   ></TextField>
   <Label text="Contact Number" textWrap="true" class="h2"></Label>
   <TextField
-    hint="Enter new contact number"
+    hint="{{ userDetails.contactNumber }}"
     secure="False"
     [(ngModel)]="_number"
   ></TextField>
