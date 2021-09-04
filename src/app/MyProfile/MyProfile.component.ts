@@ -9,7 +9,7 @@ import { DeleteAccountComponent } from "./DeleteAccount/DeleteAccount.component"
 import { EditProfileComponent } from "./EditProfile/EditProfile.component";
 import { ViewContainerRef } from "@angular/core";
 import { ModalDialogService } from "@nativescript/angular";
-import { firebase } from "@nativescript/firebase";
+import { firebase, firestore } from "@nativescript/firebase";
 @Component({
   selector: "MyProfile",
   templateUrl: "./MyProfile.component.html",
@@ -17,6 +17,7 @@ import { firebase } from "@nativescript/firebase";
 })
 export class MyProfileComponent implements OnInit {
   userData;
+  userDetails;
 
   constructor(
     private router: Router,
@@ -28,7 +29,21 @@ export class MyProfileComponent implements OnInit {
   ngOnInit() {
     return firebase
       .getCurrentUser()
-      .then(user => (this.userData = user))
+      .then(user => {
+        (this.userData = user),
+          firestore
+            .collection("users")
+            .doc(this.userData.uid)
+            .onSnapshot(doc => {
+              if (doc.exists) {
+                // console.log("Document data:", JSON.stringify(doc.data()));
+                this.userDetails = JSON.stringify(doc.data());
+                console.log(this.userDetails);
+              } else {
+                console.log("No such document!");
+              }
+            });
+      })
       .catch(error => console.log("Trouble in paradise: " + error));
   }
 
