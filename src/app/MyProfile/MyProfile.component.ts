@@ -42,7 +42,6 @@ export class MyProfileComponent implements OnInit {
                 console.log("No such document!");
               }
             });
-          
       })
       .catch(error => console.log("Trouble in paradise: " + error));
   }
