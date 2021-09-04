@@ -99,7 +99,6 @@ export class AuthService {
       });
   }
 
-  
   login(email, password) {
     firebase
       .login({
@@ -147,15 +146,27 @@ export class AuthService {
       });
   }
 
-  editProfile(displayName) {
+  editProfile(displayName, contactNumber, uid) {
+    console.log("from service");
+    console.log(displayName);
+    console.log(uid);
+    console.log(contactNumber);
     firebase
       .updateProfile({
-        displayName: displayName,
-        photoURL: " "
+        displayName: displayName
       })
       .then(
-        function() {
-          console.log("Updated display");
+        function(user) {
+          return firestore
+            .collection("users")
+            .doc(uid)
+            .set(
+              {
+                displayName: displayName,
+                contactNumber: contactNumber
+              },
+              { merge: true }
+            );
         },
         function(errorMessage) {
           console.log(errorMessage);
@@ -163,13 +174,39 @@ export class AuthService {
       );
   }
 
+  getData(uid) {
+    let sanFranciscoDocument = firestore.collection("users").doc(uid);
+    let unsubscribe = sanFranciscoDocument.onSnapshot(doc => {
+      if (doc.exists) {
+        console.log("Document data:", JSON.stringify(doc.data()));
+      } else {
+        console.log("No such document!");
+      }
+    });
+
+    // then after a while, to detach the listener:
+    unsubscribe();
+  }
+
+  // firebase.updateProfile({
+  //   displayName: 'Eddy Verbruggen',
+  //   photoURL: 'http://provider.com/profiles/eddyverbruggen.png'
+  // }).then(
+  //     function () {
+  //       // called when update profile was successful
+  //     },
+  //     function (errorMessage) {
+  //       console.log(errorMessage);
+  //     }
+  // );
+
   deleteAccount() {
-    firebase.deleteUser()
-    .then(() => {
-      alert("Deleted")
+    firebase.deleteUser().then(
+      () => {
+        alert("Deleted");
         this.routerExtensions.navigate(["login"], {
           transition: {
-            name: "fade" 
+            name: "fade"
           }
         });
       },

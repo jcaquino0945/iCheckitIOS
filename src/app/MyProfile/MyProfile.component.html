@@ -21,7 +21,7 @@
           src="font://&#xf2bd;"
         ></Image>
         <Label
-          text="{{ userData.displayUser }}"
+          text="{{ userDetails.displayName }}"
           textWrap="true"
           class="m-b-30 h1 prof-name"
         ></Label>
@@ -29,7 +29,7 @@
     </GridLayout>
 
     <FlexboxLayout flexDirection="column" class="main-content">
-      <GridLayout rows="auto, auto" columns="auto, *, *">
+      <GridLayout rows="auto, auto" columns="auto, *, *"> 
         <StackLayout class="p-10 m-x-10 m-y-10 task-late" row="0" col="0">
           <Label text="Late Tasks:" class="h3" textWrap="true"></Label>
           <Label text="10" class="h2" textWrap="true"></Label>
@@ -39,18 +39,19 @@
           <Label text="10" class="h2" textWrap="true"></Label>
         </StackLayout>
 
-        <StackLayout class="p-10 m-x-10 m-y-10 info" col="1" colSpan="2">
+        <StackLayout class="p-10 m-x-10 m-y-10 info" col="1" colSpan="2" >
           <Label
             text="My Personal Information"
             class="h2"
             textWrap="true"
           ></Label>
-          <Label text="Full Name: {{ userData.displayUser }}" textWrap="true"></Label>
+          <Label text="{{ userDetails.displayName }}" textWrap="true"></Label>
           <Label text="Course: " textWrap="true"></Label>
-          <Label text="Email: {{ userData.email }}" textWrap="true"></Label>
+          <Label text="Email: {{ userDetails.email }}" textWrap="true"></Label>
           <Label text="Section: " textWrap="true"></Label>
-          <Label text="Contact Number: {{ userData.contactNumber }}" textWrap="true"></Label>
+          <Label text="Contact Number: {{ userDetails.contactNumber }}" textWrap="true"></Label>
         </StackLayout>
+
         <StackLayout class="p-10 m-x-10 m-y-10 info" col="1" row="1">
           <Label
             text="Account &#xa;Type: &#xa;"
