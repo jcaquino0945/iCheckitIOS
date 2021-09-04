@@ -14,6 +14,7 @@ export class EditProfileComponent implements OnInit {
   _number = "";
   userData;
   userDetails;
+  
 
   constructor(
     private modalDialogParams: ModalDialogParams,

@@ -157,7 +157,7 @@ export class AuthService {
         displayName: displayName
       })
       .then(
-        function(user) {
+        function() {
           return firestore
             .collection("users")
             .doc(uid)
@@ -167,7 +167,18 @@ export class AuthService {
                 contactNumber: contactNumber
               },
               { merge: true }
-            );
+            ); 
+        },
+        function(errorMessage) {
+          console.log(errorMessage);
+        }
+      )
+      firebase.reloadUser().then( 
+        function() { 
+          firebase
+            .getCurrentUser()
+            .then(user => console.log("User uid: " + user.uid))
+            .catch(error => console.log("Trouble in paradise: " + error));
         },
         function(errorMessage) {
           console.log(errorMessage);
