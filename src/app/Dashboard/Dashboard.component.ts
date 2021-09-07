@@ -16,37 +16,103 @@ export class DashboardComponent implements OnInit {
   userData;
   userDetails;
   myTasks = [];
+  myPendingTasks = [];
+  myLateTasks = [];
+  myForApprovalTasks = [];
+  myAccomplishedTasks = [];
+
   ngOnInit() {
     firebase
-    .getCurrentUser()
-    .then(user => {
-      (this.userData = user),
-        firestore
-          .collection("users")
-          .doc(this.userData.uid)
-          .get().then(doc => {
-            if (doc.exists) {
-              console.log(`Document data: ${JSON.stringify(doc.data())}`);
-              console.log(doc.data().section);
+      .getCurrentUser()
+      .then(user => {
+        (this.userData = user),
+          firestore
+            .collection("users")
+            .doc(this.userData.uid)
+            .get()
+            .then(doc => {
+              if (doc.exists) {
+                console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                console.log(doc.data().section);
                 const citiesCollection = firestore.collection("tasks");
-                const query = citiesCollection
-                .where("scope", "array-contains", doc.data().section)
-                query
-                .get()
-                .then(querySnapshot => {
+                const query = citiesCollection.where(
+                  "scope",
+                  "array-contains",
+                  doc.data().section
+                );
+                query.get().then(querySnapshot => {
                   querySnapshot.forEach(doc => {
                     this.myTasks.push(doc.data());
-                    console.log(`Relatively small Californian city: ${doc.id} => ${JSON.stringify(doc.data())}`);
+                    console.log(
+                      `Relatively small Californian city: ${
+                        doc.id
+                      } => ${JSON.stringify(doc.data())}`
+                    );
                   });
                 });
-              this.userDetails = doc.data();
-            } else {
-              console.log("No such document!");
-            }
-          });
-    })
-    .catch(error => console.log("Trouble in paradise: " + error));
-    
+
+                const pendingQuery = citiesCollection
+                  .where("status", "==", "Pending")
+                  .where("scope", "array-contains", doc.data().section);
+                pendingQuery.get().then(querySnapshot => {
+                  querySnapshot.forEach(doc => {
+                    this.myPendingTasks.push(doc.data());
+                    console.log(
+                      `Relatively small Californian city: ${
+                        doc.id
+                      } => ${JSON.stringify(doc.data())}`
+                    );
+                  });
+                });
+
+                const lateQuery = citiesCollection
+                  .where("status", "==", "Late")
+                  .where("scope", "array-contains", doc.data().section);
+                lateQuery.get().then(querySnapshot => {
+                  querySnapshot.forEach(doc => {
+                    this.myLateTasks.push(doc.data());
+                    console.log(
+                      `Relatively small Californian city: ${
+                        doc.id
+                      } => ${JSON.stringify(doc.data())}`
+                    );
+                  });
+                });
+
+                const approvalQuery = citiesCollection
+                  .where("status", "==", "For Approval")
+                  .where("scope", "array-contains", doc.data().section);
+                approvalQuery.get().then(querySnapshot => {
+                  querySnapshot.forEach(doc => {
+                    this.myForApprovalTasks.push(doc.data());
+                    console.log(
+                      `Relatively small Californian city: ${
+                        doc.id
+                      } => ${JSON.stringify(doc.data())}`
+                    );
+                  });
+                });
+
+                const accomplishedQuery = citiesCollection
+                  .where("status", "==", "Accomplished")
+                  .where("scope", "array-contains", doc.data().section);
+                accomplishedQuery.get().then(querySnapshot => {
+                  querySnapshot.forEach(doc => {
+                    this.myAccomplishedTasks.push(doc.data());
+                    console.log(
+                      `Relatively small Californian city: ${
+                        doc.id
+                      } => ${JSON.stringify(doc.data())}`
+                    );
+                  });
+                });
+                this.userDetails = doc.data();
+              } else {
+                console.log("No such document!");
+              }
+            });
+      })
+      .catch(error => console.log("Trouble in paradise: " + error));
   }
 
   onDrawerButtonTap(): void {
