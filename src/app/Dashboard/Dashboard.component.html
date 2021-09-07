@@ -1,80 +1,133 @@
 <StackLayout>
   <NavigationButton visibility="hidden"></NavigationButton>
-  <Label class="p-10 h2 fas" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+  <Label
+    class="p-10 h2 fas"
+    text="&#xf0c9;"
+    (tap)="onDrawerButtonTap()"
+  ></Label>
 </StackLayout>
 <FlexboxLayout flexDirection="column">
   <StackLayout height="500">
-
     <GridLayout>
-
-
       <StackLayout class="top">
-        <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img"> </Image>
+        <Image
+          src="~/app/images/USTBackground.png"
+          stretch="aspectFill"
+          class="top-img"
+        >
+        </Image>
       </StackLayout>
-      <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+      <Label
+        class="h2 fas p-10 nav-button"
+        text="&#xf0c9;"
+        (tap)="onDrawerButtonTap()"
+      ></Label>
       <StackLayout class="section-1">
         <Label text="My Tasks" textWrap="true" class="p-10 h1 title"></Label>
-        <Label text="Date Today" textWrap="true" class="p-10 h2 date"></Label>
+        <Label text="{{ dateToday | date }}" textWrap="true" class="p-10 h2 date"></Label>
       </StackLayout>
     </GridLayout>
-
   </StackLayout>
   <GridLayout class="page__content">
-    <TabView selectedTabTextColor="white" androidSelectedTabHighlightColor="red" androidTabsPosition="bottom">
-
-      <StackLayout *tabItem="{iconSource: 'res://home'}">
-        <!-- <ListView [items]="items" (itemTap)="onItemTap($event)" class="list-group">
-            <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
-              <FlexboxLayout class="p-10 task">
-                <Label text=" " textWrap="true" class="rectangle-late"></Label>
-                <StackLayout>
-                  <Label [text]="item.name" textWrap="true" class="task-details"></Label>
-                  <Label text="Deadline: (mm/dd/yyyy) " textWrap="true" class="task-deadline"></Label>
-                </StackLayout>
-              </FlexboxLayout>
-            </ng-template> 
-          -->
-
+    <TabView
+      selectedTabTextColor="white"
+      androidSelectedTabHighlightColor="red"
+      androidTabsPosition="bottom"
+    >
+      <StackLayout *tabItem="{ iconSource: 'res://home' }">
+        
         <ScrollView height="1000">
           <StackLayout>
-
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
-                  <Label text=" " textWrap="true" class="rectangle-late"></Label>
+                  <Label
+                    text=" "
+                    textWrap="true"
+                    class="rectangle-late"
+                  ></Label>
                   <StackLayout>
-                    <Label text="Task" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: (mm/dd/yyyy) " textWrap="true" class="task-deadline"></Label>
+                    <Label
+                      text="Task"
+                      textWrap="true"
+                      class="task-details"
+                    ></Label>
+                    <Label
+                      text="Deadline: (mm/dd/yyyy) "
+                      textWrap="true"
+                      class="task-deadline"
+                    ></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf12a;" textWrap="true" class="fas h2 icon-late " col="2" colSpan="3"></Label>
+                <Label
+                  text="&#xf12a;"
+                  textWrap="true"
+                  class="fas h2 icon-late "
+                  col="2"
+                  colSpan="3"
+                ></Label>
               </GridLayout>
             </FlexboxLayout>
 
-
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
-                  <Label text=" " textWrap="true" class="rectangle-pending"></Label>
+                  <Label
+                    text=" "
+                    textWrap="true"
+                    class="rectangle-pending"
+                  ></Label>
                   <StackLayout>
-                    <Label text="Task" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: (mm/dd/yyyy) " textWrap="true" class="task-deadline"></Label>
+                    <Label
+                      text="Task"
+                      textWrap="true"
+                      class="task-details"
+                    ></Label>
+                    <Label
+                      text="Deadline: (mm/dd/yyyy) "
+                      textWrap="true"
+                      class="task-deadline"
+                    ></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending " col="2" colSpan="3"></Label>
+                <Label
+                  text="&#xf017;"
+                  textWrap="true"
+                  class="fas h2 icon-pending "
+                  col="2"
+                  colSpan="3"
+                ></Label>
               </GridLayout>
             </FlexboxLayout>
 
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
-                  <Label text=" " textWrap="true" class="rectangle-approval"></Label>
+                  <Label
+                    text=" "
+                    textWrap="true"
+                    class="rectangle-approval"
+                  ></Label>
                   <StackLayout>
-                    <Label text="Task" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: (mm/dd/yyyy) " textWrap="true" class="task-deadline"></Label>
+                    <Label
+                      text="Task"
+                      textWrap="true"
+                      class="task-details"
+                    ></Label>
+                    <Label
+                      text="Deadline: (mm/dd/yyyy) "
+                      textWrap="true"
+                      class="task-deadline"
+                    ></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval " col="2" colSpan="3"></Label>
+                <Label
+                  text="&#xf254;"
+                  textWrap="true"
+                  class="fas h2 icon-approval "
+                  col="2"
+                  colSpan="3"
+                ></Label>
               </GridLayout>
             </FlexboxLayout>
 
@@ -83,103 +136,175 @@
                 <FlexboxLayout col="0">
                   <Label text=" " textWrap="true" class="rectangle-ok"></Label>
                   <StackLayout>
-                    <Label text="Task" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: (mm/dd/yyyy) " textWrap="true" class="task-deadline"></Label>
+                    <Label
+                      text="Task"
+                      textWrap="true"
+                      class="task-details"
+                    ></Label>
+                    <Label
+                      text="Deadline: (mm/dd/yyyy) "
+                      textWrap="true"
+                      class="task-deadline"
+                    ></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok " col="2" colSpan="3"></Label>
+                <Label
+                  text="&#xf00c;"
+                  textWrap="true"
+                  class="fas h2 icon-ok "
+                  col="2"
+                  colSpan="3"
+                ></Label>
               </GridLayout>
             </FlexboxLayout>
-
           </StackLayout>
         </ScrollView>
       </StackLayout>
       <!-- </ListView> -->
 
-      <StackLayout *tabItem="{iconSource: 'res://pending'}">
+      <StackLayout *tabItem="{ iconSource: 'res://pending' }">
         <ScrollView height="1000">
           <StackLayout>
-
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
-                  <Label text=" " textWrap="true" class="rectangle-pending"></Label>
+                  <Label
+                    text=" "
+                    textWrap="true"
+                    class="rectangle-pending"
+                  ></Label>
                   <StackLayout>
-                    <Label text="Task" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: (mm/dd/yyyy) " textWrap="true" class="task-deadline"></Label>
+                    <Label
+                      text="Task"
+                      textWrap="true"
+                      class="task-details"
+                    ></Label>
+                    <Label
+                      text="Deadline: (mm/dd/yyyy) "
+                      textWrap="true"
+                      class="task-deadline"
+                    ></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending " col="2" colSpan="3"></Label>
+                <Label
+                  text="&#xf017;"
+                  textWrap="true"
+                  class="fas h2 icon-pending "
+                  col="2"
+                  colSpan="3"
+                ></Label>
               </GridLayout>
             </FlexboxLayout>
-
           </StackLayout>
         </ScrollView>
       </StackLayout>
 
-      <StackLayout *tabItem="{iconSource: 'res://exclamationmark'}">
+      <StackLayout *tabItem="{ iconSource: 'res://exclamationmark' }">
         <ScrollView height="1000">
           <StackLayout>
-
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
-                  <Label text=" " textWrap="true" class="rectangle-late"></Label>
+                  <Label
+                    text=" "
+                    textWrap="true"
+                    class="rectangle-late"
+                  ></Label>
                   <StackLayout>
-                    <Label text="Task" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: (mm/dd/yyyy) " textWrap="true" class="task-deadline"></Label>
+                    <Label
+                      text="Task"
+                      textWrap="true"
+                      class="task-details"
+                    ></Label>
+                    <Label
+                      text="Deadline: (mm/dd/yyyy) "
+                      textWrap="true"
+                      class="task-deadline"
+                    ></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf12a;" textWrap="true" class="fas h2 icon-late " col="2" colSpan="3"></Label>
+                <Label
+                  text="&#xf12a;"
+                  textWrap="true"
+                  class="fas h2 icon-late "
+                  col="2"
+                  colSpan="3"
+                ></Label>
               </GridLayout>
             </FlexboxLayout>
-
-          </StackLayout> 
-        </ScrollView>
-      </StackLayout>
-
-      <StackLayout *tabItem="{iconSource: 'res://glass'}">
-        <ScrollView height="1000">
-          <StackLayout>
-
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
-              <GridLayout columns="*,*">
-                <FlexboxLayout col="0">
-                  <Label text=" " textWrap="true" class="rectangle-approval"></Label>
-                  <StackLayout>
-                    <Label text="Task" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: (mm/dd/yyyy) " textWrap="true" class="task-deadline"></Label>
-                  </StackLayout>
-                </FlexboxLayout>
-                <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval " col="2" colSpan="3"></Label>
-              </GridLayout>
-            </FlexboxLayout>
-
           </StackLayout>
         </ScrollView>
       </StackLayout>
 
-      <StackLayout *tabItem="{iconSource: 'res://check'}">
+      <StackLayout *tabItem="{ iconSource: 'res://glass' }">
         <ScrollView height="1000">
           <StackLayout>
+            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
+              <GridLayout columns="*,*">
+                <FlexboxLayout col="0">
+                  <Label
+                    text=" "
+                    textWrap="true"
+                    class="rectangle-approval"
+                  ></Label>
+                  <StackLayout>
+                    <Label
+                      text="Task"
+                      textWrap="true"
+                      class="task-details"
+                    ></Label>
+                    <Label
+                      text="Deadline: (mm/dd/yyyy) "
+                      textWrap="true"
+                      class="task-deadline"
+                    ></Label>
+                  </StackLayout>
+                </FlexboxLayout>
+                <Label
+                  text="&#xf254;"
+                  textWrap="true"
+                  class="fas h2 icon-approval "
+                  col="2"
+                  colSpan="3"
+                ></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
+      </StackLayout>
 
+      <StackLayout *tabItem="{ iconSource: 'res://check' }">
+        <ScrollView height="1000">
+          <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
                   <Label text=" " textWrap="true" class="rectangle-ok"></Label>
                   <StackLayout>
-                    <Label text="Task" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: (mm/dd/yyyy) " textWrap="true" class="task-deadline"></Label>
+                    <Label
+                      text="Task"
+                      textWrap="true"
+                      class="task-details"
+                    ></Label>
+                    <Label
+                      text="Deadline: (mm/dd/yyyy) "
+                      textWrap="true"
+                      class="task-deadline"
+                    ></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok " col="2" colSpan="3"></Label>
+                <Label
+                  text="&#xf00c;"
+                  textWrap="true"
+                  class="fas h2 icon-ok "
+                  col="2"
+                  colSpan="3"
+                ></Label>
               </GridLayout>
             </FlexboxLayout>
-
           </StackLayout>
         </ScrollView>
       </StackLayout>
-
     </TabView>
   </GridLayout>
 </FlexboxLayout>

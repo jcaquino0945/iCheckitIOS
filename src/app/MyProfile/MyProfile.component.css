@@ -1,94 +1,89 @@
 /* First part of the profile page (image and name) */
 .prof {
-    background-color: red;
-    height: 200;
-    width: 100%;
+  background-color: red;
+  height: 200;
+  width: 100%;
 }
 
 .prof-img,
 .prof-name {
-    justify-content: center;
-    margin: auto;
-    text-align: center;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
 }
 
 .nav-button {
-    color: white;
+  color: white;
 }
 
 .top-img {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .top {
-    background-color: red;
-    opacity: 0.9;
-
+  background-color: red;
+  opacity: 0.9;
 }
 
 .prof-name {
-    color: white;
+  color: white;
 }
 
 .prof-img {
-    margin-top: 50;
+  margin-top: 50;
 }
 
 /* 2nd part */
 .task-number {
-    flex-direction: column;
+  flex-direction: column;
 }
-
 
 .info {
-    font-family: "Abel-Regular";
-    border-radius: 10;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: "Abel-Regular";
+  border-radius: 10;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
-
 .section-1 {
-    vertical-align: bottom;
+  vertical-align: bottom;
 }
 
 .title,
 .date,
 .que,
 .ans {
-    padding-left: 30;
-    font-family: "Antonio-Regular";
-
+  padding-left: 30;
+  font-family: "Antonio-Regular";
 }
 
 .title,
 .date {
-    color: white;
+  color: white;
 }
 
 .icon {
-    color: white;
-
+  color: white;
 }
 
-
-
 .task-late {
-    background-color: red;
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #b7152f;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .task-pending {
-    background-color: yellow;
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: yellow;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.task-pending Label,
-.task-late Label {
-    color: white;
+.task-pending label {
+  color: black;
+}
+
+.task-late label {
+  color: white;
 }
 
 /* .task-pending,
@@ -103,18 +98,17 @@
 .edit-profile,
 .change-pass,
 .prof-name {
-    font-family: "Antonio-Regular";
+  font-family: "Antonio-Regular";
 }
-
 
 .task-late,
 .task-pending {
-    border-radius: 10;
+  border-radius: 10;
 }
 
 .num,
 .title-2 {
-    font-family: "Antonio-Regular";
+  font-family: "Antonio-Regular";
 }
 
 /* .main-content {
@@ -123,32 +117,30 @@
 
 .change,
 .edit {
-    border-left-color: #4C4A4A;
-    border-left-width: 24;
-    /* border-right-width: 1;
+  border-left-color: #4c4a4a;
+  border-left-width: 24;
+  /* border-right-width: 1;
     border-top-width: 1;
     border-bottom-width: 1; */
-    text-align: left;
-
+  text-align: left;
 }
 
 .del {
-    border-left-color: #F00000;
-    border-left-width: 24;
-    /* border-right-width: 1;
+  border-left-color: #b7152f;
+  border-left-width: 24;
+  /* border-right-width: 1;
     border-top-width: 1;
     border-bottom-width: 1;
     */
-    text-align: left;
+  text-align: left;
 }
-
 
 .delete-acc,
 .edit-profile,
 .change-pass {
-    color: black;
+  color: black;
 }
 
 .icon {
-    color: black;
+  color: black;
 }

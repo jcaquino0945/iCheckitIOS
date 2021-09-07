@@ -5,11 +5,19 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.item {
+.item,
+.name,
+.section {
   font-family: "Antonio-Regular";
 }
 
-.nav-item-logout{
+.name,
+.section {
+  font-size: 15;
+  text-transform: uppercase;
+}
+
+.nav-item-logout {
   border-left-color: white;
   background-color: #b7152f;
 }
@@ -21,4 +29,15 @@
 
 .icon {
   color: white;
+}
+
+.rectangle {
+  width: 3;
+  height: auto;
+  margin-right: 10;
+  background-color: #b7152f;
+}
+
+.header {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

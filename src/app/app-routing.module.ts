@@ -18,12 +18,12 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard-details/:id', component: DashboardDetailsComponent},
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'confirm-new-password', component: ConfirmNewPasswordComponent},
   { path: 'delete-acc', component: DeleteAccountComponent},
   { path: 'edit-profile', component: EditProfileComponent},
   { path: 'change-pass', component: ChangePasswordComponent},
-  { path: 'dashboard-details', component: DashboardDetailsComponent},
 ]
 
 @NgModule({
