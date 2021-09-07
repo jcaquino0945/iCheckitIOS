@@ -14,7 +14,6 @@ export class EditProfileComponent implements OnInit {
   _number = "";
   userData;
   userDetails;
-  
 
   constructor(
     private modalDialogParams: ModalDialogParams,
@@ -22,14 +21,15 @@ export class EditProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-     firebase
+    firebase
       .getCurrentUser()
       .then(user => {
         (this.userData = user),
           firestore
             .collection("users")
             .doc(this.userData.uid)
-            .get().then(doc => {
+            .get()
+            .then(doc => {
               if (doc.exists) {
                 console.log(`Document data: ${JSON.stringify(doc.data())}`);
                 this.userDetails = doc.data();
@@ -37,7 +37,6 @@ export class EditProfileComponent implements OnInit {
                 console.log("No such document!");
               }
             });
-          
       })
       .catch(error => console.log("Trouble in paradise: " + error));
   }
@@ -51,6 +50,4 @@ export class EditProfileComponent implements OnInit {
     this.auth.editProfile(this._fullName, this._number, this.userData.uid);
     this.modalDialogParams.closeCallback();
   }
-
-  
 }

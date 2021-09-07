@@ -1,4 +1,4 @@
-import { AuthService } from '~/app/services/Auth/auth.service';
+import { AuthService } from "~/app/services/Auth/auth.service";
 import { Component, OnInit } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 import { RouterExtensions } from "@nativescript/angular";
@@ -11,6 +11,7 @@ import { filter } from "rxjs/operators";
 import { Application } from "@nativescript/core";
 import { firebase } from "@nativescript/firebase";
 import { Theme } from "@nativescript/theme";
+import { firestore } from "@nativescript/firebase";
 
 @Component({
   selector: "ns-app",
@@ -18,43 +19,50 @@ import { Theme } from "@nativescript/theme";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  private _activatedUrl: string
-  private _sideDrawerTransition: DrawerTransitionBase
-  constructor(private router: Router, private routerExtensions: RouterExtensions,
-  private auth: AuthService
-    ) {
+  userData;
+  userDetails;
+  private _activatedUrl: string;
+  private _sideDrawerTransition: DrawerTransitionBase;
+  constructor(
+    private router: Router,
+    private routerExtensions: RouterExtensions,
+    private auth: AuthService
+  ) {
     // Use the component constructor to inject services.
   }
 
-  ngOnInit(): void {
-    firebase.init({
-      // Optionally pass in properties for database, authentication and cloud messaging,
-      // see their respective docs.
-    }).then(
-      () => {
-        console.log("firebase.init done");
-      },
-      error => {
-        console.log(`firebase.init error: ${error}`);
-      }
-    );
-  // configure a listener:
+  ngOnInit() {
+    firebase
+      .init({
+        // Optionally pass in properties for database, authentication and cloud messaging,
+        // see their respective docs.
+      })
+      .then(
+        () => {
+          console.log("firebase.init done");
+        },
+        error => {
+          console.log(`firebase.init error: ${error}`);
+        }
+      );
+    // configure a listener:
     var listener = {
       onAuthStateChanged: function(data) {
-        console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
+        console.log(
+          data.loggedIn ? "Logged in to firebase" : "Logged out from firebase"
+        );
         if (data.loggedIn) {
           this.router.navigate(["/dashboard"]);
         } else if (!data.loggedIn) {
-          alert('You session has expired. Please login again');
+          alert("You session has expired. Please login again");
           this.router.navigate(["/login"]);
         }
       },
       thisArg: this
     };
 
-     // add the listener:
-  firebase.addAuthStateListener(listener);
-
+    // add the listener:
+    firebase.addAuthStateListener(listener);
     if (Application.android) {
       try {
         Theme.setMode(Theme.Light);
@@ -63,14 +71,33 @@ export class AppComponent implements OnInit {
       }
     }
 
-    this._activatedUrl = '/home'
-    this._sideDrawerTransition = new SlideInOnTopTransition()
+    this._activatedUrl = "/home";
+    this._sideDrawerTransition = new SlideInOnTopTransition();
 
     this.router.events
       .pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe(
         (event: NavigationEnd) => (this._activatedUrl = event.urlAfterRedirects)
       );
+
+    return firebase
+      .getCurrentUser()
+      .then(user => {
+        (this.userData = user),
+          firestore
+            .collection("users")
+            .doc(this.userData.uid)
+            .get()
+            .then(doc => {
+              if (doc.exists) {
+                console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                this.userDetails = doc.data();
+              } else {
+                console.log("No such document!");
+              }
+            });
+      })
+      .catch(error => console.log("Trouble in paradise: " + error));
   }
 
   get sideDrawerTransition(): DrawerTransitionBase {
@@ -92,8 +119,8 @@ export class AppComponent implements OnInit {
     sideDrawer.closeDrawer();
   }
 
-  onLogout(){
-    this.auth.logout()
+  onLogout() {
+    this.auth.logout();
     this.router.navigate(["/login"]);
     const sideDrawer = <RadSideDrawer>Application.getRootView();
     sideDrawer.closeDrawer();

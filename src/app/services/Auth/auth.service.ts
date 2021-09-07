@@ -148,16 +148,23 @@ export class AuthService {
   }
 
   editProfile(displayName, contactNumber, uid) {
-    console.log("from service");
-    console.log(displayName);
-    console.log(uid);
-    console.log(contactNumber);
     firebase
       .updateProfile({
         displayName: displayName
       })
       .then(
         function() {
+          firebase.reloadUser().then(
+            function() {
+              firebase
+                .getCurrentUser()
+                .then(user => console.log("User uid: " + user.uid))
+                .catch(error => console.log("Trouble in paradise: " + error));
+            },
+            function(errorMessage) {
+              console.log(errorMessage);
+            }
+          );
           return firestore
             .collection("users")
             .doc(uid)
@@ -167,23 +174,57 @@ export class AuthService {
                 contactNumber: contactNumber
               },
               { merge: true }
-            ); 
-        },
-        function(errorMessage) {
-          console.log(errorMessage);
-        }
-      )
-      firebase.reloadUser().then( 
-        function() { 
-          firebase
-            .getCurrentUser()
-            .then(user => console.log("User uid: " + user.uid))
-            .catch(error => console.log("Trouble in paradise: " + error));
+            );
         },
         function(errorMessage) {
           console.log(errorMessage);
         }
       );
+    // firebase
+    //   .updateProfile({
+    //     displayName: displayName
+    //   })
+    //   .then(
+    //     function() {
+    //       return firestore
+    //         .collection("users")
+    //         .doc(uid)
+    //         .set(
+    //           {
+    //             displayName: displayName,
+    //             contactNumber: contactNumber
+    //           },
+    //           { merge: true }
+    //         );
+    //     },
+    //     function(errorMessage) {
+    //       console.log(errorMessage);
+    //     }
+    //   )
+    //   .finally(() => {
+    //     console.log("updated profile");
+    //     firebase.reloadUser().then(function() {
+    //       firebase
+    //         .getCurrentUser()
+    //         .then(user => console.log("User uid: " + user.uid))
+    //         .catch(error => console.log("Trouble in paradise: " + error));
+    //       return firestore
+    //         .collection("users")
+    //         .doc(uid)
+    //         .update({
+    //           displayName: displayName,
+    //           contactNumber: contactNumber
+    //         });
+    //     });
+    //   });
+    // .then(function() {
+    //   firebase.reloadUser().then(function() {
+    //     firebase
+    //       .getCurrentUser()
+    //       .then(user => console.log("User uid: " + user.uid))
+    //       .catch(error => console.log("Trouble in paradise: " + error));
+    //   });
+    // });
   }
 
   getData(uid) {
