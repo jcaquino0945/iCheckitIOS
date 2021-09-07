@@ -12,7 +12,9 @@ import { switchMap } from "rxjs/operators";
 export class DashboardDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>Application.getRootView();

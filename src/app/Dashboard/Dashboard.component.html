@@ -38,7 +38,7 @@
         
         <ScrollView height="1000" *ngIf="myTasks">
           <StackLayout>
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()" *ngFor="let task of myTasks"> 
+            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(task.taskId)" *ngFor="let task of myTasks"> 
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
                   <Label

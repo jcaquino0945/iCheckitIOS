@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
-  onDetails() {
-    this.router.navigate(["/dashboard-details/", 12]);
+  onDetails(taskId) {
+    this.router.navigate(["/dashboard-details/", taskId]);
   }
 }
