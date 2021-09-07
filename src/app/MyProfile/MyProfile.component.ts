@@ -27,7 +27,7 @@ export class MyProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    return firebase
+     firebase
       .getCurrentUser()
       .then(user => {
         (this.userData = user),
