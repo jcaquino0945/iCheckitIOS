@@ -36,19 +36,19 @@
     >
       <StackLayout *tabItem="{ iconSource: 'res://home' }">
         
-        <ScrollView height="1000">
+        <ScrollView height="1000" *ngIf="myTasks">
           <StackLayout>
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
+            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()" *ngFor="let task of myTasks"> 
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
                   <Label
-                    text=" "
+                    text=""
                     textWrap="true"
                     class="rectangle-late"
                   ></Label>
                   <StackLayout>
                     <Label
-                      text="Task"
+                      text="{{task.title}}"
                       textWrap="true"
                       class="task-details"
                     ></Label>
@@ -63,95 +63,6 @@
                   text="&#xf12a;"
                   textWrap="true"
                   class="fas h2 icon-late "
-                  col="2"
-                  colSpan="3"
-                ></Label>
-              </GridLayout>
-            </FlexboxLayout>
-
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
-              <GridLayout columns="*,*">
-                <FlexboxLayout col="0">
-                  <Label
-                    text=" "
-                    textWrap="true"
-                    class="rectangle-pending"
-                  ></Label>
-                  <StackLayout>
-                    <Label
-                      text="Task"
-                      textWrap="true"
-                      class="task-details"
-                    ></Label>
-                    <Label
-                      text="Deadline: (mm/dd/yyyy) "
-                      textWrap="true"
-                      class="task-deadline"
-                    ></Label>
-                  </StackLayout>
-                </FlexboxLayout>
-                <Label
-                  text="&#xf017;"
-                  textWrap="true"
-                  class="fas h2 icon-pending "
-                  col="2"
-                  colSpan="3"
-                ></Label>
-              </GridLayout>
-            </FlexboxLayout>
-
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
-              <GridLayout columns="*,*">
-                <FlexboxLayout col="0">
-                  <Label
-                    text=" "
-                    textWrap="true"
-                    class="rectangle-approval"
-                  ></Label>
-                  <StackLayout>
-                    <Label
-                      text="Task"
-                      textWrap="true"
-                      class="task-details"
-                    ></Label>
-                    <Label
-                      text="Deadline: (mm/dd/yyyy) "
-                      textWrap="true"
-                      class="task-deadline"
-                    ></Label>
-                  </StackLayout>
-                </FlexboxLayout>
-                <Label
-                  text="&#xf254;"
-                  textWrap="true"
-                  class="fas h2 icon-approval "
-                  col="2"
-                  colSpan="3"
-                ></Label>
-              </GridLayout>
-            </FlexboxLayout>
-
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails()">
-              <GridLayout columns="*,*">
-                <FlexboxLayout col="0">
-                  <Label text=" " textWrap="true" class="rectangle-ok"></Label>
-                  <StackLayout>
-                    <Label
-                      text="Task"
-                      textWrap="true"
-                      class="task-details"
-                    ></Label>
-                    <Label
-                      text="Deadline: (mm/dd/yyyy) "
-                      textWrap="true"
-                      class="task-deadline"
-                    ></Label>
-                  </StackLayout>
-                </FlexboxLayout>
-                <Label
-                  text="&#xf00c;"
-                  textWrap="true"
-                  class="fas h2 icon-ok "
                   col="2"
                   colSpan="3"
                 ></Label>
