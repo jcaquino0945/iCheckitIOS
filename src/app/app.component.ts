@@ -34,6 +34,17 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     firebase
       .init({
+        showNotifications: true,
+        showNotificationsWhenInForeground: true,
+
+        onPushTokenReceivedCallback: (token) => {
+          console.log('[Firebase] onPushTokenReceivedCallback:', { token });
+          console.log('my push token:' + token);
+        },
+
+        onMessageReceivedCallback: (message: firebase.Message) => {
+          console.log('[Firebase] onMessageReceivedCallback:', { message });
+        }
         // Optionally pass in properties for database, authentication and cloud messaging,
         // see their respective docs.
       })
