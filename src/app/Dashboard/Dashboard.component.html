@@ -23,8 +23,8 @@
 
       <StackLayout *tabItem="{ iconSource: 'res://home' }">
         <ScrollView height="1000" *ngIf="myTasks">
-          <StackLayout>
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(task.taskId)" *ngFor="let task of myTasks">
+          <StackLayout class="task">
+            <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngFor="let task of myTasks">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
                   <Label text="" textWrap="true" class="rectangle-late" *ngIf="task.status == 'Late'"></Label>
@@ -34,7 +34,7 @@
                   <Label text="" textWrap="true" class="rectangle-ok" *ngIf="task.status == 'Accomplished'"></Label>
                   <StackLayout>
                     <Label text="{{ task.title }}" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: {{ task.deadline }}" textWrap="true" class="task-deadline"></Label>
+                    <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
 
@@ -62,7 +62,7 @@
                   <Label text=" " textWrap="true" class="rectangle-pending"></Label>
                   <StackLayout>
                     <Label text="{{ pending.title }}" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: {{ pending.deadline }} " textWrap="true" class="task-deadline"></Label>
+                    <Label text="Deadline: {{ pending.deadline | date }} " textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
                 <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending " col="2" colSpan="3"></Label>
@@ -81,7 +81,7 @@
                   <Label text=" " textWrap="true" class="rectangle-late"></Label>
                   <StackLayout>
                     <Label text="{{ late.title }}" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: {{ late.deadline }} " textWrap="true" class="task-deadline"></Label>
+                    <Label text="Deadline: {{ late.deadline | date }} " textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
                 <Label text="&#xf12a;" textWrap="true" class="fas h2 icon-late " col="2" colSpan="3"></Label>
@@ -100,7 +100,7 @@
                   <Label text=" " textWrap="true" class="rectangle-approval"></Label>
                   <StackLayout>
                     <Label text="{{ forApproval.title }}" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: {{ forApproval.deadline }} " textWrap="true" class="task-deadline"></Label>
+                    <Label text="Deadline: {{ forApproval.deadline | date }} " textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
                 <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval " col="2" colSpan="3"></Label>
@@ -119,7 +119,7 @@
                   <Label text=" " textWrap="true" class="rectangle-ok"></Label>
                   <StackLayout>
                     <Label text="{{ accomplished.title }}" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: {{ accomplished.deadline }} " textWrap="true" class="task-deadline"></Label>
+                    <Label text="Deadline: {{ accomplished.deadline | date }} " textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
                 <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok " col="2" colSpan="3"></Label>

@@ -52,7 +52,7 @@ h2 {
 .rectangle-pending,
 .rectangle-ok,
 .rectangle-approval {
-  width: auto;
+  width: 3;
   height: auto;
   margin-right: 10;
 }
@@ -60,6 +60,11 @@ h2 {
 .task-deadline {
   color: gray;
   font-size: 13;
+}
+
+.task{
+  border-top-left-radius: 50;
+  border-top-right-radius: 50;
 }
 
 .icon-late,
