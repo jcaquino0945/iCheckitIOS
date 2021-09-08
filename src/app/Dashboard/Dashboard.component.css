@@ -1,108 +1,103 @@
 .all-tasks {
-    background-color: red;
+  background-color: red;
 }
 
 h1,
 h2 {
-    padding-left: 5px;
+  padding-left: 5px;
 }
 
 .nav-button {
-    color: white;
+  color: white;
 }
 
 .top-img {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .top {
-    background-color: red;
-    opacity: 0.9;
-
+  background-color: red;
+  opacity: 0.9;
 }
 
 .section-1 {
-    vertical-align: bottom;
+  vertical-align: bottom;
 }
 
 .title,
 .date,
 .que,
 .ans {
-    font-family: "Antonio-Regular";
-
+  font-family: "Antonio-Regular";
 }
 
 .title,
 .date {
-    color: white;
+  color: white;
 }
 
 .list-group-item {
-    padding-left: 20;
-    font-family: "Antonio-Regular";
-    font-size: medium;
+  padding-left: 20;
+  font-family: "Antonio-Regular";
+  font-size: medium;
 }
 
 .task-details,
 .task-deadline {
-    font-family: "Antonio-Regular";
-    font-size: 18;
+  font-family: "Antonio-Regular";
+  font-size: 18;
 }
 
 .rectangle-late,
 .rectangle-pending,
 .rectangle-ok,
 .rectangle-approval {
-    width: 3;
-    height: auto;
-    margin-right: 10;
-}
-
-.rectangle-late {
-    background: red;
-}
-
-.rectangle-pending {
-    background: yellow;
-}
-
-.rectangle-approval {
-    background: orange;
-}
-
-.rectangle-ok {
-    background: green;
+  width: auto;
+  height: auto;
+  margin-right: 10;
 }
 
 .task-deadline {
-    color: gray;
-    font-size: 13;
+  color: gray;
+  font-size: 13;
 }
-
-
 
 .icon-late,
 .icon-pending,
 .icon-ok,
 .icon-approval {
-    margin-left: 150;
-    margin-top: 13;
+  margin-left: 150;
+  margin-top: 13;
+}
+.rectangle-late {
+  background: red;
+}
+
+.rectangle-pending {
+  background: yellow;
+}
+
+.rectangle-approval {
+  background: orange;
+}
+
+.rectangle-ok {
+  background: green;
 }
 
 .icon-late {
-    margin-left: 156;
-    color: red;
+  margin-left: 156;
+  color: red;
 }
 
 .icon-pending {
-    color: yellow;
+  color: yellow;
 }
 
 .icon-approval {
-    color: orange;
+  color: orange;
 }
 
 .icon-ok {
-    color: green
+  color: green;
 }
