@@ -1,4 +1,4 @@
-<ScrollView>
+<ScrollView *ngIf="taskData as task">
     <StackLayout>
         <GridLayout>
             <StackLayout class="top">
@@ -6,18 +6,18 @@
               </StackLayout>
               <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
             <StackLayout class="section-1">
-                <Label text="Task Name" textWrap="true" class="h1 title"></Label>
+                <Label text="{{task.title}}" textWrap="true" class="h1 title"></Label>
             </StackLayout>
         </GridLayout>
 
         <FlexboxLayout>
             <StackLayout class="p-10 m-x-10 m-y-10 task-status">
-                <Label text="Status: &#xa;" class="m-r-5 h2"></Label>
-                <Label text="(name of status)" class="h3"></Label>
+                <Label text="Statusz: &#xa;" class="m-r-5 h2"></Label>
+                <Label text="{{task.status}}" class="h3"></Label>
             </StackLayout>
             <StackLayout class="p-10 m-x-10 m-y-10 task-deadline">
                 <Label text="Deadline: &#xa;" class="h2"></Label>
-                <Label text="(date of Deadline)" class="h3"></Label>
+                <Label text="{{task.deadline | date}}" class="h3"></Label>
             </StackLayout>
         </FlexboxLayout>
 
@@ -27,7 +27,7 @@
                 <FlexboxLayout>
                     <Label text=" " textWrap="true" class="rectangle"></Label>
                     <Label
-                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquam, arcu id pellentesque tincidunt, justo diam egestas dolor, eu molestie felis neque at orci. Donec maximus nulla sed tortor lacinia venenatis. Vivamus rhoncus tincidunt sodales. Morbi justo lacus, luctus a interdum et, lobortis ac nisi. Sed maximus mi eget nisl vehicula, vel bibendum sem condimentum. "
+                        text="{{task.description}}"
                         textWrap="true" class="p-10 task-details"></Label>
                 </FlexboxLayout>
             </StackLayout>
