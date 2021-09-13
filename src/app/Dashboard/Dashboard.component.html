@@ -55,7 +55,7 @@
       <StackLayout *tabItem="{ iconSource: 'res://pending' }">
         <ScrollView height="1000" *ngIf="myPendingTasks">
           <StackLayout>
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(task.taskId)"
+            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(pending.taskId)"
               *ngFor="let pending of myPendingTasks">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
@@ -75,7 +75,7 @@
       <StackLayout *tabItem="{ iconSource: 'res://exclamationmark' }">
         <ScrollView height="1000" *ngIf="myLateTasks">
           <StackLayout>
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(task.taskId)" *ngFor="let late of myLateTasks"> 
+            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks"> 
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
                   <Label text=" " textWrap="true" class="rectangle-late"></Label>
@@ -94,7 +94,7 @@
       <StackLayout *tabItem="{ iconSource: 'res://glass' }">
         <ScrollView height="1000" *ngIf="myForApprovalTasks">
           <StackLayout>
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(task.taskId)" *ngFor="let forApproval of myForApprovalTasks">
+            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(forApproval.taskId)" *ngFor="let forApproval of myForApprovalTasks">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
                   <Label text=" " textWrap="true" class="rectangle-approval"></Label>
@@ -113,7 +113,7 @@
       <StackLayout *tabItem="{ iconSource: 'res://check' }">
         <ScrollView height="1000" *ngIf="myAccomplishedTasks">
           <StackLayout>
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(task.taskId)" *ngFor="let accomplished of myAccomplishedTasks">
+            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(accomplished.taskId)" *ngFor="let accomplished of myAccomplishedTasks">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
                   <Label text=" " textWrap="true" class="rectangle-ok"></Label>
