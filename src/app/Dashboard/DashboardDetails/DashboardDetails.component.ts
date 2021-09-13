@@ -34,7 +34,14 @@ export class DashboardDetailsComponent implements OnInit {
               // note that the options object is optional, but you can use it to specify the source of data ("server", "cache", "default").
               taskDocument.get({ source: "cache" }).then(doc => {
                 if (doc.exists) {
-                  this.taskData = doc.data();
+                  // this.taskData = doc.data();
+                  doc.data().recipients.forEach(element => {
+                    if(Object.values(element).includes(this.userData.uid)) { 
+                      console.log(element)
+                      console.log('it exists')
+                      this.taskData = element;
+                  }
+                  });
                   console.log(`Document data: ${JSON.stringify(doc.data())}`);
                 } else {
                   console.log("No such document!");
