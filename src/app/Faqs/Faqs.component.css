@@ -1,0 +1,74 @@
+
+
+.section-1 {
+    vertical-align: bottom;
+}
+
+.title,
+.date,
+.que,
+.ans {
+    padding-left: 30;
+    font-family: "Antonio-Regular";
+
+}
+
+.title,
+.date {
+    color: white;
+}
+
+.icon { 
+    padding-left: 150;
+}
+
+.nav-button {
+  color: white;
+}
+
+.top-img {
+  opacity: 0.5;
+}
+
+.top {
+  background-color: red;
+  opacity: 0.9;
+
+}
+
+
+/* /* .accordion-button::after {
+  background: none;
+  font-family: "Font Awesome 5 Free";
+  content: "\f067";
+  font-weight: 900;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background: none;
+  font-family: "Font Awesome 5 Free";
+  content: "\f068";
+  font-weight: 900;
+} */
+
+/* <ScrollView>
+  <StackLayout>
+
+    <GridLayout>
+      <NavigationButton visibility="hidden"></NavigationButton>
+      <Label class="fas p-10 h2" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+
+      <StackLayout class="top">
+        <Image src="res://img1" stretch="aspectFill" class="top-img"> </Image>
+      </StackLayout>
+
+      <StackLayout class="section-1">
+        <Label text="My Tasks" textWrap="true" class="h1 title"></Label>
+        <Label text="Date Today" textWrap="true" class="h2 date"></Label>
+      </StackLayout>
+    </GridLayout>
+
+  </StackLayout>
+
+  
+</ScrollView> */

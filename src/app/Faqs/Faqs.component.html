@@ -1,0 +1,43 @@
+<!-- <ActionBar class="action-bar">
+    
+</ActionBar> -->
+
+<ScrollView>
+    <StackLayout>
+        <GridLayout>
+            <StackLayout class="top">
+                <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img"> </Image>
+            </StackLayout>
+            <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+            <StackLayout class="section-1">
+                <Label text="Frequently Asked Questions" textWrap="true" class="h1 title"></Label>
+                <Label text="{{ dateToday | date }}" textWrap="true" class="h2 date"></Label>
+            </StackLayout>
+        </GridLayout>
+
+
+        <FlexboxLayout flexDirection="column" class="m-t-10">
+            <GridLayout columns="*, *" (tap)="onTap(0)">
+                <Label text="Question" textWrap="true" class="h2 que" col="0"></Label>
+                <Label class="p-t-10 fas h4 icon" text="&#xf067;" col="2" colSpan="3" *ngIf="!isToggled[0]"></Label>
+                <Label class="p-t-10 fas h4 icon" text="&#xf068;" col="2" colSpan="3" *ngIf="isToggled[0]"></Label>
+            </GridLayout>
+            <StackLayout *ngIf="isToggled[0]">
+                <Label text="Answer" textWrap="true" class="h3 ans"></Label>
+            </StackLayout>
+            <StackLayout class="hr m-10"> </StackLayout>
+
+            <GridLayout columns="*, *" (tap)="onTap(1)">
+                <Label text="Question" textWrap="true" class="h2 que" col="0"></Label>
+                <Label class="p-t-10 fas h4 icon" text="&#xf067;" col="2" colSpan="3" *ngIf="!isToggled[1]"></Label>
+                <Label class="p-t-10 fas h4 icon" text="&#xf068;" col="2" colSpan="3" *ngIf="isToggled[1]"></Label>
+            </GridLayout>
+            <StackLayout *ngIf="isToggled[1]">
+                <Label text="Answer" textWrap="true" class="h3 ans"></Label>
+            </StackLayout>
+            <StackLayout class="hr m-10"> </StackLayout>
+
+        </FlexboxLayout>
+
+    </StackLayout>
+</ScrollView>

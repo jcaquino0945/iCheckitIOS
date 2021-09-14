@@ -1,9 +1,13 @@
-import { Application } from "@nativescript/core";
+import { Application, View } from "@nativescript/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import { Component, OnInit } from "@angular/core";
+import { Component, NgZone, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { firebase, firestore } from "@nativescript/firebase";
+import {
+  Mediafilepicker,
+  FilePickerOptions
+} from "nativescript-mediafilepicker";
 
 @Component({
   selector: "DashboardDetails",
@@ -15,10 +19,14 @@ export class DashboardDetailsComponent implements OnInit {
   userData;
   userDetails;
   taskData;
-  constructor(private route: ActivatedRoute) {}
+  myFile = '';
+  private _hostView: View;
+
+  constructor(private route: ActivatedRoute,
+    private zone:NgZone) {}
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get("id");
     firebase
     .getCurrentUser()
     .then(user => {
@@ -61,7 +69,71 @@ export class DashboardDetailsComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
+  // submitTask() {
+  //   alert("Submit attachment of task");
+  // }
+
   submitTask() {
-    alert("Submit attachment of task");
+    let extensions = [];
+
+    extensions = ["png", "pdf", "jpg"];
+
+    let options: FilePickerOptions = {
+      android: {
+        extensions: extensions,
+        maxNumberFiles: 1
+      },
+      ios: {
+        extensions: extensions,
+        multipleSelection: true,
+        hostView: this._hostView
+      }
+    };
+
+    let mediafilepicker = new Mediafilepicker();
+
+    mediafilepicker.openFilePicker(options);
+
+    mediafilepicker.on("getFiles", event => {
+      this.zone.run(() => {
+        let results = event.object.get("results");
+        // do your stuff here
+        // any UI changes will be reflected
+        if (results) {
+          for (let i = 0; i < results.length; i++) {
+            let result = results[i];
+            console.log(result.file);
+            this.myFile = result.file
+            console.log(this.myFile);
+            alert(this.myFile)
+          }
+        }
+      });
+    });
+
+    // mediafilepicker.on("getFiles", function(res) {
+    //   let results = res.object.get("results");
+    //   console.dir(results);
+
+    //   if (results) {
+    //     for (let i = 0; i < results.length; i++) {
+    //       let result = results[i];
+    //       console.log(result.file);
+    //       this.myFile = result.file
+    //       console.log(this.myFile);
+    //       alert(this.myFile)
+    //     }
+    //   }
+    // });
+
+    mediafilepicker.on("error", function(res) {
+      let msg = res.object.get("msg");
+      console.log(msg);
+    });
+
+    mediafilepicker.on("cancel", function(res) {
+      let msg = res.object.get("msg");
+      console.log(msg);
+    });
   }
 }
