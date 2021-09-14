@@ -74,7 +74,7 @@ export class DashboardDetailsComponent implements OnInit {
     if (Application.ios) {
       extensions = [kUTTypePDF, kUTTypeText]; // you can get more types from here: https://developer.apple.com/documentation/mobilecoreservices/uttype
     } else {
-      extensions = ["png", "pdf", "jpg"];
+      extensions = ["pdf"];
     }
 
     let options: FilePickerOptions = {
