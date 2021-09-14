@@ -1,0 +1,36 @@
+.main-content {
+    justify-content: center;
+    background-color: white;
+    vertical-align: middle;
+    margin-top: 250;
+    border-radius: 5;
+    font-family: "Antonio-Regular";
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.rectangle {
+    width: 4;
+    height: auto;
+    background: red;
+}
+
+
+.title {
+    background-color: #35414F;
+    color: white;
+}
+
+.nav-button {
+    color: white;
+}
+
+.top-img {
+    opacity: 0.5;
+}
+
+.top {
+    background-color: red;
+    opacity: 0.9;
+
+}

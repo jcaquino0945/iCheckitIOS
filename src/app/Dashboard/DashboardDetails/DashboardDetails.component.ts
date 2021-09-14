@@ -68,53 +68,53 @@ export class DashboardDetailsComponent implements OnInit {
   //   alert("Submit attachment of task");
   // }
 
-  // submitTask() {
-  //   let extensions = [];
+  submitTask() {
+    let extensions = [];
 
-  //   if (Application.ios) {
-  //     extensions = [kUTTypePDF, kUTTypeText]; // you can get more types from here: https://developer.apple.com/documentation/mobilecoreservices/uttype
-  //   } else {
-  //     extensions = ["png", "pdf", "jpg"];
-  //   }
+    if (Application.ios) {
+      extensions = [kUTTypePDF, kUTTypeText]; // you can get more types from here: https://developer.apple.com/documentation/mobilecoreservices/uttype
+    } else {
+      extensions = ["png", "pdf", "jpg"];
+    }
 
-  //   let options: FilePickerOptions = {
-  //     android: {
-  //       extensions: extensions,
-  //       maxNumberFiles: 1
-  //     },
-  //     ios: {
-  //       extensions: extensions,
-  //       multipleSelection: true,
-  //       hostView: this._hostView
-  //     }
-  //   };
+    let options: FilePickerOptions = {
+      android: {
+        extensions: extensions,
+        maxNumberFiles: 1
+      },
+      ios: {
+        extensions: extensions,
+        multipleSelection: true,
+        hostView: this._hostView
+      }
+    };
 
-  //   let mediafilepicker = new Mediafilepicker();
+    let mediafilepicker = new Mediafilepicker();
 
-  //   mediafilepicker.openFilePicker(options);
+    mediafilepicker.openFilePicker(options);
 
-  //   mediafilepicker.on("getFiles", function(res) {
-  //     let results = res.object.get("results");
-  //     console.dir(results);
+    mediafilepicker.on("getFiles", function(res) {
+      let results = res.object.get("results");
+      console.dir(results);
 
-  //     if (results) {
-  //       for (let i = 0; i < results.length; i++) {
-  //         let result = results[i];
-  //         console.log(result.file);
-  //         this.file = result.file
-  //         console.log(this.file);
-  //       }
-  //     }
-  //   });
+      if (results) {
+        for (let i = 0; i < results.length; i++) {
+          let result = results[i];
+          console.log(result.file);
+          this.file = result.file
+          console.log(this.file);
+        }
+      }
+    });
 
-  //   mediafilepicker.on("error", function(res) {
-  //     let msg = res.object.get("msg");
-  //     console.log(msg);
-  //   });
+    mediafilepicker.on("error", function(res) {
+      let msg = res.object.get("msg");
+      console.log(msg);
+    });
 
-  //   mediafilepicker.on("cancel", function(res) {
-  //     let msg = res.object.get("msg");
-  //     console.log(msg);
-  //   });
-  // }
+    mediafilepicker.on("cancel", function(res) {
+      let msg = res.object.get("msg");
+      console.log(msg);
+    });
+  }
 }

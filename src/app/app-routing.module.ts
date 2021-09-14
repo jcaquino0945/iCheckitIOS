@@ -1,3 +1,5 @@
+import { FaqsComponent } from './Faqs/Faqs.component';
+import { ContactUsComponent } from './Contact-Us/Contact-Us.component';
 import { DashboardDetailsComponent } from './Dashboard/DashboardDetails/DashboardDetails.component';
 import { ChangePasswordComponent } from './MyProfile/ChangePassword/ChangePassword.component';
 import { EditProfileComponent } from './MyProfile/EditProfile/EditProfile.component';
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'delete-acc', component: DeleteAccountComponent},
   { path: 'edit-profile', component: EditProfileComponent},
   { path: 'change-pass', component: ChangePasswordComponent},
+  { path: 'contact-us', component: ContactUsComponent},
+  { path: 'faqs', component: FaqsComponent},
 ]
 
 @NgModule({
