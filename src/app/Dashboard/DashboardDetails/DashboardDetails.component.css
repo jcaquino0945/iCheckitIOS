@@ -1,92 +1,137 @@
 .section-1 {
-    vertical-align: bottom;
+  vertical-align: bottom;
 }
 
 .title,
 .date,
 .que,
 .ans {
-    padding-left: 30;
-    font-family: "Antonio-Regular";
-
+  padding-left: 30;
+  font-family: "Antonio-Regular";
 }
 
 .title,
 .date {
-    color: white;
+  color: white;
 }
 
 .icon {
-    color: white;
-    margin-top: 11;
-
+  color: white;
+  margin-top: 11;
 }
 
 .nav-button {
-    color: white;
+  color: white;
 }
 
 .top-img {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .top {
-    background-color: red;
-    opacity: 0.9;
-
+  background-color: red;
+  opacity: 0.9;
 }
-
 
 .task-content {
-    width: 100%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.task-status {
-    background-color: yellow;
-    width: 50%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.task {
     color: white;
+}
+
+.task-pending,
+.task-late,
+.task-approval,
+.task-accomplished {
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+}
+
+.task-pending {
+  background: yellow;
+}
+
+.task-late {
+  background: red;
+}
+
+.task-approval {
+  background: orange;
+}
+
+.task-accomplished {
+  background: green;
 }
 
 .task-deadline {
-    background-color: gray;
-    width: 50%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    color: white;
+  background-color: gray;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
 }
 
 .task-deadline,
-.task-status,
+.task-pending,
+.task-late,
+.task-approval,
+.task-accomplished,
 .title-1,
 .title-2 {
-    font-family: "Antonio-Regular";
+  font-family: "Antonio-Regular";
 }
 
 .task-media {
-    width: 200;
-    height: 200;
-    margin-left: 10;
+  width: 200;
+  height: 200;
+  margin-left: 10;
 }
 
-
+.text-submit,
+.text-accomplished {
+  justify-content: center;
+  vertical-align: bottom;
+  color: white;
+  font-family: "Antonio-Regular";
+}
 
 .text-submit {
-    justify-content: center;
-    vertical-align: bottom;
-    color: white;
-    background: red;
-    font-family: "Antonio-Regular";
+  background: red;
+}
+
+.text-accomplished {
+  background: green;
 }
 
 .task-details {
-    font-family: "Abel-Regular";
-    line-height: 13;
-    font-weight: 400;
+  font-family: "Abel-Regular";
+  line-height: 13;
+  font-weight: 400;
 }
 
-.rectangle {
-    width: 2;
-    height: auto;
-    background: #32557f;
+.rectangle-late,
+.rectangle-pending,
+.rectangle-approval,
+.rectangle-accomplished {
+  width: 3;
+  height: auto;
+}
+
+.rectangle-late {
+  background: red;
+}
+
+.rectangle-pending {
+  background: yellow;
+}
+
+.rectangle-approval {
+  background: orange;
+}
+
+.rectangle-accomplished {
+  background: green;
 }

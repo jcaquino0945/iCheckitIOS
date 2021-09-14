@@ -11,13 +11,25 @@
         </GridLayout>
 
         <FlexboxLayout>
-            <StackLayout class="p-10 m-x-10 m-y-10 task-status">
-                <Label text="Statusz: &#xa;" class="m-r-5 h2"></Label>
+            <StackLayout class="p-10 m-x-10 m-y-10 task-late" *ngIf="task.status == 'Late'">
+                <Label text="Status: &#xa;" class="m-r-5 h2 task"></Label>
+                <Label text="{{task.status}}" class="h3 task"></Label>
+            </StackLayout>
+            <StackLayout class="p-10 m-x-10 m-y-10 task-pending" *ngIf="task.status == 'Pending'">
+                <Label text="Status: &#xa;" class="m-r-5 h2"></Label>
                 <Label text="{{task.status}}" class="h3"></Label>
             </StackLayout>
+            <StackLayout class="p-10 m-x-10 m-y-10 task-approval" *ngIf="task.status == 'For Approval'">
+                <Label text="Status: &#xa;" class="m-r-5 h2 task"></Label>
+                <Label text="{{task.status}}" class="h3 task"></Label>
+            </StackLayout>
+            <StackLayout class="p-10 m-x-10 m-y-10 task-accomplished" *ngIf="task.status == 'Accomplished'">
+                <Label text="Status: &#xa;" class="m-r-5 h2 task"></Label>
+                <Label text="{{task.status}}" class="h3 task"></Label>
+            </StackLayout>
             <StackLayout class="p-10 m-x-10 m-y-10 task-deadline">
-                <Label text="Deadline: &#xa;" class="h2"></Label>
-                <Label text="{{task.deadline | date}}" class="h3"></Label>
+                <Label text="Deadline: &#xa;" class="h2 task"></Label>
+                <Label text="{{task.deadline | date}}" class="h3 task"></Label>
             </StackLayout>
         </FlexboxLayout>
 
@@ -25,7 +37,10 @@
             <StackLayout class="m-y-10 m-x-10 p-10 task-content">
                 <Label text="Task Details" textWrap="true" class="h2 title-1"></Label>
                 <FlexboxLayout>
-                    <Label text=" " textWrap="true" class="rectangle"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-pending" *ngIf="task.status =='Pending'"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-late" *ngIf="task.status =='Late'"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-approval" *ngIf="task.status =='For Approval'"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
                     <Label
                         text="{{task.description}}"
                         textWrap="true" class="p-10 task-details"></Label>
@@ -37,10 +52,14 @@
             <StackLayout class="m-y-10 m-x-10 p-10 task-content">
                 <Label text="Attached media" textWrap="true" class="h2 title-2"></Label>
                 <FlexboxLayout>
-                    <Label text=" " textWrap="true" class="rectangle"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-pending" *ngIf="task.status =='Pending'"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-late" *ngIf="task.status =='Late'"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-approval" *ngIf="task.status =='For Approval'"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
                     <StackLayout>
                         <Image src="~/app/images/USTBackground.png" class="task-media"></Image>
                         <Image src="~/app/images/USTBackground.png" class="task-media"></Image>
+                        <Image src="uploadedFile" class="task-media"></Image>
                     </StackLayout>
                 </FlexboxLayout>
             </StackLayout>
@@ -49,14 +68,32 @@
             <StackLayout class="m-y-10 m-x-10 p-10 task-content">
                 <Label text="View Proof of Completion / Attendance" textWrap="true" class="h2 title-1"></Label>
                 <FlexboxLayout>
-                    <Label text=" " textWrap="true" class="rectangle"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-pending" *ngIf="task.status =='Pending'"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-late" *ngIf="task.status =='Late'"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-approval" *ngIf="task.status =='For Approval'"></Label>
+                    <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
                     <Label text="Link " textWrap="true" class="p-10 task-details"></Label>
                 </FlexboxLayout>
             </StackLayout>
 
-            <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()">
+            <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()" *ngIf="task.status == 'Pending'">
                 <Label text="&#xf0c6;" textWrap="true" class="p-10 fas h3 icon"></Label>
                 <Label text="SUBMIT TASK" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
+            </FlexboxLayout>
+
+            <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()" *ngIf="task.status == 'Late'">
+                <Label text="&#xf12a;" textWrap="true" class="p-10 fas h3 icon"></Label>
+                <Label text="Task is overdue, SUBMIT TASK NOW" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
+            </FlexboxLayout>
+
+            <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()" *ngIf="task.status == 'For Approval'" isEnabled="false">
+                <Label text="&#xf254;" textWrap="true" class="p-10 fas h3 icon"></Label> 
+                <Label text="Task has been submitted, waiting for approval" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
+            </FlexboxLayout>
+
+            <FlexboxLayout class="m-t-25 text-accomplished" *ngIf="task.status == 'Accomplished'" isEnabled="false">
+                <Label text="&#xf164;" textWrap="true" class="p-10 fas h3 icon"></Label>
+                <Label text="Task submission has been approved" textWrap="true" class="m-y-10 p-10 h3 text-accomplished"></Label>
             </FlexboxLayout>
 
         </FlexboxLayout>
