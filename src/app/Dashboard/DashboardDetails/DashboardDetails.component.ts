@@ -4,6 +4,8 @@ import { Component, NgZone, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { firebase, firestore } from "@nativescript/firebase";
+import { storage } from "@nativescript/firebase/storage";
+
 import {
   Mediafilepicker,
   FilePickerOptions
@@ -103,9 +105,33 @@ export class DashboardDetailsComponent implements OnInit {
           for (let i = 0; i < results.length; i++) {
             let result = results[i];
             console.log(result.file);
-            this.myFile = result.file
+            this.myFile = result.file;
+            // this.myFile = this.myFile.split(/(\\|\/)/g).pop()
             console.log(this.myFile);
-            alert(this.myFile)
+
+            const path = `${this.taskData.uid}/${this.myFile.split(/(\\|\/)/g).pop()}/`;
+            console.log(path);
+            var metadata = ({});
+
+            storage.uploadFile({
+              remoteFullPath: path,
+              localFullPath: result.file,
+              metadata
+            }).then(() => {
+              storage.getDownloadUrl({
+                // optional, can also be passed during init() as 'storageBucket' param so we can cache it
+                // the full path of an existing file in your Firebase storage
+                remoteFullPath: path
+              }).then(
+                  function (url) {
+                    alert(url)
+                    console.log("Remote URL: " + url);
+                  },
+                  function (error) {
+                    console.log("Error: " + error);
+                  }
+              );
+            })
           }
         }
       });
