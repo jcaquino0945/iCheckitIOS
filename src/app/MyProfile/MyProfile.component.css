@@ -1,9 +1,5 @@
 /* First part of the profile page (image and name) */
-.prof {
-  background-color: red;
-  height: 200;
-  width: 100%;
-}
+
 
 .prof-img,
 .prof-name {
@@ -30,7 +26,7 @@
 }
 
 .prof-img {
-  margin-top: 50;
+  /* margin-top: 50; */
 }
 
 /* 2nd part */

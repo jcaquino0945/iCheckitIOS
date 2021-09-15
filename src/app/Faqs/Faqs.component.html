@@ -4,7 +4,7 @@
 
 <ScrollView>
     <StackLayout>
-        <GridLayout>
+        <GridLayout height="300">
             <StackLayout class="top">
                 <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img"> </Image>
             </StackLayout>
@@ -17,23 +17,25 @@
 
 
         <FlexboxLayout flexDirection="column" class="m-t-10">
-            <GridLayout columns="*, *" (tap)="onTap(0)">
-                <Label text="Question" textWrap="true" class="h2 que" col="0"></Label>
+            <GridLayout columns="*, 200" (tap)="onTap(0)">
+                <Label text="How long it will take to process the submitted proof?" textWrap="true" class="h3 que" col="0"></Label>
                 <Label class="p-t-10 fas h4 icon" text="&#xf067;" col="2" colSpan="3" *ngIf="!isToggled[0]"></Label>
                 <Label class="p-t-10 fas h4 icon" text="&#xf068;" col="2" colSpan="3" *ngIf="isToggled[0]"></Label>
             </GridLayout>
             <StackLayout *ngIf="isToggled[0]">
-                <Label text="Answer" textWrap="true" class="h3 ans"></Label>
+                <Label text="1 week" textWrap="true" class="h3 ans"></Label>
             </StackLayout>
             <StackLayout class="hr m-10"> </StackLayout>
 
-            <GridLayout columns="*, *" (tap)="onTap(1)">
-                <Label text="Question" textWrap="true" class="h2 que" col="0"></Label>
+            <GridLayout columns="*, 200" (tap)="onTap(1)">
+                <Label text="How many email and push notifications will we receive?" textWrap="true" class="h3 que" col="0"></Label>
                 <Label class="p-t-10 fas h4 icon" text="&#xf067;" col="2" colSpan="3" *ngIf="!isToggled[1]"></Label>
                 <Label class="p-t-10 fas h4 icon" text="&#xf068;" col="2" colSpan="3" *ngIf="isToggled[1]"></Label>
             </GridLayout>
             <StackLayout *ngIf="isToggled[1]">
-                <Label text="Answer" textWrap="true" class="h3 ans"></Label>
+                <Label text="The participants of the task will receive a total of 3 emails, depending on the status of the task." textWrap="true" class="h3 ans"></Label>
+                <Label text="The first email will contain if the task has been uploaded. " textWrap="true" class="h3 ans-1"></Label>
+                <Label text="After that, another email will be sent if they have submitted their proof of completion." textWrap="true" class="h3 ans-1"></Label>
             </StackLayout>
             <StackLayout class="hr m-10"> </StackLayout>
 
