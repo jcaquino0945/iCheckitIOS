@@ -112,7 +112,7 @@ export class DashboardDetailsComponent implements OnInit {
             const path = `${this.taskData.uid}/${this.myFile.split(/(\\|\/)/g).pop()}/`;
             console.log(path);
             var metadata = ({});
-
+            
             storage.uploadFile({
               remoteFullPath: path,
               localFullPath: result.file,
@@ -122,14 +122,68 @@ export class DashboardDetailsComponent implements OnInit {
                 // optional, can also be passed during init() as 'storageBucket' param so we can cache it
                 // the full path of an existing file in your Firebase storage
                 remoteFullPath: path
-              }).then(
-                  function (url) {
-                    alert(url)
-                    console.log("Remote URL: " + url);
-                  },
-                  function (error) {
-                    console.log("Error: " + error);
-                  }
+              }).then((url) => {
+                   let updatedTaskData = {
+                      createdAt: this.taskData.createdAt,
+                      deadline: this.taskData.deadline,                      
+                      description: this.taskData.description,
+                      displayName: this.taskData.displayName,
+                      email: this.taskData.email,
+                      section: this.taskData.section,
+                      status: 'For Approval',
+                      submissionLink: url,
+                      taskId: this.taskData.taskId,
+                      title: this.taskData.title,
+                      uid: this.taskData.uid,
+                      uploadedBy: this.taskData.uploadedBy,
+                    }
+
+                      firestore.collection("tasks").doc(this.taskData.taskId)
+                        .update({                       
+                            recipients: firestore.FieldValue.arrayRemove(this.taskData)
+                        }).then(() => {
+                        firestore.collection("tasks").doc(this.taskData.taskId)
+                          .update({                       
+                            recipients: firestore.FieldValue.arrayUnion(updatedTaskData)
+                          })
+                        })
+                        .then(() => {
+                          alert('File has been uploaded')
+                        })
+              } 
+                  // function (url) {
+                  //   let updatedTaskData = {
+                  //     createdAt: this.taskData.createdAt,
+                  //     deadline: this.taskData.deadline,                      
+                  //     description: this.taskData.description,
+                  //     displayName: this.taskData.displayName,
+                  //     email: this.taskData.email,
+                  //     section: this.taskData.section,
+                  //     status: 'For Approval',
+                  //     submissionLink: url,
+                  //     taskId: this.taskData.taskId,
+                  //     title: this.taskData.title,
+                  //     uid: this.taskData.uid,
+                  //     uploadedBy: this.taskData.uploadedBy,
+                  //   }
+                    
+                  //   firestore.collection("tasks").doc(this.taskData.taskId)
+                  //     .update({                       
+                  //       colors2: firestore.FieldValue.arrayRemove(this.taskData)
+                  //     }).then(() => {
+                  //       firestore.collection("tasks").doc(this.taskData.taskId)
+                  //     .update({                       
+                  //       colors2: firestore.FieldValue.arrayUnion(updatedTaskData)
+                  //     })
+                  //     })
+                  //     .then(() => {
+                  //       alert('File has been uploaded')
+                  //     })
+                  //   console.log("Remote URL: " + url);
+                  // },
+                  // function (error) {
+                  //   console.log("Error: " + error);
+                  // }
               );
             })
           }

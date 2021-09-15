@@ -54,8 +54,8 @@
                     <Label text=" " textWrap="true" class="rectangle-approval" *ngIf="task.status =='For Approval'"></Label>
                     <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
                     <StackLayout>
-                        <Label text="No attached files" textWrap="true" class="rectangle-accomplished" *ngIf="myFile == ''"></Label>
-                        <Image src="{{myFile}}" class="task-media" *ngIf="myFile != ''"></Image>
+                        <Label text="No submission yet" textWrap="true" class="rectangle-accomplished" *ngIf="task.submissionLink ==''"></Label>
+                        <Label text="{{task.submissionLink}}" textWrap="true" class="rectangle-accomplished" *ngIf="task.submissionLink !=''"></Label>
                     </StackLayout>
                 </FlexboxLayout>
             </StackLayout>
