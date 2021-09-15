@@ -39,14 +39,13 @@
                     <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
                     <Label
                         text="{{task.description}}"
-                        textWrap="true" class="p-10 task-details"></Label>
-
+                        textWrap="true" class="p-10 task-details" *ngIf="task.status !='Accomplished'"></Label>
                 </FlexboxLayout>
             </StackLayout>
 
 
 
-            <StackLayout class="m-y-10 m-x-10 p-10 task-content">
+            <!-- <StackLayout class="m-y-10 m-x-10 p-10 task-content">
                 <Label text="My Attached Files" textWrap="true" class="h2 title-2"></Label>
                 <FlexboxLayout>
                     <Label text=" " textWrap="true" class="rectangle-pending" *ngIf="task.status =='Pending'"></Label>
@@ -58,7 +57,7 @@
                         <Label text="{{task.submissionLink}}" textWrap="true" class="rectangle-accomplished" *ngIf="task.submissionLink !=''"></Label>
                     </StackLayout>
                 </FlexboxLayout>
-            </StackLayout>
+            </StackLayout> -->
 
 
             <StackLayout class="m-y-10 m-x-10 p-10 task-content">
@@ -68,7 +67,8 @@
                     <Label text=" " textWrap="true" class="rectangle-late" *ngIf="task.status =='Late'"></Label>
                     <Label text=" " textWrap="true" class="rectangle-approval" *ngIf="task.status =='For Approval'"></Label>
                     <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
-                    <Label text="Link " textWrap="true" class="p-10 task-details"></Label>
+                    <Label text="No submission yet " textWrap="true" class="p-10 task-details" *ngIf="task.submissionLink == ''"></Label>
+                    <Label text="{{task.submissionLink}}" (tap)="onTap(task.submissionLink)" textWrap="true" class="p-10 task-details" *ngIf="task.submissionLink != ''"></Label>
                 </FlexboxLayout>
             </StackLayout>
 

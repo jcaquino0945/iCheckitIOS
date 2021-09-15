@@ -1,7 +1,7 @@
-import { Application, View } from "@nativescript/core";
+import { Application, EventData, View } from "@nativescript/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { Component, NgZone, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { firebase, firestore } from "@nativescript/firebase";
 import { storage } from "@nativescript/firebase/storage";
@@ -10,6 +10,7 @@ import {
   Mediafilepicker,
   FilePickerOptions
 } from "nativescript-mediafilepicker";
+import { openUrl } from "@nativescript/core/utils";
 
 @Component({
   selector: "DashboardDetails",
@@ -25,7 +26,9 @@ export class DashboardDetailsComponent implements OnInit {
   private _hostView: View;
 
   constructor(private route: ActivatedRoute,
-    private zone:NgZone) {}
+    private zone:NgZone,
+    private router: Router,
+    ) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
@@ -149,6 +152,25 @@ export class DashboardDetailsComponent implements OnInit {
                         })
                         .then(() => {
                           alert('File has been uploaded')
+                        }).then(() => {
+                          const taskDocument = firestore.collection("tasks").doc(this.route.snapshot.paramMap.get('id'));
+                          
+                          // note that the options object is optional, but you can use it to specify the source of data ("server", "cache", "default").
+                          taskDocument.get({ source: "cache" }).then(doc => {
+                            if (doc.exists) {
+                              // this.taskData = doc.data();
+                              doc.data().recipients.forEach(element => {
+                                if(Object.values(element).includes(this.userData.uid)) { 
+                                  console.log(element)
+                                  console.log('it exists')
+                                  this.taskData = element;
+                              }
+                              });
+                              console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                            } else {
+                              console.log("No such document!");
+                            }
+                          });
                         })
               } 
                   // function (url) {
@@ -185,6 +207,8 @@ export class DashboardDetailsComponent implements OnInit {
                   //   console.log("Error: " + error);
                   // }
               );
+            }).catch((err) => {
+              alert(err)
             })
           }
         }
@@ -215,5 +239,9 @@ export class DashboardDetailsComponent implements OnInit {
       let msg = res.object.get("msg");
       console.log(msg);
     });
+  }
+
+  onTap(url){     
+    openUrl(url);
   }
 }
