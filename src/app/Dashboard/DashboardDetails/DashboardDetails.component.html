@@ -11,11 +11,7 @@
         </GridLayout>
 
         <FlexboxLayout>
-            <StackLayout class="p-10 m-x-10 m-y-10 task-late" *ngIf="task.status == 'Late'">
-                <Label text="Status: &#xa;" class="m-r-5 h2 task"></Label>
-                <Label text="{{task.status}}" class="h3 task"></Label>
-            </StackLayout>
-            <StackLayout class="p-10 m-x-10 m-y-10 task-pending" *ngIf="task.status == 'Pending'">
+            <StackLayout class="p-10 m-x-10 m-y-10 task-status">
                 <Label text="Status: &#xa;" class="m-r-5 h2"></Label>
                 <Label text="{{task.status}}" class="h3"></Label>
             </StackLayout>
@@ -43,25 +39,25 @@
                     <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
                     <Label
                         text="{{task.description}}"
-                        textWrap="true" class="p-10 task-details"></Label>
+                        textWrap="true" class="p-10 task-details" *ngIf="task.status !='Accomplished'"></Label>
                 </FlexboxLayout>
             </StackLayout>
 
 
 
-            <StackLayout class="m-y-10 m-x-10 p-10 task-content">
-                <Label text="Attached media" textWrap="true" class="h2 title-2"></Label>
+            <!-- <StackLayout class="m-y-10 m-x-10 p-10 task-content">
+                <Label text="My Attached Files" textWrap="true" class="h2 title-2"></Label>
                 <FlexboxLayout>
                     <Label text=" " textWrap="true" class="rectangle-pending" *ngIf="task.status =='Pending'"></Label>
                     <Label text=" " textWrap="true" class="rectangle-late" *ngIf="task.status =='Late'"></Label>
                     <Label text=" " textWrap="true" class="rectangle-approval" *ngIf="task.status =='For Approval'"></Label>
                     <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
                     <StackLayout>
-                        <Image src="~/app/images/USTBackground.png" class="task-media"></Image>
-                        <Image src="~/app/images/USTBackground.png" class="task-media"></Image>
+                        <Label text="No submission yet" textWrap="true" class="rectangle-accomplished" *ngIf="task.submissionLink ==''"></Label>
+                        <Label text="{{task.submissionLink}}" textWrap="true" class="rectangle-accomplished" *ngIf="task.submissionLink !=''"></Label>
                     </StackLayout>
                 </FlexboxLayout>
-            </StackLayout>
+            </StackLayout> -->
 
 
             <StackLayout class="m-y-10 m-x-10 p-10 task-content">
@@ -71,7 +67,8 @@
                     <Label text=" " textWrap="true" class="rectangle-late" *ngIf="task.status =='Late'"></Label>
                     <Label text=" " textWrap="true" class="rectangle-approval" *ngIf="task.status =='For Approval'"></Label>
                     <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
-                    <Label text="Link " textWrap="true" class="p-10 task-details"></Label>
+                    <Label text="No submission yet " textWrap="true" class="p-10 task-details" *ngIf="task.submissionLink == ''"></Label>
+                    <Label text="{{task.submissionLink}}" (tap)="onTap(task.submissionLink)" textWrap="true" class="p-10 task-details" *ngIf="task.submissionLink != ''"></Label>
                 </FlexboxLayout>
             </StackLayout>
 

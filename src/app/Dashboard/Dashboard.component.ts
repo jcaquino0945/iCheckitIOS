@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
             .then(doc => {
               if (doc.exists) {
                 //display data in console
-                console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                // console.log(`Document data: ${JSON.stringify(doc.data())}`);
                 // console.log(doc.data().section);
               
                 //reference to collection "tasks"
@@ -48,71 +48,35 @@ export class DashboardComponent implements OnInit {
                 //prompting the query
                 query.get().then(querySnapshot => {
                   querySnapshot.forEach(doc => {
-                    this.myTasks.push(doc.data());
-                    console.log(
-                      `Relatively small Californian city: ${
-                        doc.id
-                      } => ${JSON.stringify(doc.data())}`
-                    );
+                    doc.data().recipients.forEach(element => {
+                      if(Object.values(element).includes(this.userData.uid)) { 
+                        console.log(element)
+                          console.log('it exists')
+                          this.myTasks.push(element);
+                      }
+                      if(Object.values(element).includes(this.userData.uid) && Object.values(element).includes('Pending')) { 
+                        console.log(element)
+                        console.log('it exists')
+                        this.myPendingTasks.push(element);
+                      }
+                      if(Object.values(element).includes(this.userData.uid) && Object.values(element).includes('Late')) { 
+                        console.log(element)
+                        console.log('it exists')
+                        this.myLateTasks.push(element);
+                      }
+                      if(Object.values(element).includes(this.userData.uid) && Object.values(element).includes('For Approval')) { 
+                        console.log(element)
+                        console.log('it exists')
+                        this.myForApprovalTasks.push(element);
+                      }
+                      if(Object.values(element).includes(this.userData.uid) && Object.values(element).includes('Accomplished')) { 
+                        console.log(element)
+                        console.log('it exists')
+                        this.myAccomplishedTasks.push(element);
+                      }
+                    });
                   });
                 });
-
-                const pendingQuery = citiesCollection
-                  .where("status", "==", "Pending")
-                  .where("scope", "array-contains", doc.data().section);
-                pendingQuery.get().then(querySnapshot => {
-                  querySnapshot.forEach(doc => {
-                    this.myPendingTasks.push(doc.data());
-                    console.log(
-                      `Relatively small Californian city: ${
-                        doc.id
-                      } => ${JSON.stringify(doc.data())}`
-                    );
-                  });
-                });
-
-                const lateQuery = citiesCollection
-                  .where("status", "==", "Late")
-                  .where("scope", "array-contains", doc.data().section);
-                lateQuery.get().then(querySnapshot => {
-                  querySnapshot.forEach(doc => {
-                    this.myLateTasks.push(doc.data());
-                    console.log(
-                      `Relatively small Californian city: ${
-                        doc.id
-                      } => ${JSON.stringify(doc.data())}`
-                    );
-                  });
-                });
-
-                const approvalQuery = citiesCollection
-                  .where("status", "==", "For Approval")
-                  .where("scope", "array-contains", doc.data().section);
-                approvalQuery.get().then(querySnapshot => {
-                  querySnapshot.forEach(doc => {
-                    this.myForApprovalTasks.push(doc.data());
-                    console.log(
-                      `Relatively small Californian city: ${
-                        doc.id
-                      } => ${JSON.stringify(doc.data())}`
-                    );
-                  });
-                });
-
-                const accomplishedQuery = citiesCollection
-                  .where("status", "==", "Accomplished")
-                  .where("scope", "array-contains", doc.data().section);
-                accomplishedQuery.get().then(querySnapshot => {
-                  querySnapshot.forEach(doc => {
-                    this.myAccomplishedTasks.push(doc.data());
-                    console.log(
-                      `Relatively small Californian city: ${
-                        doc.id
-                      } => ${JSON.stringify(doc.data())}`
-                    );
-                  });
-                });
-
                 //bind doc.data() to userDetails to be used in frontend
                 this.userDetails = doc.data();
               } else {
