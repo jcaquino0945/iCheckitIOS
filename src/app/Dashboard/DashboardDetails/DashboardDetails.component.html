@@ -1,8 +1,8 @@
 <ScrollView *ngIf="taskData as task">
     <StackLayout>
-        <GridLayout>
+        <GridLayout height="300">
             <StackLayout class="top">
-                <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img"> </Image>
+                <Image src="~/app/images/USTbg.png" stretch="aspectFill" class="top-img"> </Image>
               </StackLayout>
               <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
             <StackLayout class="section-1">
@@ -10,10 +10,14 @@
             </StackLayout>
         </GridLayout>
 
-        <FlexboxLayout>
-            <StackLayout class="p-10 m-x-10 m-y-10 task-status">
-                <Label text="Status: &#xa;" class="m-r-5 h2"></Label>
-                <Label text="{{task.status}}" class="h3"></Label>
+        <FlexboxLayout> 
+            <StackLayout class="p-10 m-x-10 m-y-10 task-pending" *ngIf="task.status == 'Pending'">
+                <Label text="Status: &#xa;" class="m-r-5 h2 task"></Label>
+                <Label text="{{task.status}}" class="h3 task"></Label>
+            </StackLayout>
+            <StackLayout class="p-10 m-x-10 m-y-10 task-late" *ngIf="task.status == 'Late'">
+                <Label text="Status: &#xa;" class="m-r-5 h2 task"></Label>
+                <Label text="{{task.status}}" class="h3 task"></Label>
             </StackLayout>
             <StackLayout class="p-10 m-x-10 m-y-10 task-approval" *ngIf="task.status == 'For Approval'">
                 <Label text="Status: &#xa;" class="m-r-5 h2 task"></Label>
@@ -69,6 +73,7 @@
                     <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
                     <Label text="No submission yet " textWrap="true" class="p-10 task-details" *ngIf="task.submissionLink == ''"></Label>
                     <Label text="{{task.submissionLink}}" (tap)="onTap(task.submissionLink)" textWrap="true" class="p-10 task-details" *ngIf="task.submissionLink != ''"></Label>
+                    <Image text="{{task.submissionLink}}" (tap)="onTap(task.submissionLink)" textWrap="true" class="p-10 task-details" *ngIf="task.submissionLink != ''"></Image>
                 </FlexboxLayout>
             </StackLayout>
 

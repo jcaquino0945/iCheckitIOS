@@ -30,5 +30,6 @@ export class DeleteAccountComponent implements OnInit {
 
   goBack() {
     // this.router.navigate(["/login"]);
+    this.modalDialogParams.closeCallback();
   }
 }
