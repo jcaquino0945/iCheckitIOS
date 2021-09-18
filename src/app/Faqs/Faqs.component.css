@@ -1,25 +1,28 @@
-
-
 .section-1 {
-    vertical-align: bottom;
+  vertical-align: bottom;
 }
 
 .title,
 .date,
-.que,
-.ans {
-    padding-left: 30;
-    font-family: "Antonio-Regular";
+.que {
+  padding-left: 30;
+  font-family: "Antonio-Regular";
+}
 
+.date,
+.ans,
+.ans-1 {
+  padding-left: 30;
+  font-family: "Antonio-Thin";
 }
 
 .title,
 .date {
-    color: white;
+  color: white;
 }
 
-.icon { 
-    padding-left: 150;
+.icon {
+  padding-left: 150;
 }
 
 .nav-button {
@@ -33,9 +36,11 @@
 .top {
   background-color: red;
   opacity: 0.9;
-
 }
 
+.ans-1 {
+  margin-left: 10;
+}
 
 /* /* .accordion-button::after {
   background: none;

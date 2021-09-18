@@ -55,6 +55,10 @@
   background: yellow;
 }
 
+.task-pending .task {
+  color: black;
+}
+
 .task-late {
   background: red;
 }
