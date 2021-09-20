@@ -18,7 +18,12 @@ import { firebase, firestore } from "@nativescript/firebase";
 export class MyProfileComponent implements OnInit {
   userData;
   userDetails;
-
+  myTasks = [];
+  myPendingTasks = [];
+  myLateTasks = [];
+  myForApprovalTasks = [];
+  myAccomplishedTasks = [];
+  
   constructor(
     private router: Router,
     private modal: ModalDialogService,
@@ -28,6 +33,90 @@ export class MyProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const citiesCollection = firestore.collection("tasks");
+
+    citiesCollection.onSnapshot((snapshot: firestore.QuerySnapshot) => {
+      snapshot.forEach(() => {      
+          this.zone.run(() => {
+              firebase
+              .getCurrentUser()
+              .then(user => {
+                (this.userData = user),
+                  firestore
+                    .collection("users")
+                    .doc(this.userData.uid)
+                    .get()
+                    .then(doc => {
+                      if (doc.exists) {
+                        
+
+                        // this.myAccomplishedTasks = [];
+                        // this.myForApprovalTasks = [];
+                        // this.myLateTasks = [];
+                        // this.myPendingTasks = [];
+                        
+                        //display data in console
+                        // console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                        // console.log(doc.data().section);
+                      
+                        //reference to collection "tasks"            
+                        const citiesCollection = firestore.collection("tasks");
+    
+                        //query for all tasks documents that contains the user's section
+                        const query = citiesCollection.where(
+                          "scope",
+                          "array-contains",
+                          doc.data().section
+                        );
+
+                        //prompting the query
+                        query.get({ source: "server" }).then(querySnapshot => {
+                          this.myTasks = [];
+                          this.myAccomplishedTasks = [];
+                          this.myForApprovalTasks = [];
+                          this.myLateTasks = [];
+                          this.myPendingTasks = [];
+                          querySnapshot.forEach(doc => {
+                            doc.data().recipients.forEach(element => {
+                              if(Object.values(element).includes(this.userData.uid)) { 
+                                // console.log(element)
+                                // console.log('it exists')
+                                this.myTasks.push(element);
+                              }
+                              if(Object.values(element).includes(this.userData.uid) && Object.values(element).includes('Pending')) { 
+                                // console.log(element)
+                                // console.log('it exists')
+                                this.myPendingTasks.push(element);
+                              }
+                              if(Object.values(element).includes(this.userData.uid) && Object.values(element).includes('Late')) { 
+                                // console.log(element)
+                                // console.log('it exists')
+                                this.myLateTasks.push(element);
+                              }
+                              if(Object.values(element).includes(this.userData.uid) && Object.values(element).includes('For Approval')) { 
+                                // console.log(element)
+                                // console.log('it exists')
+                                this.myForApprovalTasks.push(element);
+                              }
+                              if(Object.values(element).includes(this.userData.uid) && Object.values(element).includes('Accomplished')) { 
+                                // console.log(element)
+                                // console.log('it exists')
+                                this.myAccomplishedTasks.push(element);
+                              }
+                            });
+                          });
+                        });
+                        //bind doc.data() to userDetails to be used in frontend
+                        this.userDetails = doc.data();
+                      } else {
+                        console.log("No such document!");
+                      }
+                    });
+              })
+              .catch(error => console.log("Trouble in paradise: " + error));
+            })
+            });
+          });
 
     const userCollection = firestore.collection("users");
 
