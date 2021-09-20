@@ -1,6 +1,6 @@
 import { AuthService } from "~/app/services/Auth/auth.service";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone} from "@angular/core";
 import { Dialogs, Application } from "@nativescript/core";
 import { Router } from "@angular/router";
 import { EventData } from "@nativescript/core";
@@ -23,27 +23,40 @@ export class MyProfileComponent implements OnInit {
     private router: Router,
     private modal: ModalDialogService,
     private vcRef: ViewContainerRef,
-    private auth: AuthService
+    private auth: AuthService,
+    private zone:NgZone,
   ) {}
 
   ngOnInit() {
-     firebase
-      .getCurrentUser()
-      .then(user => {
-        (this.userData = user),
-          firestore
-            .collection("users")
-            .doc(this.userData.uid)
-            .get().then(doc => {
-              if (doc.exists) {
-                console.log(`Document data: ${JSON.stringify(doc.data())}`);
-                this.userDetails = doc.data();
-              } else {
-                console.log("No such document!");
-              }
-            });
+
+    const userCollection = firestore.collection("users");
+
+    userCollection.onSnapshot((snapshot: firestore.QuerySnapshot) => {
+      snapshot.forEach(() => {      
+          this.zone.run(() => {
+            firebase
+            .getCurrentUser()
+            .then(user => {
+              (this.userData = user),
+                firestore
+                  .collection("users")
+                  .doc(this.userData.uid)
+                  .get().then(doc => {
+                    if (doc.exists) {
+                      console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                      this.userDetails = doc.data();
+                    } else {
+                      console.log("No such document!");
+                    }
+                  });
+            })
+            .catch(error => console.log("Trouble in paradise: " + error));
+          })
       })
-      .catch(error => console.log("Trouble in paradise: " + error));
+    })
+      
+    
+      
   }
 
   onDrawerButtonTap(): void {
