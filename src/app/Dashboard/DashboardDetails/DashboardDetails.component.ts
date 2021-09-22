@@ -133,6 +133,7 @@ export class DashboardDetailsComponent implements OnInit {
                       displayName: this.taskData.displayName,
                       email: this.taskData.email,
                       section: this.taskData.section,
+                      pushToken: this.taskData.pushToken,
                       status: 'For Approval',
                       submissionLink: url,
                       taskId: this.taskData.taskId,
