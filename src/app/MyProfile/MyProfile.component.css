@@ -45,7 +45,7 @@
   vertical-align: bottom;
 }
 
-.title,
+
 .date,
 .que,
 .ans {
@@ -53,9 +53,11 @@
   font-family: "Antonio-Regular";
 }
 
+
 .title,
 .date {
   color: white;
+  font-family: "Antonio-Regular";
 }
 
 .icon {
@@ -65,20 +67,50 @@
 .task-late {
   background-color: #b7152f;
   color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .task-pending {
   background-color: yellow;
-  color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: black;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
+
+.task-approval {
+  background-color: orange;
+  color: white;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.task-accomplished {
+  background-color: green;
+  color: white;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.title {
+  background-color: #35414f;
+  color: white;
+}
+
+/* .main-content {
+  justify-content: center;
+  background-color: white;
+  vertical-align: middle;
+  border-radius: 5;
+  margin-top: 50;
+  font-family: "Antonio-Regular";
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+} */
 
 .task-pending label {
   color: black;
+  border-radius: 10;
 }
 
-.task-late label {
+.task-late label,
+.task-accomplished label,
+.task-approval label {
   color: white;
 }
 
@@ -90,16 +122,20 @@
 
 .task-pending,
 .task-late,
+.task-approval,
+.task-accomplished {
+  border-radius: 10;
+}
+
+.task-pending,
+.task-late,
+.task-approval,
+.task-accomplished,
 .delete-acc,
 .edit-profile,
 .change-pass,
 .prof-name {
   font-family: "Antonio-Regular";
-}
-
-.task-late,
-.task-pending {
-  border-radius: 10;
 }
 
 .num,
@@ -149,4 +185,9 @@
 .logo-btm {
   width: 30;
   height: 30;
+}
+
+.task-status {
+  border-radius: 10;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
