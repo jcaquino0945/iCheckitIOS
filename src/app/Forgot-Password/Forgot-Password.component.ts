@@ -2,6 +2,8 @@ import { AuthService } from './../services/Auth/auth.service';
 import { ChangePasswordComponent } from './../MyProfile/ChangePassword/ChangePassword.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router"
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
 	moduleId: module.id,
@@ -11,15 +13,21 @@ import { Router } from "@angular/router"
 })
 
 export class ForgotPasswordComponent implements OnInit {
-
+  loginForm!: any;
   _email = "";
   // emailError = "";
 
 	constructor(
 		private auth: AuthService,
-		private router: Router) { }
+		private router: Router,
+    private fb: FormBuilder) { }
 
-	ngOnInit() { }
+  // Validators.pattern('^[a-z0-9._%+-]+@[(ust.edu)]+\\.ph$')
+	ngOnInit() {
+    this.loginForm = this.fb.group({
+      _email: ['',[Validators.required, Validators.email, ]]
+    })
+  }
 
   public tapSubmit() {
     console.log (this._email);

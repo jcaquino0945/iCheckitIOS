@@ -1,18 +1,26 @@
 <StackLayout class="main-content">
+
+  <Form [formGroup]="editForm" (ngSubmit)="editProfile()">
   <FlexboxLayout>
     <Label text="&#xf304;" textWrap="true" class="fas h3 m-t-10 m-r-10 p-10"></Label>
     <Label text="Edit Profile" textWrap="true" class="m-t-10 h2"></Label>
   </FlexboxLayout>
 
-  <form [formGroup]="editForm">
+
     <Label text="Edit your full name and contact number" textWrap="true" class="m-y-10 placeholder"></Label>
+
+    <Label text="This field is required" *ngIf="editForm.controls.displayName.errors?.required && editForm.controls.displayName.touched " class="validation-error"></Label>
+
     <Label text="Full Name" textWrap="true" class="h2"></Label>
-    <TextField hint="Name" secure="False" formControlName="_fullName"></TextField>
+    <TextField hint="{{ userDetails.displayName }}" secure="False" formControlName="displayName"></TextField>
+
+
+    <Label text="This field is required" *ngIf="editForm.controls.contactNumber.errors?.required && editForm.controls.contactNumber.touched" class="validation-error"></Label>
+
     <Label text="Contact Number" textWrap="true" class="h2"></Label>
-    <TextField hint="Number" secure="False" formControlName="_number"></TextField>
-    <Button class="btn btn-primary" text="Update Profile" (tap)="onUpdate()" horizontalAlignment="right"></Button>
-  </form>
+    <TextField hint="{{ userDetails.contactNumber }}" secure="False" formControlName="contactNumber"></TextField>
+    <Button class="btn btn-primary" text="Update Profile" (tap)="editProfile()" horizontalAlignment="right"></Button>
+
+</Form>
 </StackLayout>
 
-<!-- <TextField hint="{{ userDetails.displayName }}" secure="False" [(ngModel)]="_fullName"></TextField> -->
-<!-- <TextField hint="{{ userDetails.contactNumber }}" secure="False" [(ngModel)]="_number"></TextField> -->

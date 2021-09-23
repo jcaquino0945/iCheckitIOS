@@ -5,6 +5,12 @@
   width: auto;
   padding: 30;
 }
+.validation-error {
+  font-size: 9;
+  color: red;
+  margin-left: 40;
+
+}
 
 TextField {
   border-radius: 10;
