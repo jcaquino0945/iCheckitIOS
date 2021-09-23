@@ -9,50 +9,48 @@ a-->
     <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="bg-image"></Image>
 </FlexboxLayout>
 
-<FlexboxLayout class="form">
-    <StackLayout>
-        <Image class="logo" src="~/app/images/logo.png"></Image>
-        <Label class="header" text="Proceed with your"></Label>
-        <Label class="header-login" text="Login"></Label>
+<ScrollView>
+    <FlexboxLayout class="form">
+        <StackLayout>
+            <Image class="logo" src="~/app/images/logo.png"></Image>
+            <Label class="header" text="Proceed with your"></Label>
+            <Label class="header-login" text="Login"></Label>
 
 
-        <StackLayout class="input-field">
-            <Label *ngIf="emailError" text="{{emailError}}" class="login-error"></Label>
-            <GridLayout columns="*, *, auto" rows="auto, auto" colspan="2" class="m-y-10">
-                <Label text="Email" class="email-text"></Label>
-                <TextField class="input" hint="Enter your email" colspan="2" [(ngModel)]="_email" required></TextField>
-                <StackLayout class="hr-light"></StackLayout>
-                <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
+            <StackLayout class="input-field">
+                <Label *ngIf="emailError" text="{{emailError}}" class="login-error"></Label>
+                <GridLayout columns="*, *, auto" rows="auto, auto" colspan="2" class="m-y-10">
+                    <Label text="Email" class="email-text"></Label>
+                    <TextField class="input" hint="Enter your email" colspan="2" [(ngModel)]="_email" required>
+                    </TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                    <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
 
 
-            </GridLayout>
+                </GridLayout>
 
-            <Label *ngIf="passwordError" text="{{passwordError}}" class="password-error"></Label>
-            <GridLayout columns="auto, *, auto" colspan="2" rows="auto, 1" class="m-y-10">
-                <Label text="Password" class="password-text"></Label>
-                <TextField #passwordField class="input" hint="Enter your password" secure="True" colspan="2" [(ngModel)]="_password">
-                </TextField>
-                <Label class="fas" text="SHOW" colspan="2" (tap)="toggleShow()"></Label>
-                <StackLayout class="hr-light"></StackLayout>
-            </GridLayout>
+                <Label *ngIf="passwordError" text="{{passwordError}}" class="password-error"></Label>
+                <GridLayout columns="auto, *, auto" colspan="2" rows="auto, 1" class="m-y-10">
+                    <Label text="Password" class="password-text"></Label>
+                    <TextField #passwordField class="input" hint="Enter your password" secure="True" colspan="2"
+                        [(ngModel)]="_password">
+                    </TextField>
+                    <Label class="fas" text="SHOW" colspan="2" (tap)="toggleShow()"></Label>
+                    <StackLayout class="hr-light"></StackLayout>
+                </GridLayout>
+            </StackLayout>
+
+            <StackLayout class="input-field">
+                <button text="Login" class="btn btn-primary" (tap)="tapLogin()"></button>
+            </StackLayout>
+            <Label text="Forgot password?" class="m-y-10 login-label-forgotPass" (tap)="tapforgotPass()"></Label>
+            <Label text="Create Account" class="login-label-createAcc" (tap)="tapcreateAcc()"></Label>
+
+            <StackLayout orientation="horizontal" class="m-y-30 cics">
+                <Image src="~/app/images/logo.png" class="logo-btm"></Image>
+                <Label text="" textWrap="true" class="m-x-10 rectangle"></Label>
+                <Image src="~/app/images/cics.png" class="logo-btm"></Image>
+            </StackLayout>
         </StackLayout>
-
-        <StackLayout class="input-field">
-            <button text="Login" class="btn btn-primary" (tap)="tapLogin()"></button>
-        </StackLayout>
-        <Label text="Forgot password?" class="m-y-10 login-label-forgotPass" (tap)="tapforgotPass()"></Label>
-        <Label text="Create Account" class="login-label-createAcc" (tap)="tapcreateAcc()"></Label>
-
-        <StackLayout orientation="horizontal" class="m-y-30 cics">
-            <Image src="~/app/images/logo.png" class="logo-btm"></Image>
-            <Label text="" textWrap="true" class="m-x-10 rectangle"></Label>
-            <Image src="~/app/images/cics.png" class="logo-btm"></Image>
-        </StackLayout>
-
-
-    
-
-
-    </StackLayout>
-
-</FlexboxLayout>
+    </FlexboxLayout>
+</ScrollView>
