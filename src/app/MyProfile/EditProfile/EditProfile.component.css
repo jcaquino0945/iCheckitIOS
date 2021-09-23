@@ -5,14 +5,20 @@
   width: auto;
   padding: 30;
 }
+.validation-error {
+  font-size: 9;
+  color: red;
+  margin-left: 40;
 
-TextField {
+}
+
+/* TextField {
   border-radius: 10;
   border-width: 1;
   padding: 10;
   placeholder-color: gray;
   width: 300;
-}
+} */
 
 .placeholder {
   color: gray;

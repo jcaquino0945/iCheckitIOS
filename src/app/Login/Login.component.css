@@ -1,6 +1,9 @@
-/* .Login {
+.validation-error {
+  font-size: 9;
+  color: red;
+  margin-left: 40;
 
-} */
+}
 .page {
   background-position: center;
   flex-direction: column;
@@ -79,6 +82,13 @@
   font-size: 20;
   color: white;
   font-family: Antonio-Regular;
+}
+.btn-primary-disabled {
+  margin: 55 55 15 55;
+  font-size: 20;
+  color: white;
+  font-family: Antonio-Regular;
+  background-color: #eb4662;
 }
 
 .login-label-forgotPass {

@@ -4,8 +4,7 @@ import { Component, OnInit } from "@angular/core";
 import { ModalDialogParams } from "@nativescript/angular";
 import { AuthService } from "~/app/services/Auth/auth.service";
 import { firebase, firestore } from "@nativescript/firebase";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import { Validators } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "EditProfile",
@@ -13,11 +12,12 @@ import { Validators } from "@angular/forms";
   styleUrls: ["./EditProfile.component.css"]
 })
 export class EditProfileComponent implements OnInit {
+  editForm!: any;
   _fullName = "";
   _number = "";
   userData;
   userDetails;
-  editForm: FormGroup;
+
 
   constructor(
     private modalDialogParams: ModalDialogParams,
@@ -26,14 +26,11 @@ export class EditProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.editForm.controls._fullName.setValue()
-    // this.editForm.controls._fullName.setValue(this.auth.getUserData)
-
     this.editForm = this.fb.group({
-      _fullname: ['', Validators.required],
-      _number: ['', Validators.required]
-    })
-    
+      displayName: ['',Validators.required],
+      contactNumber: ['',Validators.required]
+    });
+
 
     firebase
       .getCurrentUser()
@@ -47,7 +44,8 @@ export class EditProfileComponent implements OnInit {
               if (doc.exists) {
                 console.log(`Document data: ${JSON.stringify(doc.data())}`);
                 this.userDetails = doc.data();
-                this.editForm.controls._fullName.setValue(doc.data().displayName)
+                this.editForm.controls.displayName.setValue(this.userDetails.displayName);
+                this.editForm.controls.contactNumber.setValue(this.userDetails.contactNumber);
               } else {
                 console.log("No such document!");
               }
@@ -78,8 +76,9 @@ export class EditProfileComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
-  onUpdate() {
-    this.auth.editProfile(this._fullName, this._number, this.userData.uid);
+  public editProfile() {
+    this.auth.editProfile(this.editForm.controls['displayName'].value, this.editForm.controls['contactNumber'].value, this.userData.uid);
     this.modalDialogParams.closeCallback();
+    alert("Profile Updated");
   }
 }

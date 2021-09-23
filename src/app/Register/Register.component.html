@@ -17,46 +17,53 @@
             <Label class="header" text="Proceed with your"></Label>
             <Label class="header-registration" text="Registration"></Label>
 
-
+            <form [formGroup]="loginForm">
             <FlexboxLayout class="textInput">
                 <StackLayout class="input-field">
-                    <Label *ngIf="emailError" text="{{emailError}}" class="login-error-email"></Label>
+
+                    <!-- <Label text="Use your UST account email" *ngIf="loginForm.controls._email.errors?.pattern" class="validation-error"></Label> -->
+
+                    <Label text="This Field is Required" *ngIf="loginForm.controls._email.errors?.required && loginForm.controls._email.touched" class="validation-error"></Label>
+
                     <GridLayout columns="*, *" rows="auto, auto" colspan="2">
                         <Label text="Enter Email:" class="email-text" col="0"></Label>
                         <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
-                        <TextField class="input" hint="Enter your email:" [(ngModel)]="_email" colspan="2"></TextField>
+                        <TextField class="input" hint="Enter your email:" formControlName="_email" colspan="2"></TextField>
                         <StackLayout class="hr-light"></StackLayout>
                     </GridLayout>
 
-                    <Label *ngIf="fullnameError" text="{{fullnameError}}" class="login-error"></Label>
+                    <Label text="This Field is Required" *ngIf="loginForm.controls._fullName.errors?.required && loginForm.controls._fullName.touched" class="validation-error"></Label>
+
                     <GridLayout columns="*, *, auto" rows="auto, 1" colspan="2">
                         <Label text="Enter Full Name:" class="FullName-text"></Label>
                         <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
-                        <TextField class="input" hint="Enter your Fullname:" [(ngModel)]="_fullname" colspan="2">
+                        <TextField class="input" hint="Enter your Fullname:" formControlName="_fullName" colspan="2">
                         </TextField>
                         <StackLayout class="hr-light"></StackLayout>
                     </GridLayout>
 
-                    <Label *ngIf="contactnumError" text="{{contactnumError}}" class="login-error"></Label>
+                    <Label text="This Field is Required" *ngIf="loginForm.controls._contactNumber.errors?.required && loginForm.controls._contactNumber.touched " class="validation-error"></Label>
+
                     <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
                         <Label text="Enter Contact Number:" class="contactNum-text"></Label>
                         <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
-                        <TextField class="input" hint="Enter your Contact Number:" [(ngModel)]="_contactNum"
+                        <TextField class="input" hint="Enter your Contact Number:" formControlName="_contactNumber"
                             colspan="2">
                         </TextField>
                         <StackLayout class="hr-light"></StackLayout>
                     </GridLayout>
 
-                    <Label *ngIf="passwordError" text="{{passwordError}}" class="login-error"></Label>
+                    <Label text="This Field is Required" *ngIf="loginForm.controls._password.errors?.required && loginForm.controls._password.touched" class="validation-error"></Label>
+
                     <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
                         <Label text="Password:" class="password-text"></Label>
                         <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
-                        <TextField class="input" hint="Enter your password" secure="true" [(ngModel)]="_password"
+                        <TextField class="input" hint="Enter your password" secure="true" formControlName="_password"
                             colspan="2"></TextField>
                         <StackLayout class="hr-light"></StackLayout>
                     </GridLayout>
 
-                    <Label *ngIf="confirmPasswordError" text="{{confirmPasswordError}}" class="login-error"></Label>
+
                     <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
                         <Label text="Confirm Password" class="confirmPass-text"></Label>
                         <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
@@ -68,7 +75,8 @@
             </FlexboxLayout>
 
 
-            <button text="Sign Up" class="btn-registrationButton" (tap)="tapRegister()"></button>
+            <button text="Sign Up" *ngIf="loginForm.valid" class="btn-registrationButton" (tap)="tapRegister()"></button>
+            <button text="Sign Up" *ngIf="loginForm.invalid" class="btn-registrationButton-disable" (tap)="tapRegister()" ></button>
 
             <StackLayout orientation="horizontal" class="m-y-30 cics">
                 <Image src="~/app/images/logo.png" class="logo-btm"></Image>
@@ -76,6 +84,7 @@
                 <Image src="~/app/images/cics.png" class="logo-btm"></Image>
             </StackLayout>
 
+        </form>
         </StackLayout>
-    </FlexboxLayout> 
+    </FlexboxLayout>
 </ScrollView>
