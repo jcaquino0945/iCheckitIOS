@@ -130,3 +130,27 @@
   color: red;
   margin-left: 40;
 }
+
+.cics {
+  color: #a8a8a8;
+  vertical-align: middle;
+  horizontal-align: center;
+}
+
+.cics,
+.cics-label {
+  font-family: "Abel-Regular";
+}
+.cics-label {
+  text-transform: uppercase;
+}
+
+.logo-btm {
+  width: 30;
+  height: 30;
+}
+
+.cics .rectangle {
+  width: 0.5;
+  background: gray;
+}

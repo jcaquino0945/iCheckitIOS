@@ -43,12 +43,7 @@ export class LoginComponent implements OnInit {
 		this.auth.test()
 	}
 	*/
-  onToggle() {
-    console.log(this.passwordField.nativeElement.secure);
-    this.passwordField.nativeElement.secure = !this.passwordField.nativeElement
-      .secure;
-  }
-  
+
   public tapLogin() {
     console.log(this._email, this._password);
     if (this._email.length == 0)
@@ -68,5 +63,8 @@ export class LoginComponent implements OnInit {
     this.router.navigate(["/register"]);
   }
 
-  
+  toggleShow() {
+    this.passwordField.nativeElement.secure = !this.passwordField.nativeElement
+      .secure;
+  }
 }

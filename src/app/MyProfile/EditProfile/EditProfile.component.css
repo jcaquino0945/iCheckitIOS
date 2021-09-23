@@ -1,33 +1,31 @@
 .main-content {
-    background-color: white;
-    font-family: "Antonio-Regular";
-    height: auto;
-    width: auto;
-    padding: 30;
+  background-color: white;
+  font-family: "Antonio-Regular";
+  height: auto;
+  width: auto;
+  padding: 30;
 }
 
-
 TextField {
-    border-radius: 10;
-    border-width: 1;
-    padding: 10;
-    placeholder-color: gray;
-    width: 300;
+  border-radius: 10;
+  border-width: 1;
+  padding: 10;
+  placeholder-color: gray;
+  width: 300;
 }
 
 .placeholder {
-    color: gray;
-    font-family: "Abel-Regular";
-
+  color: gray;
+  font-family: "Abel-Regular";
 }
 
 .fas {
-    border-radius: 100;
-    background-color: #F7E98E;
+  border-radius: 100;
+  background-color: #f7e98e;
 }
 
 .btn {
-    width: 100;
-    background-color: #35414F;
-    color: white;
+  width: 100;
+  background-color: #35414f;
+  color: white;
 }

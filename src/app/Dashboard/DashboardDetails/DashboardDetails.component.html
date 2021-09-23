@@ -72,8 +72,8 @@
                     <Label text=" " textWrap="true" class="rectangle-approval" *ngIf="task.status =='For Approval'"></Label>
                     <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
                     <Label text="No submission yet " textWrap="true" class="p-10 task-details" *ngIf="task.submissionLink == ''"></Label>
-                    <Label text="{{task.submissionLink}}" (tap)="onTap(task.submissionLink)" textWrap="true" class="p-10 task-details" *ngIf="task.submissionLink != ''"></Label>
-                    <Image text="{{task.submissionLink}}" (tap)="onTap(task.submissionLink)" textWrap="true" class="p-10 task-details" *ngIf="task.submissionLink != ''"></Image>
+                    <Label text="{{task.submissionLink}}" (tap)="onTap(task.submissionLink)" textWrap="true" class="p-10 task-submission" *ngIf="task.submissionLink != ''"></Label>
+                    <Image text="{{task.submissionLink}}" (tap)="onTap(task.submissionLink)" textWrap="true" class="p-10 task-submission" *ngIf="task.submissionLink != ''"></Image>
                 </FlexboxLayout>
             </StackLayout>
 
@@ -87,9 +87,9 @@
                 <Label text="Task is overdue, SUBMIT TASK NOW" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
             </FlexboxLayout>
 
-            <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()" *ngIf="task.status == 'For Approval'" isEnabled="false">
+            <FlexboxLayout class="m-t-25 text-approval" (tap)="submitTask()" *ngIf="task.status == 'For Approval'" isEnabled="false">
                 <Label text="&#xf254;" textWrap="true" class="p-10 fas h3 icon"></Label> 
-                <Label text="Task has been submitted, waiting for approval" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
+                <Label text="Task has been submitted, waiting for approval" textWrap="true" class="m-y-10 p-10 h3 text-approval"></Label>
             </FlexboxLayout>
 
             <FlexboxLayout class="m-t-25 text-accomplished" *ngIf="task.status == 'Accomplished'" isEnabled="false">
