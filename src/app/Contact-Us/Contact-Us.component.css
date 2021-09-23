@@ -46,3 +46,38 @@
   background-color: red;
   opacity: 0.9;
 }
+
+
+/* .rectangle {
+  width: 1;
+  height: 80;
+  background: #a8a8a8;
+} */
+
+.cics {
+  color: #a8a8a8;
+  vertical-align: middle;
+  horizontal-align: center;
+  width: 50;
+  height: 100;
+  padding: 20;
+}
+
+.cics,
+.cics-label {
+  font-family: "Abel-Regular";
+}
+.cics-label {
+  text-transform: uppercase;
+}
+
+
+.cics .rectangle {
+  width: 0.5;
+  background: gray;
+}
+
+.logo-btm {
+  width: 30;
+  height: 30;
+}

@@ -95,7 +95,8 @@
 }
 
 .text-submit,
-.text-accomplished {
+.text-accomplished,
+.text-approval {
   justify-content: center;
   vertical-align: bottom;
   color: white;
@@ -108,6 +109,10 @@
 
 .text-accomplished {
   background: green;
+}
+
+.text-approval {
+  background: orange;
 }
 
 .task-details {
@@ -138,4 +143,12 @@
 
 .rectangle-accomplished {
   background: green;
+}
+
+.task-submission {
+  font-family: "Abel-Regular";
+  line-height: 13;
+  font-weight: 400;
+  text-decoration: underline;
+  color: blue;
 }

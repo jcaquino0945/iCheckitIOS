@@ -36,7 +36,7 @@ h2 {
   color: white;
 }
 
-.date{
+.date {
   font-family: "Antonio-Thin";
 }
 
@@ -49,7 +49,14 @@ h2 {
 .task-details,
 .task-deadline {
   font-family: "Antonio-Regular";
+}
+
+.task-details {
   font-size: 18;
+}
+
+.task-summary {
+  height: auto;
 }
 
 .rectangle-late,
@@ -66,9 +73,10 @@ h2 {
   font-size: 13;
 }
 
-.task{
+.task {
   border-top-left-radius: 50;
   border-top-right-radius: 50;
+  height: auto;
 }
 
 .icon-late,

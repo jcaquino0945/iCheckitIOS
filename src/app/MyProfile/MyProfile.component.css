@@ -140,3 +140,13 @@
 .icon {
   color: black;
 }
+
+.cics .rectangle {
+  width: 0.5;
+  color: gray;
+}
+
+.logo-btm {
+  width: 30;
+  height: 30;
+}

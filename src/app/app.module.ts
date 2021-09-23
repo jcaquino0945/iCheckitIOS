@@ -18,6 +18,7 @@ import { MyProfileComponent } from './MyProfile/MyProfile.component';
 import { ConfirmNewPasswordComponent } from './confirm-new-password/confirm-new-password.component'
 //new Imports for Data Binding
 import { NativeScriptFormsModule } from '@nativescript/angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -25,7 +26,8 @@ import { NativeScriptFormsModule } from '@nativescript/angular';
     AppRoutingModule,
     NativeScriptModule,
     NativeScriptUISideDrawerModule,
-    NativeScriptFormsModule
+    NativeScriptFormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     AppComponent,
