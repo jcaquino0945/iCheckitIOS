@@ -34,7 +34,7 @@
               </GridLayout>
             </FlexboxLayout>
           </StackLayout>
-          <StackLayout class="task" *ngIf="userDetails.verified == 'Not Verified'">
+          <StackLayout class="task" *ngIf="userDetails.verified == 'Enrolled'">
             <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngFor="let task of myTasks">
               <GridLayout columns="*,auto">
                 <FlexboxLayout col="0">
