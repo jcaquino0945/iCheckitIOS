@@ -52,22 +52,46 @@ h2 {
 }
 
 .task-details {
-  font-size: 18;
+  font-size: 13;
 }
 
 .task-summary {
   height: auto;
 }
 
-.rectangle-late,
+/* .rectangle-late,
 .rectangle-pending,
 .rectangle-ok,
 .rectangle-approval {
-  width: 3;
+  width: 2.5;
   height: auto;
   margin-right: 10;
+} */
+
+.task-details-accomplished{
+  border-left-color: green;
 }
 
+.task-details-pending {
+  border-left-color: yellow;
+}
+
+.task-details-late {
+  border-left-color: red;
+}
+
+.task-details-approval {
+  border-left-color: orange;
+}
+
+.task-details-accomplished,
+.task-details-pending,
+.task-details-late,
+.task-details-approval {
+  border-left-width: 3;
+  font-size: 18;
+  font-family: "Antonio-Regular";
+}
 .task-deadline {
   color: gray;
   font-size: 13;

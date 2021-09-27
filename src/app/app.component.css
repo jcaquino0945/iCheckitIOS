@@ -49,16 +49,19 @@
 } */
 
 .cics {
-    color: #a8a8a8;
-    vertical-align: bottom;
-    horizontal-align: center;
+  color: #a8a8a8;
+  vertical-align: bottom;
+  horizontal-align: center;
 }
 
-.cics, .cics-label {
-    font-family: "Abel-Regular";
-}
+.cics,
 .cics-label {
-    text-transform: uppercase;
+  font-family: "Abel-Regular";
+}
+
+.cics-label {
+  width: 170;
+  font-size: 14;
 }
 
 .logo {
@@ -72,6 +75,10 @@
 }
 
 .logo-btm {
-  width: 30;
-  height: 30;
+  width: 80;
+  height: 90;
+}
+
+.cics-label {
+  text-align: center;
 }
