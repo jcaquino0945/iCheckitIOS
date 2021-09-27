@@ -60,8 +60,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate(["/register"]);
   }
 
+  isToggled=false;
   toggleShow() {
     this.passwordField.nativeElement.secure = !this.passwordField.nativeElement
       .secure;
+    this.isToggled = !this.isToggled;
   }
 }

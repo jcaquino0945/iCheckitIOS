@@ -84,10 +84,15 @@ h2 {
   border-left-color: orange;
 }
 
+.task-details-verify {
+  border-left-color: #35414f;
+}
+
 .task-details-accomplished,
 .task-details-pending,
 .task-details-late,
-.task-details-approval {
+.task-details-approval,
+.task-details-verify {
   border-left-width: 3;
   font-size: 18;
   font-family: "Antonio-Regular";

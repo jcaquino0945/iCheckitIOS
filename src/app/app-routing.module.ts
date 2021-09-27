@@ -1,3 +1,4 @@
+import { VerificationTaskComponent } from './Dashboard/DashboardDetails/Verification-Task/Verification-Task.component';
 import { FaqsComponent } from './Faqs/Faqs.component';
 import { ContactUsComponent } from './Contact-Us/Contact-Us.component';
 import { DashboardDetailsComponent } from './Dashboard/DashboardDetails/DashboardDetails.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'change-pass', component: ChangePasswordComponent},
   { path: 'contact-us', component: ContactUsComponent},
   { path: 'faqs', component: FaqsComponent},
+  { path: 'verify', component: VerificationTaskComponent},
 ]
 
 @NgModule({

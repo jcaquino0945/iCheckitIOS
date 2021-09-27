@@ -20,17 +20,18 @@
         <ScrollView height="1000" *ngIf="myTasks">
           <StackLayout class="task" *ngIf="userDetails.verified == 'Not Verified'">
             <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
-            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task">
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
               <GridLayout columns="*,auto">
                 <FlexboxLayout col="0">
-                  <Label text="" textWrap="true" class="rectangle-pending"></Label>
-                  <StackLayout>
+                  <!-- <StackLayout>
                     <Label text="{{ task.title }}" textWrap="true" class="task-details"></Label>
+                    <Label text="Term: {{ task.term }}" textWrap="true" class="task-deadline"></Label>
+                  </StackLayout> -->
+                  <StackLayout class="p-l-15 task-details-verify">
+                    <Label text="{{ task.title }}" textWrap="true"></Label>
                     <Label text="Term: {{ task.term }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending" col="2" colSpan="2"
-                ></Label>
               </GridLayout>
             </FlexboxLayout>
           </StackLayout>
