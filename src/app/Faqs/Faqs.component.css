@@ -40,6 +40,8 @@
 
 .ans-1 {
   margin-left: 10;
+  padding-right: 20;
+  align-content: center;
 }
 
 .cics .rectangle {
@@ -69,6 +71,10 @@
 .logo-btm {
   width: 30;
   height: 30;
+}
+
+.answers {
+  width: 100%;
 }
 
 /* /* .accordion-button::after {

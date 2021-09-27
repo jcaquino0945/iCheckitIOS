@@ -1,3 +1,4 @@
+import { VerificationTaskComponent } from './Dashboard/DashboardDetails/Verification-Task/Verification-Task.component';
 import { ContactUsComponent } from './Contact-Us/Contact-Us.component';
 import { FaqsComponent } from './Faqs/Faqs.component';
 import { DashboardDetailsComponent } from './Dashboard/DashboardDetails/DashboardDetails.component';
@@ -42,7 +43,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DeleteAccountComponent,
     DashboardDetailsComponent,
     FaqsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    VerificationTaskComponent
   ],
   providers: [
     ModalDialogService,
