@@ -1,6 +1,6 @@
 <FlexboxLayout flexDirection="column">
-  <StackLayout height="500">
-    <GridLayout>
+  <StackLayout>
+    <GridLayout height="500">
       <StackLayout class="top">
         <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img">
         </Image>
@@ -43,7 +43,7 @@
                   <Label text="" textWrap="true" class="rectangle-approval"
                     *ngIf="task.status == 'For Approval'"></Label>
                   <Label text="" textWrap="true" class="rectangle-ok" *ngIf="task.status == 'Accomplished'"></Label>
-                  <StackLayout>
+                  <StackLayout class="task-summary">
                     <Label text="{{ task.title }}" textWrap="true" class="task-details"></Label>
                     <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>

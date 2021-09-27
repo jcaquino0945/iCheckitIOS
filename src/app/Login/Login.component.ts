@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { AuthService } from "../services/Auth/auth.service";
 import { firebase } from "@nativescript/firebase";
 import { Router } from "@angular/router";
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   moduleId: module.id,
@@ -12,27 +14,22 @@ import { Router } from "@angular/router";
 export class LoginComponent implements OnInit {
   //userData;
   //WAG MUNA TANGGALIN MGA NAKA COMMENT
+  loginForm!: any;
 
   @ViewChild("passwordField") passwordField: ElementRef;
   _email = "";
   _password = "";
 
-  emailError = "";
-  passwordError = "";
 
-  constructor(private auth: AuthService, private router: Router) {}
-  // this.signInError = "email cannot be empty";
-  //   	/*
-  // if (this._email == '') {
-  // 	this.nameError = true;
-  // }
-  // */
 
+  constructor(private auth: AuthService, private router: Router, private fb: FormBuilder) {}
+
+  // Validators.pattern('^[a-z0-9._%+-]+@[(ust.edu)]+\\.ph$')
   ngOnInit() {
-    /*
-		firebase.getCurrentUser()
-		.then(user => this.userData = user)
-		.catch(error => console.log("Trouble in paradise: " + error)); */
+    this.loginForm = this.fb.group({
+      _email: ['',[Validators.required,Validators.email,]],
+      _password: ['',Validators.required],
+    });
   }
   /*
 	register() {
@@ -43,22 +40,17 @@ export class LoginComponent implements OnInit {
 		this.auth.test()
 	}
 	*/
-  onToggle() {
-    console.log(this.passwordField.nativeElement.secure);
-    this.passwordField.nativeElement.secure = !this.passwordField.nativeElement
-      .secure;
-  }
-  
+
   public tapLogin() {
     console.log(this._email, this._password);
-    if (this._email.length == 0)
-      this.emailError = "Email field is required and cannot be empty";
-    if (this._password.length == 0)
-      this.passwordError = "Password field is required and cannot be empty";
-    if (this._email.length > 0) this.emailError = "";
-    if (this._password.length > 0) this.passwordError = "";
-
-    this.auth.login(this._email, this._password);
+    if (this.loginForm.valid) {
+      this.auth.login(this.loginForm.controls['_email'].value,this.loginForm.controls['_password'].value)
+    }
+    else if (this.loginForm.invalid) {
+      this.loginForm.controls['_email'].markAsTouched();
+      this.loginForm.controls['_password'].markAsTouched();
+      alert('Please fill up all required fields properly');
+      }
   }
 
   public tapforgotPass() {
@@ -68,5 +60,8 @@ export class LoginComponent implements OnInit {
     this.router.navigate(["/register"]);
   }
 
-  
+  toggleShow() {
+    this.passwordField.nativeElement.secure = !this.passwordField.nativeElement
+      .secure;
+  }
 }

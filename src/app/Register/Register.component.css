@@ -1,3 +1,8 @@
+.validation-error {
+  font-size: 9;
+  color: red;
+  margin-left: 40;
+}
 .page {
   flex-direction: column;
   background-color: #b7152f;
@@ -53,11 +58,13 @@
   margin-bottom: 20;
   font-family: Antonio-SemiBold;
 }
-/* .input-field {
+.input-field {
     margin-bottom: 2;
     padding-top: 5;
     margin-top: 10;
-} */
+    padding-bottom: 5;
+    padding-top: 5;
+}
 
 .input {
   font-size: 13;
@@ -67,6 +74,7 @@
   margin-left: 40;
   margin-right: 40;
   padding-bottom: 0;
+  margin-bottom: 30;
 }
 .email-text {
   margin-left: 40;
@@ -100,8 +108,6 @@
 }
 
 .btn-registrationButton {
-  /* width: 250; */
-  /* margin: 60 5 70 5; */
   margin-left: 55;
   margin-right: 55;
   background-color: #b7152f;
@@ -110,8 +116,18 @@
   font-weight: 400;
   color: white;
   margin-bottom: 80;
-  /* margin-bottom: 80; */
-  /* margin-top: 30; */
+  margin-top: 30;
+  font-family: Antonio-Regular;
+}
+.btn-registrationButton-disable {
+  margin-left: 55;
+  margin-right: 55;
+  background-color: #eb4662;
+  padding: 10 10 10 10;
+  font-size: 20;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 80;
   margin-top: 30;
   font-family: Antonio-Regular;
 }
@@ -129,4 +145,28 @@
   font-size: 11;
   color: red;
   margin-left: 40;
+}
+
+.cics {
+  color: #a8a8a8;
+  vertical-align: middle;
+  horizontal-align: center;
+}
+
+.cics,
+.cics-label {
+  font-family: "Abel-Regular";
+}
+.cics-label {
+  text-transform: uppercase;
+}
+
+.logo-btm {
+  width: 30;
+  height: 30;
+}
+
+.cics .rectangle {
+  width: 0.5;
+  background: gray;
 }

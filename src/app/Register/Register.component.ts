@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/Auth/auth.service';
 import { firebase } from "@nativescript/firebase";
 import { Router } from "@angular/router"
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
 	moduleId: module.id,
@@ -11,6 +13,7 @@ import { Router } from "@angular/router"
 })
 
 export class RegisterComponent implements OnInit {
+  loginForm!: any;
 
   fullnameError = "";
   emailError = "";
@@ -28,10 +31,18 @@ export class RegisterComponent implements OnInit {
   _confirmPassword = "";
 
   public constructor(
-    private auth:AuthService, private router: Router
+    private auth:AuthService, private router: Router, private fb: FormBuilder
   ) { }
 
+  // Validators.pattern('^[a-z0-9._%+-]+@[(ust.edu)]+\\.ph$')
 	ngOnInit() {
+    this.loginForm = this.fb.group({
+      _email: ['',[Validators.required,Validators.email,]],
+      _fullName: ['',Validators.required],
+      _password: ['',Validators.required],
+      _confirmPassword: ['',  Validators.required],
+      _contactNumber: ['',Validators.required]
+    });
    }
 
   public tapRegister() {
@@ -43,27 +54,7 @@ export class RegisterComponent implements OnInit {
       this._confirmPassword
       );
 
-      if (this._fullname.length == 0)
-      this.fullnameError = "Full Name is required"
-      if (this._email.length == 0)
-      this.emailError = "Email is required"
-      if (this._contactNum.length == 0)
-      this.contactnumError = "Contact Number is required"
-      if (this._password.length == 0)
-      this.passwordError = "Password is required"
-      if (this._confirmPassword.length == 0)
-      this.confirmPasswordError = "Password is required"
 
-      if (this._fullname.length > 0)
-      this.fullnameError = ""
-      if (this._email.length > 0)
-      this.emailError = ""
-      if (this._contactNum.length > 0)
-      this.contactnumError = ""
-      if (this._password.length > 0)
-      this.passwordError = ""
-      if (this._confirmPassword.length > 0)
-      this.confirmPasswordError = ""
 
 
 

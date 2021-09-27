@@ -228,19 +228,26 @@ export class AuthService {
     // });
   }
 
-  getData(uid) {
-    let sanFranciscoDocument = firestore.collection("users").doc(uid);
-    let unsubscribe = sanFranciscoDocument.onSnapshot(doc => {
-      if (doc.exists) {
-        console.log("Document data:", JSON.stringify(doc.data()));
-      } else {
-        console.log("No such document!");
-      }
-    });
+  // getName() {
+  //   firebase
+  //     .getCurrentUser()
+  //     .then(user => console.log("User uid: " + user.uid))
+  //     .catch(error => console.log("Trouble in paradise: " + error));
+  // }
 
-    // then after a while, to detach the listener:
-    unsubscribe();
-  }
+  // getData(uid) {
+  //   let sanFranciscoDocument = firestore.collection("users").doc(uid);
+  //   let unsubscribe = sanFranciscoDocument.onSnapshot(doc => {
+  //     if (doc.exists) {
+  //       console.log("Document data:", JSON.stringify(doc.data()));
+  //     } else {
+  //       console.log("No such document!");
+  //     }
+  //   });
+
+  //   // then after a while, to detach the listener:
+  //   unsubscribe();
+  // }
 
   // firebase.updateProfile({
   //   displayName: 'Eddy Verbruggen',
@@ -302,4 +309,19 @@ export class AuthService {
     });
   }
   */
+
+  // getDisplayName(uid){
+  //   // examples from https://firebase.google.com/docs/firestore/query-data/get-data
+  //   const docRef: firestore.DocumentReference = firestore.collection("users").doc(uid);
+
+  //   docRef.get().then((doc: firestore.DocumentSnapshot) => {
+  //     if (doc.exists) {
+  //       console.log("Document data:", JSON.stringify(doc.data()));
+  //     } else {
+  //       console.log("No such document!");
+  //     }
+  //   }).catch(function (error) {
+  //     console.log("Error getting document:", error);
+  //   });
+  // }
 }
