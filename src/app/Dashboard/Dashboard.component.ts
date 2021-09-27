@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   myLateTasks = [];
   myForApprovalTasks = [];
   myAccomplishedTasks = [];
-
+  verificationTask;
   ngOnInit() {
     // this.myTasks.splice(0, this.myTasks.length)
     // this.myAccomplishedTasks.splice(0, this.myAccomplishedTasks.length)
@@ -31,6 +31,16 @@ export class DashboardComponent implements OnInit {
     // this.myLateTasks.splice(0, this.myLateTasks.length)
     // this.myPendingTasks.splice(0, this.myPendingTasks.length)
     const citiesCollection = firestore.collection("tasks");
+    const verifyTask = firestore.collection("verificationTasks").doc('60ThDEIPXLwWD8aHYs8E');
+
+    verifyTask.get({ source: "server" }).then(doc => {
+      if (doc.exists) {
+        console.log(`Document data: ${JSON.stringify(doc.data())}`);
+        this.verificationTask = doc.data();
+      } else {
+        console.log("No such document!");
+      }
+    });
 
     citiesCollection.onSnapshot((snapshot: firestore.QuerySnapshot) => {
       snapshot.forEach(() => {      

@@ -65,7 +65,7 @@ export class AuthService {
               const data = {
                 uid: user.uid,
                 contactNumber: contactNumber,
-                verified: false,
+                verified: 'Not Verified',
                 email: email,
                 pushToken: '',
                 displayName: displayName,
