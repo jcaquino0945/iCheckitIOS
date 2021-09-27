@@ -4,7 +4,7 @@ Learn more about the RadSideDrawer UI component and how it can be customized in 
 https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawer/getting-started
 -->
 <RadSideDrawer [drawerTransition]="sideDrawerTransition">
-  <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
+  <GridLayout tkDrawerContent rows="auto, *, auto, auto" class="nt-drawer__content">
     <StackLayout row="0" class="p-10 header">
       <GridLayout columns="*,*">
         <Label class="name" text="Name" col="0"></Label>
@@ -61,14 +61,14 @@ https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawe
           <Label text="College of Information and Computing Sciences" textWrap="true" class="m-t-10 cics-label"></Label>
         </StackLayout> -->
 
-        <StackLayout orientation="horizontal" class="m-y-30 cics">
-          <Image src="~/app/images/logo.png" class="logo-btm"></Image>
-          <Label text="" textWrap="true" class="m-x-10 rectangle"></Label>
-          <Image src="~/app/images/cics.png" class="logo-btm"></Image>
-        </StackLayout>
-
       </StackLayout>
     </ScrollView>
+    <StackLayout class="cics" row="2">
+      <Image src="~/app/images/cics.png" class="logo-btm"></Image>
+    </StackLayout>
+    <StackLayout class="m-b-10" row="3">
+      <Label class="p-10 cics-label" text="College of Information and Computing Sciences" textWrap="true"></Label>
+    </StackLayout>
   </GridLayout>
 
   <page-router-outlet tkMainContent actionBarVisibility="never"></page-router-outlet>
