@@ -84,6 +84,13 @@
 .text-submit {
   background: red;
 }
+.text-submit-bawal {
+  justify-content: center;
+  vertical-align: bottom;
+  color: white;
+  font-family: "Antonio-Regular";
+  background: rgb(218, 81, 81);
+}
 
 .task-details {
   font-family: "Abel-Regular";
