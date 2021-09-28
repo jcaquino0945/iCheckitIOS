@@ -203,7 +203,6 @@ export class VerificationTaskComponent implements OnInit {
 			  let msg = res.object.get("msg");
 			  console.log(msg);
 			});
-			alert('valid')
 		  }
 
 		else if (this.submitForm.invalid) {
