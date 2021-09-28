@@ -123,10 +123,11 @@ export class VerificationTaskComponent implements OnInit {
 								email: this.userDetails.email,
 								proposedSection: this.submitForm.controls['proposedSection'].value,
 								pushToken: this.userDetails.pushToken,
-								submissionLink: url
+								submissionLink: url,
+								uid: this.userDetails.uid
 							}
-		
-							  firestore.collection("verificationTasks").doc('60ThDEIPXLwWD8aHYs8E')
+
+							  	firestore.collection("verificationTasks").doc('60ThDEIPXLwWD8aHYs8E')
 								.update({                       
 									recipients: firestore.FieldValue.arrayUnion(updatedTaskData)
 								})
