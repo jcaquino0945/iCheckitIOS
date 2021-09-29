@@ -140,6 +140,8 @@ export class DashboardDetailsComponent implements OnInit {
                       title: this.taskData.title,
                       uid: this.taskData.uid,
                       uploadedBy: this.taskData.uploadedBy,
+                      term: this.taskData.term
+
                     }
 
                       firestore.collection("tasks").doc(this.taskData.taskId)
