@@ -20,6 +20,7 @@ import { ConfirmNewPasswordComponent } from './confirm-new-password/confirm-new-
 //new Imports for Data Binding
 import { NativeScriptFormsModule } from '@nativescript/angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -29,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NativeScriptUISideDrawerModule,
     NativeScriptFormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,

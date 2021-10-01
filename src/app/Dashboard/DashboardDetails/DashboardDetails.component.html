@@ -77,9 +77,14 @@
                 </FlexboxLayout>
             </StackLayout>
 
-            <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()" *ngIf="task.status == 'Pending'">
+            <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()" *ngIf="task.status == 'Pending' && task.attemptsLeft != 0">
                 <Label text="&#xf0c6;" textWrap="true" class="p-10 fas h3 icon"></Label>
                 <Label text="SUBMIT TASK" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
+            </FlexboxLayout>
+
+            <FlexboxLayout class="m-t-25 text-submit"  *ngIf="task.status == 'Pending' && task.attemptsLeft == 0">
+                <Label text="&#xf12a;" textWrap="true" class="p-10 fas h3 icon"></Label>
+                <Label text="You are out of attempts for submission!" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
             </FlexboxLayout>
 
             <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()" *ngIf="task.status == 'Late'">
