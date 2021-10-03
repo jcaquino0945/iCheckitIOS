@@ -145,6 +145,7 @@ export class DashboardDetailsComponent implements OnInit {
                       uploadedBy: this.taskData.uploadedBy,
                       term: this.taskData.term,
                       attemptsLeft: this.taskData.attemptsLeft - 1,
+                      deadlineLimit: this.taskData.deadlineLimit
                     }
 
 

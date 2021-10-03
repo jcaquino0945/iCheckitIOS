@@ -87,9 +87,14 @@
                 <Label text="You are out of attempts for submission!" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
             </FlexboxLayout>
 
-            <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()" *ngIf="task.status == 'Late'">
+            <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()" *ngIf="task.status == 'Late' && task.deadlineLimit != 0">
                 <Label text="&#xf12a;" textWrap="true" class="p-10 fas h3 icon"></Label>
                 <Label text="Task is overdue, SUBMIT TASK NOW" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
+            </FlexboxLayout>
+
+            <FlexboxLayout class="m-t-25 text-submit" *ngIf="task.status == 'Late' && task.deadlineLimit == 0">
+                <Label text="&#xf12a;" textWrap="true" class="p-10 fas h3 icon"></Label>
+                <Label text="You can no longer submit your proof of completion" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
             </FlexboxLayout>
 
             <FlexboxLayout class="m-t-25 text-approval" (tap)="submitTask()" *ngIf="task.status == 'For Approval'" isEnabled="false">
