@@ -3,8 +3,10 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { Component, NgZone, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
-import { firebase, firestore } from "@nativescript/firebase";
+import { firebase, firestore ,firebaseFunctions} from "@nativescript/firebase";
 import { storage } from "@nativescript/firebase/storage";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http, HttpResponse } from "@nativescript/core";
 
 import {
   Mediafilepicker,
@@ -28,6 +30,7 @@ export class DashboardDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private zone:NgZone,
     private router: Router,
+    private http: HttpClient,
     ) {}
 
   ngOnInit() {
@@ -140,9 +143,37 @@ export class DashboardDetailsComponent implements OnInit {
                       title: this.taskData.title,
                       uid: this.taskData.uid,
                       uploadedBy: this.taskData.uploadedBy,
-                      term: this.taskData.term
-
+                      term: this.taskData.term,
+                      attemptsLeft: this.taskData.attemptsLeft - 1,
+                      deadlineLimit: this.taskData.deadlineLimit
                     }
+
+
+
+              
+
+                    // Http.request({
+                    //   url: "https://us-central1-icheckit-6a8bb.cloudfunctions.net/sendEmail",
+                    //   method: "POST",
+                    //   headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+                    //   content: JSON.stringify({
+                    //     email: updatedTaskData.email,
+                    //     uploadedBy: updatedTaskData.uploadedBy,
+                    //     title: updatedTaskData.uploadedBy,
+                    //     deadline: updatedTaskData.deadline,
+                    //     description: updatedTaskData.description,
+                    //     status: 'For Approval',
+                    //     message: 'Your task status has been updated to For Approval!',
+                    //     instructions: 'Your submission was received! Please wait for the admin to verify your submission.'
+                    //   }),
+                    // }).then(
+                    //   (response: HttpResponse) => {
+                    //     const result = response.content.toJSON();
+                    //     console.log(`Http POST Result: ${result}`)
+                    //   },
+                    //   (e) => {
+                    //     console.log(e)
+                    //   })
 
                       firestore.collection("tasks").doc(this.taskData.taskId)
                         .update({                       
@@ -154,8 +185,10 @@ export class DashboardDetailsComponent implements OnInit {
                           })
                         })
                         .then(() => {
-                          alert('File has been uploaded')
-                        }).then(() => {
+                          alert('Your submission was received! Please wait for the admins to verify your submission.')
+                        })
+                        .then(() => {
+
                           const taskDocument = firestore.collection("tasks").doc(this.route.snapshot.paramMap.get('id'));
                           
                           // note that the options object is optional, but you can use it to specify the source of data ("server", "cache", "default").
@@ -175,6 +208,74 @@ export class DashboardDetailsComponent implements OnInit {
                             }
                           });
                         })
+                          // const fn = firebaseFunctions.httpsCallable("helloName");
+
+                          // // firebaseFunctions.httpsCallable
+                          // Http.request({
+                          //   url: "https://us-central1-icheckit-6a8bb.cloudfunctions.net/sendEmail",
+                          //   method: "POST",
+                          //   headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+                          //   content: new URLSearchParams({
+                          //     "username": viewModel.get("username"),
+                          //     "firstname": viewModel.get("firstname"),
+                          //     "lastname": viewModel.get("lastname"),
+                          //     "email": viewModel.get("email"),
+                          //     "password": viewModel.get("password")
+                          //   }),
+                          // }).then(
+                          //   (response: HttpResponse) => {
+                          //     const result = response.content.toJSON();
+                          //     console.log(`Http POST Result: ${result}`)
+                          //   },
+                          //   (e) => {
+                          //     console.log(e)
+                          //   }
+                          // );
+
+
+                          // const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+                          // const params: URLSearchParams = new URLSearchParams();
+
+                          //   // console.log(newData.email);
+                          // let email = this.taskData.email;
+                          // let uploadedBy = this.taskData.uploadedBy;
+                          // let title = this.taskData.title;
+                          // let deadline = this.taskData.deadline;
+                          // let description = this.taskData.description;
+                          // let status = 'For Approval';
+                          // let message = 'Your task status has been updated to ' + status + '!';
+                          // let instructions = 'Your submission was received! Please wait for the admin to verify your submission.'
+
+                          // params.set('email', email);
+                          // params.set('uploadedBy', uploadedBy);
+                          // params.set('title', title);
+                          // params.set('deadline', deadline);
+                          // params.set('description', description);
+                          // params.set('status', status);
+                          // params.set('message', message);
+                          // params.set('instructions', instructions);
+
+
+                          // return this.http.post(`https://us-central1-icheckit-6a8bb.cloudfunctions.net/sendEmail`, {
+                          // email,
+                          // uploadedBy,
+                          // title,
+                          // deadline,
+                          // description,
+                          // status,
+                          // message,
+                          // instructions
+                          // }, {
+                          //   headers
+                          // }).toPromise().then(
+                          //   () => {
+                          //     console.log('Email has been sent to ' + email)
+                          //   }
+                          // ).catch((err) => {
+                          //   console.log(err)
+                          // })
+
+                          
               } 
                   // function (url) {
                   //   let updatedTaskData = {
