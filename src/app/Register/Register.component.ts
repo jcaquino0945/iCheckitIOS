@@ -46,18 +46,13 @@ export class RegisterComponent implements OnInit {
   }
 
   public tapRegister() {
-    console.log(
-      this._fullname,
-      this._email,
-      this._contactNum,
-      this._password,
-      this._confirmPassword
-    );
+ 
     this.auth.createAccount(
-      this._email,
-      this._password,
-      this._fullname,
-      this._contactNum
+      this.loginForm.controls['_email'].value,
+      this.loginForm.controls['_password'].value,
+      this.loginForm.controls['_fullName'].value,
+      this.loginForm.controls['_contactNumber'].value,
+
     );
   }
   public tapBack() {
