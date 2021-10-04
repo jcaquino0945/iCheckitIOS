@@ -69,6 +69,7 @@ export class AuthService {
                 email: email,
                 pushToken: '',
                 section: '',
+                course: '',
                 displayName: displayName,
                 createdAt: Date.now(),
                 role: "Student"
@@ -263,19 +264,29 @@ export class AuthService {
   // );
 
   deleteAccount() {
-    firebase.deleteUser().then(
-      () => {
-        alert("Deleted");
-        this.routerExtensions.navigate(["login"], {
-          transition: {
-            name: "fade"
-          }
-        });
-      },
-      function(errorMessage) {
-        console.log(errorMessage);
-      }
-    );
+    firebase.getCurrentUser()
+    .then((user) => {
+      return firestore
+                .collection("users")
+                .doc(user.uid)
+                .delete()
+                .then(() => {
+                  firebase.deleteUser().then(
+                    () => {
+                      alert("Deleted");
+                      this.routerExtensions.navigate(["login"], {
+                        transition: {
+                          name: "fade"
+                        }
+                      });
+                    },
+                    function(errorMessage) {
+                      console.log(errorMessage);
+                    }
+                  );
+                })
+    })
+        
   }
 
   // deleteAccount(): Promise<any> {
