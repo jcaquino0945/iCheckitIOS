@@ -44,11 +44,11 @@ export class MyProfileComponent implements OnInit {
                 (this.userData = user),
                   firestore
                     .collection("users")
-                    .doc(this.userData.uid)
+                    .doc(user.uid)
                     .get()
                     .then(doc => {
                       if (doc.exists) {
-                        
+                        this.userDetails = doc.data();
 
                         // this.myAccomplishedTasks = [];
                         // this.myForApprovalTasks = [];
@@ -107,7 +107,6 @@ export class MyProfileComponent implements OnInit {
                           });
                         });
                         //bind doc.data() to userDetails to be used in frontend
-                        this.userDetails = doc.data();
                       } else {
                         console.log("No such document!");
                       }

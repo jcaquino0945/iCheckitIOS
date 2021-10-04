@@ -68,6 +68,7 @@ export class AuthService {
                 verified: 'Not Verified',
                 email: email,
                 pushToken: '',
+                section: '',
                 displayName: displayName,
                 createdAt: Date.now(),
                 role: "Student"

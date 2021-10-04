@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
               (this.userData = user),
                 firestore
                   .collection("users")
-                  .doc(this.userData.uid)
+                  .doc(user.uid)
                   .get()
                   .then(doc => {
                     if (doc.exists) {
