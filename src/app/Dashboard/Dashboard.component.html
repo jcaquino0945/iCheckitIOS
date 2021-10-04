@@ -18,7 +18,7 @@
 
       <StackLayout *tabItem="{ iconSource: 'res://home' }">
         <ScrollView height="1000" *ngIf="myTasks">
-          <StackLayout class="task" *ngIf="userDetails.verified == 'Not Verified'">
+          <StackLayout class="task" *ngIf="userDetails.verified == 'Not Enrolled'">
             <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
             <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
               <GridLayout columns="*,auto">
