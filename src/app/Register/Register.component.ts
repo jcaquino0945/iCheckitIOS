@@ -1,28 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/Auth/auth.service';
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { AuthService } from "../services/Auth/auth.service";
 import { firebase } from "@nativescript/firebase";
-import { Router } from "@angular/router"
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
+import { Router } from "@angular/router";
+import { FormBuilder } from "@angular/forms";
+import { Validators } from "@angular/forms";
 
 @Component({
-	moduleId: module.id,
-	selector: 'Register',
-	templateUrl: './Register.component.html',
-	styleUrls: ['./Register.component.css']
+  moduleId: module.id,
+  selector: "Register",
+  templateUrl: "./Register.component.html",
+  styleUrls: ["./Register.component.css"]
 })
-
 export class RegisterComponent implements OnInit {
   loginForm!: any;
+  @ViewChild("passwordField") passwordField: ElementRef;
+  @ViewChild("confirmPasswordField") confirmPasswordField: ElementRef;
 
   fullnameError = "";
   emailError = "";
   contactnumError = "";
   passwordError = "";
   confirmPasswordError = "";
-
-
-
 
   _fullname = "";
   _email = "";
@@ -31,37 +29,53 @@ export class RegisterComponent implements OnInit {
   _confirmPassword = "";
 
   public constructor(
-    private auth:AuthService, private router: Router, private fb: FormBuilder
-  ) { }
+    private auth: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
   // Validators.pattern('^[a-z0-9._%+-]+@[(ust.edu)]+\\.ph$')
-	ngOnInit() {
+  ngOnInit() {
     this.loginForm = this.fb.group({
-      _email: ['',[Validators.required,Validators.email,]],
-      _fullName: ['',Validators.required],
-      _password: ['',Validators.required],
-      _confirmPassword: ['',  Validators.required],
-      _contactNumber: ['',Validators.required]
+      _email: ["", [Validators.required, Validators.email]],
+      _fullName: ["", Validators.required],
+      _password: ["", Validators.required],
+      _confirmPassword: ["", Validators.required],
+      _contactNumber: ["", Validators.required]
     });
-   }
+  }
 
   public tapRegister() {
-    console.log (
+    console.log(
       this._fullname,
       this._email,
       this._contactNum,
       this._password,
       this._confirmPassword
-      );
-
-
-
-
-
-
-      this.auth.createAccount(this._email,this._password,this._fullname, this._contactNum);
+    );
+    this.auth.createAccount(
+      this._email,
+      this._password,
+      this._fullname,
+      this._contactNum
+    );
   }
   public tapBack() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]);
+  }
+
+  
+  isToggled=false;
+  isConfirmToggled=false;
+  toggleShow() {
+    this.passwordField.nativeElement.secure = !this.passwordField.nativeElement
+      .secure;
+    this.isToggled = !this.isToggled;
+  }
+
+  confirmToggleShow() {
+    this.confirmPasswordField.nativeElement.secure = !this.confirmPasswordField.nativeElement
+      .secure;
+    this.isConfirmToggled = !this.isConfirmToggled;
   }
 }
