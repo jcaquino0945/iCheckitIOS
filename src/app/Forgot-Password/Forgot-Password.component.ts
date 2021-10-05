@@ -31,7 +31,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   public tapSubmit() {
     console.log (this._email);
-	this.auth.changePassword(this._email)
+	this.auth.changePassword(this.loginForm.controls['_email'].value,
+  )
   }
   public tapBack(){
     this.router.navigate(["/login"])
