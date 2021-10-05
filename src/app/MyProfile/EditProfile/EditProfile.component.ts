@@ -5,6 +5,7 @@ import { ModalDialogParams } from "@nativescript/angular";
 import { AuthService } from "~/app/services/Auth/auth.service";
 import { firebase, firestore } from "@nativescript/firebase";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "EditProfile",
@@ -22,7 +23,8 @@ export class EditProfileComponent implements OnInit {
   constructor(
     private modalDialogParams: ModalDialogParams,
     private auth: AuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -74,6 +76,9 @@ export class EditProfileComponent implements OnInit {
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>Application.getRootView();
     sideDrawer.showDrawer();
+  }
+  public return() {
+    this.modalDialogParams.closeCallback();
   }
 
   public editProfile() {
