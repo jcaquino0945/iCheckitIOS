@@ -50,10 +50,12 @@ export class DashboardComponent implements OnInit {
               (this.userData = user),
                 firestore
                   .collection("users")
-                  .doc(user.uid)
+                  .doc(this.userData.uid)
                   .get()
                   .then(doc => {
                     if (doc.exists) {
+                       //bind doc.data() to userDetails to be used in frontend
+                       this.userDetails = doc.data();
                       // this.myAccomplishedTasks = [];
                       // this.myForApprovalTasks = [];
                       // this.myLateTasks = [];
@@ -132,8 +134,7 @@ export class DashboardComponent implements OnInit {
                           });
                         });
                       });
-                      //bind doc.data() to userDetails to be used in frontend
-                      this.userDetails = doc.data();
+                     
                     } else {
                       console.log("No such document!");
                     }

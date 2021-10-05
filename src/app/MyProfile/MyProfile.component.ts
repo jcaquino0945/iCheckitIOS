@@ -128,7 +128,7 @@ export class MyProfileComponent implements OnInit {
               (this.userData = user),
                 firestore
                   .collection("users")
-                  .doc(this.userData.uid)
+                  .doc(user.uid)
                   .get().then(doc => {
                     if (doc.exists) {
                       console.log(`Document data: ${JSON.stringify(doc.data())}`);
