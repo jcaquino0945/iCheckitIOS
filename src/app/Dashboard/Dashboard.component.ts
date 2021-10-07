@@ -11,6 +11,7 @@ import { firebase, firestore } from "@nativescript/firebase";
   styleUrls: ["./Dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
+  dashboardTitle;
   dateToday = Date.now();
   constructor(private router: Router, private zone: NgZone) {}
   userData;
@@ -22,6 +23,7 @@ export class DashboardComponent implements OnInit {
   myAccomplishedTasks = [];
   verificationTask;
   ngOnInit() {
+    this.dashboardTitle = "My Tasks";
     // this.myTasks.splice(0, this.myTasks.length)
     // this.myAccomplishedTasks.splice(0, this.myAccomplishedTasks.length)
     // this.myForApprovalTasks.splice(0, this.myForApprovalTasks.length)
@@ -54,8 +56,8 @@ export class DashboardComponent implements OnInit {
                   .get()
                   .then(doc => {
                     if (doc.exists) {
-                       //bind doc.data() to userDetails to be used in frontend
-                       this.userDetails = doc.data();
+                      //bind doc.data() to userDetails to be used in frontend
+                      this.userDetails = doc.data();
                       // this.myAccomplishedTasks = [];
                       // this.myForApprovalTasks = [];
                       // this.myLateTasks = [];
@@ -134,7 +136,6 @@ export class DashboardComponent implements OnInit {
                           });
                         });
                       });
-                     
                     } else {
                       console.log("No such document!");
                     }
@@ -159,5 +160,20 @@ export class DashboardComponent implements OnInit {
 
   navigate() {
     this.router.navigate(["/verify"]);
+  }
+
+  onSelectedIndexchanged($event) {
+    console.log($event);
+    if ($event == 0) {
+      this.dashboardTitle = "My Tasks";
+    } else if ($event == 1) {
+      this.dashboardTitle = "My Pending Tasks";
+    } else if ($event == 2) {
+      this.dashboardTitle = "My Late and Closed Tasks";
+    } else if ($event == 3) {
+      this.dashboardTitle = "My For Approval Tasks";
+    } else if ($event == 4) {
+      this.dashboardTitle = "My Accomplished Tasks";
+    }
   }
 }

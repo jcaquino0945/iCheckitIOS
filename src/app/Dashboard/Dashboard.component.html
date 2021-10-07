@@ -7,15 +7,14 @@
       </StackLayout>
       <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
       <StackLayout class="section-1">
-        <Label text="My Tasks" textWrap="true" class="p-10 h1 title"></Label>
+        <Label text="{{ dashboardTitle }}" textWrap="true" class="p-10 h1 title"></Label>
         <Label text="{{ dateToday | date }}" textWrap="true" class="p-10 h2 date"></Label>
       </StackLayout>
     </GridLayout>
   </StackLayout>
 
   <GridLayout class="page__content">
-    <TabView selectedTabTextColor="white" androidSelectedTabHighlightColor="red" androidTabsPosition="bottom">
-
+    <TabView #tabView selectedTabTextColor="white" androidSelectedTabHighlightColor="red" androidTabsPosition="bottom" (selectedIndexChanged)="onSelectedIndexchanged(tabView.selectedIndex)" >
       <StackLayout *tabItem="{ iconSource: 'res://home' }">
         <ScrollView height="1000" *ngIf="myTasks">
           <StackLayout class="task" *ngIf="userDetails.verified == 'Not Verified'">
