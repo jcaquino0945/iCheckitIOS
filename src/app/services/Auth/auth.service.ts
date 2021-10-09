@@ -112,6 +112,56 @@ export class AuthService {
           password: password
         }
       })
+      .then(async (user) => {
+        // firestore.collection('users').doc(user.uid).set({
+        // email: user.email,
+        // uid: user.uid,
+        // displayName: user.displayName,
+        // }, {merge: true})
+
+        const cityRef = firestore.collection('users').doc(user.uid);
+        const doc = await cityRef.get();
+            
+        if (!doc.exists) {
+            console.log('No such document!');
+        } else {
+          cityRef.set({
+            email: user.email,
+            displayName: user.displayName,
+            course: '',
+            contactNumber: '',
+            createdAt: Date.now(),
+            pushToken: '',
+            role: 'Student',
+            section: '',
+            uid: user.uid,
+            verified: 'Not Verified'
+            }, {merge: true})        }
+        // const usersRef = firestore.collection('users').doc(user.uid)
+              //
+        // usersRef.get()
+        //   .then((docSnapshot) => {
+        //     if (docSnapshot.exists) {
+        //       usersRef.onSnapshot((doc) => {
+        //         console.log('already exists in firestore')
+        //         console.log(doc)
+        //       });
+        //     } else {
+        //       usersRef.set({
+                // email: user.email,
+                // displayName: user.displayName,
+                // course: '',
+                // contactNumber: '',
+                // createdAt: Date.now(),
+                // pushToken: '',
+                // role: 'Student',
+                // section: '',
+                // uid: user.uid,
+                // verified: 'Not Verified'
+        //       }) // create the document
+        //     }
+        // });
+      })
       .then(() => {
         this.routerExtensions.navigate(["dashboard"], {
           transition: {
