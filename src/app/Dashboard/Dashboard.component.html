@@ -18,7 +18,7 @@
       <StackLayout *tabItem="{ iconSource: 'res://home' }">
         <ScrollView height="1000" *ngIf="myTasks">
           <StackLayout>
-            <StackLayout class="task" *ngIf="userDetails.verified == 'Not Verified'">
+            <StackLayout class="task" *ngIf="userDetails.section == ''">
               <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
               <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
                 <GridLayout columns="*,auto">
@@ -35,7 +35,7 @@
                 </GridLayout>
               </FlexboxLayout>
             </StackLayout>
-            <StackLayout class="task" *ngIf="userDetails.verified == 'Enrolled'">
+            <StackLayout class="task">
               <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngFor="let task of myTasks">
                 <GridLayout columns="*,auto">
                   <FlexboxLayout col="0">
@@ -80,7 +80,7 @@
 
       <StackLayout *tabItem="{ iconSource: 'res://pending' }">
         <ScrollView height="1000" *ngIf="myPendingTasks">
-          <StackLayout *ngIf="userDetails.verified == 'Enrolled'">
+          <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(pending.taskId)"
               *ngFor="let pending of myPendingTasks">
               <GridLayout columns="*,auto">
@@ -105,7 +105,7 @@
 
       <StackLayout *tabItem="{ iconSource: 'res://exclamationmark' }">
         <ScrollView height="1000" *ngIf="myLateTasks">
-          <StackLayout *ngIf="userDetails.verified == 'Enrolled'">
+          <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks"> 
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
@@ -128,7 +128,7 @@
 
       <StackLayout *tabItem="{ iconSource: 'res://glass' }">
         <ScrollView height="1000" *ngIf="myForApprovalTasks">
-          <StackLayout *ngIf="userDetails.verified == 'Enrolled'">
+          <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(forApproval.taskId)" *ngFor="let forApproval of myForApprovalTasks">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
@@ -152,7 +152,7 @@
 
       <StackLayout *tabItem="{ iconSource: 'res://check' }">
         <ScrollView height="1000" *ngIf="myAccomplishedTasks">
-          <StackLayout *ngIf="userDetails.verified == 'Enrolled'">
+          <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(accomplished.taskId)" *ngFor="let accomplished of myAccomplishedTasks">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
