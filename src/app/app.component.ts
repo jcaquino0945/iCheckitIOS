@@ -57,39 +57,23 @@ export class AppComponent implements OnInit {
         }
       );
     // configure a listener:
-    // var listener = {
-    //   onAuthStateChanged: function(data) {
-    //     console.log(
-    //       data.loggedIn ? "Logged in to firebase" : "Logged out from firebase"
-    //     );
-    //     if (data.loggedIn) {
-    //       this.router.navigate(["/dashboard"]);
-    //     } else if (!data.loggedIn) {
-    //       alert("You session has expired. Please login again");
-    //       this.router.navigate(["/login"]);
-    //     }
-    //   },
-    //   thisArg: this
-    // };
-     var listener = {
+    var listener = {
       onAuthStateChanged: function(data) {
         console.log(
           data.loggedIn ? "Logged in to firebase" : "Logged out from firebase"
         );
         if (data.loggedIn) {
-          firebase.getCurrentPushToken().then((token: string) => {
-            const userDocument = firestore.collection("users");
-            userDocument.doc(data.user.uid).set({
-            pushToken: token
-            }, { merge: true });
-          });  
-          
-          // this.router.navigate(["/dashboard"]);
-          
-        } else if (!data.loggedIn) {
+          this.routerExtensions.navigate(["dashboard"], {
+            transition: {
+              name: "fade"
+            }
+          });        } else if (!data.loggedIn) {
           alert("You session has expired. Please login again");
-          // this.router.navigate(["/login"]);
-        }
+          this.routerExtensions.navigate(["login"], {
+            transition: {
+              name: "fade"
+            }
+          });        }
       },
       thisArg: this
     };

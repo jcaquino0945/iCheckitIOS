@@ -112,7 +112,7 @@ export class AuthService {
           password: password
         }
       })
-      .then((user) => {
+      .then(async (user) => {
         // firestore.collection('users').doc(user.uid).set({
         // email: user.email,
         // uid: user.uid,
@@ -124,7 +124,14 @@ export class AuthService {
         usersRef.get()
           .then((docSnapshot) => {
             if (docSnapshot.exists) {
-              alert('exist!' + user.uid)
+              usersRef.onSnapshot((doc) => {
+                firebase.getCurrentPushToken().then((token: string) => {
+                // do stuff with the data
+                  usersRef.set({
+                  pushToken: token
+                  }, { merge: true });              
+                })
+              });  
             } else {
               alert('does not exist!' + user.uid)
               firebase.getCurrentPushToken().then((token: string) => {
@@ -150,6 +157,8 @@ export class AuthService {
           }
         });
       })
+      .catch(error => console.log(error));
+
 
         // const cityRef = firestore.collection('users').doc(user.uid);
         // const doc = await cityRef.get();
