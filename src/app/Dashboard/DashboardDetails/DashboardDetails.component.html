@@ -20,11 +20,13 @@
                     <Label text="Status: &#xa;" class="m-r-5 h2 task"></Label>
                     <Label text="{{task.status}}" class="h3 task"></Label>
                 </StackLayout>
-                <StackLayout class="p-10 m-x-10 m-y-10 task-late" *ngIf="task.status == 'Late' && task.deadlineLimit == 0">
+                <StackLayout class="p-10 m-x-10 m-y-10 task-late"
+                    *ngIf="task.status == 'Late' && task.deadlineLimit == 0">
                     <Label text="Status: &#xa;" class="m-r-5 h2 task"></Label>
                     <Label text="Closed" class="h3 task"></Label>
                 </StackLayout>
-                <StackLayout class="p-10 m-x-10 m-y-10 task-late" *ngIf="task.status == 'Late' && task.deadlineLimit != 0">
+                <StackLayout class="p-10 m-x-10 m-y-10 task-late"
+                    *ngIf="task.status == 'Late' && task.deadlineLimit != 0">
                     <Label text="Status: &#xa;" class="m-r-5 h2 task"></Label>
                     <Label text="{{task.status}}" class="h3 task"></Label>
                 </StackLayout>
@@ -75,7 +77,10 @@
 
 
                 <StackLayout class="m-y-10 m-x-10 p-10 task-content">
-                    <Label text="View Proof of Completion / Attendance" textWrap="true" class="h2 title-1"></Label>
+                    <GridLayout columns="auto,*">
+                        <Label text="View Proof of Completion / Attendance" textWrap="true" class="h2 title-1" col="0"></Label>
+                        <Label text="&#xf2ed;" textWrap="true" class="m-t-5 far h3icon-cancel" col="1" colSpan="2"></Label>
+                    </GridLayout>
                     <FlexboxLayout>
                         <Label text=" " textWrap="true" class="rectangle-pending"
                             *ngIf="task.status =='Pending'"></Label>
@@ -138,7 +143,8 @@
 
         </StackLayout>
     </ScrollView>
-    <FlexboxLayout class="text-submit" (tap)="submitTask()" *ngIf="task.status == 'Pending' && task.attemptsLeft != 0" row="1">
+    <FlexboxLayout class="text-submit" (tap)="submitTask()" *ngIf="task.status == 'Pending' && task.attemptsLeft != 0"
+        row="1">
         <Label text="&#xf0c6;" textWrap="true" class="p-10 fas h3 icon"></Label>
         <Label text="SUBMIT TASK" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
     </FlexboxLayout>

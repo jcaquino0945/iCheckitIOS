@@ -20,6 +20,11 @@
   margin-top: 11;
 }
 
+.icon-cancel{
+  margin-top: 9;
+  color: black;
+}
+
 .nav-button {
   color: white;
 }
@@ -39,7 +44,7 @@
 }
 
 .task {
-    color: white;
+  color: white;
 }
 
 .task-pending,
@@ -151,4 +156,8 @@
   font-weight: 400;
   text-decoration: underline;
   color: blue;
+}
+
+.title-1-button {
+  font-family: "FontAwesome";
 }
