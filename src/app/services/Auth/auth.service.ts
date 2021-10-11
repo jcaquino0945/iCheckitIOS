@@ -124,20 +124,7 @@ export class AuthService {
         usersRef.get()
           .then((docSnapshot) => {
             if (docSnapshot.exists) {
-              usersRef.onSnapshot((doc) => {
-                firebase.getCurrentPushToken().then((token: string) => {
-                // do stuff with the data
-                  usersRef.set({
-                  pushToken: token
-                  }, { merge: true });              
-                }).then(() => {
-                  this.routerExtensions.navigate(["dashboard"], {
-                    transition: {
-                      name: "fade"
-                    }
-                  });
-                });
-              });  
+              alert('exist!' + user.uid)
             } else {
               alert('does not exist!' + user.uid)
               firebase.getCurrentPushToken().then((token: string) => {
@@ -153,14 +140,14 @@ export class AuthService {
                   uid: user.uid,
                   verified: 'Not Verified'
                   }, {merge: true})  
-              }).then(() => {
-                this.routerExtensions.navigate(["dashboard"], {
-                  transition: {
-                    name: "fade"
-                  }
-                });
               })
             }
+        });
+      }).then(() => {
+        this.routerExtensions.navigate(["dashboard"], {
+          transition: {
+            name: "fade"
+          }
         });
       })
 
