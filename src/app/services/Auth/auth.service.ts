@@ -112,31 +112,78 @@ export class AuthService {
           password: password
         }
       })
-      .then(async (user) => {
+      .then((user) => {
         // firestore.collection('users').doc(user.uid).set({
         // email: user.email,
         // uid: user.uid,
         // displayName: user.displayName,
         // }, {merge: true})
 
-        const cityRef = firestore.collection('users').doc(user.uid);
-        const doc = await cityRef.get();
+        const usersRef = firestore.collection('users').doc(user.uid)
+
+        usersRef.get()
+          .then((docSnapshot) => {
+            if (docSnapshot.exists) {
+              usersRef.onSnapshot((doc) => {
+                firebase.getCurrentPushToken().then((token: string) => {
+                // do stuff with the data
+                  usersRef.set({
+                  pushToken: token
+                  }, { merge: true });              
+                }).then(() => {
+                  this.routerExtensions.navigate(["dashboard"], {
+                    transition: {
+                      name: "fade"
+                    }
+                  });
+                });
+              });  
+            } else {
+              alert('does not exist!' + user.uid)
+              firebase.getCurrentPushToken().then((token: string) => {
+                usersRef.set({
+                  email: user.email,
+                  displayName: user.displayName,
+                  course: '',
+                  contactNumber: '',
+                  createdAt: Date.now(),
+                  pushToken: token,
+                  role: 'Student',
+                  section: '',
+                  uid: user.uid,
+                  verified: 'Not Verified'
+                  }, {merge: true})  
+              }).then(() => {
+                this.routerExtensions.navigate(["dashboard"], {
+                  transition: {
+                    name: "fade"
+                  }
+                });
+              })
+            }
+        });
+      })
+
+        // const cityRef = firestore.collection('users').doc(user.uid);
+        // const doc = await cityRef.get();
             
-        if (!doc.exists) {
-            console.log('No such document!');
-        } else {
-          cityRef.set({
-            email: user.email,
-            displayName: user.displayName,
-            course: '',
-            contactNumber: '',
-            createdAt: Date.now(),
-            pushToken: '',
-            role: 'Student',
-            section: '',
-            uid: user.uid,
-            verified: 'Not Verified'
-            }, {merge: true})        }
+        // if (doc.exists) {
+        //   alert('NADITO SYA')
+        // } else {
+        //   alert('WALA SYA DITO')
+          // cityRef.set({
+          //   email: user.email,
+          //   displayName: user.displayName,
+          //   course: '',
+          //   contactNumber: '',
+          //   createdAt: Date.now(),
+          //   pushToken: '',
+          //   role: 'Student',
+          //   section: '',
+          //   uid: user.uid,
+          //   verified: 'Not Verified'
+          //   }, {merge: true})      
+          //   })
         // const usersRef = firestore.collection('users').doc(user.uid)
               //
         // usersRef.get()
@@ -161,15 +208,13 @@ export class AuthService {
         //       }) // create the document
         //     }
         // });
-      })
-      .then(() => {
-        this.routerExtensions.navigate(["dashboard"], {
-          transition: {
-            name: "fade"
-          }
-        });
-      })
-      .catch(error => console.log(error));
+      // .then(() => {
+      //   this.routerExtensions.navigate(["dashboard"], {
+      //     transition: {
+      //       name: "fade"
+      //     }
+      //   });
+      // })
   }
 
   logout() {
