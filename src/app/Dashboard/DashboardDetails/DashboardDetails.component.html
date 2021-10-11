@@ -75,12 +75,8 @@
                         </FlexboxLayout>
                     </StackLayout> -->
 
-
                 <StackLayout class="m-y-10 m-x-10 p-10 task-content">
-                    <GridLayout columns="auto,*">
-                        <Label text="View Proof of Completion / Attendance" textWrap="true" class="h2 title-1" col="0"></Label>
-                        <Label text="&#xf2ed;" textWrap="true" class="m-t-5 far h3icon-cancel" col="1" colSpan="2"></Label>
-                    </GridLayout>
+                    <Label text="View Proof of Completion / Attendance" textWrap="true" class="h2 title-1"></Label>
                     <FlexboxLayout>
                         <Label text=" " textWrap="true" class="rectangle-pending"
                             *ngIf="task.status =='Pending'"></Label>
@@ -96,6 +92,8 @@
                         <Image text="{{task.submissionLink}}" (tap)="onTap(task.submissionLink)" textWrap="true"
                             class="p-10 task-submission" *ngIf="task.submissionLink != ''"></Image>
                     </FlexboxLayout>
+                    <Button text="&#xf2ed; Cancel your Submission" class="fas icon-cancel"
+                        *ngIf="task.submissionLink != ''"></Button>
                 </StackLayout>
 
                 <!-- <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()"

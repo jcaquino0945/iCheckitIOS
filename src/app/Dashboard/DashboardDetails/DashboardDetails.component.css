@@ -22,7 +22,13 @@
 
 .icon-cancel{
   margin-top: 9;
-  color: black;
+  color: white;
+  background: #35414f;
+  width: 800;
+}
+
+.button-cancel {
+  font-family: "Abel-Regular";
 }
 
 .nav-button {
