@@ -106,7 +106,7 @@
       <StackLayout *tabItem="{ iconSource: 'res://exclamationmark' }">
         <ScrollView height="1000" *ngIf="myLateTasks">
           <StackLayout *ngIf="userDetails.verified == 'Enrolled'">
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks"> 
+            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
                   <!-- <Label text=" " textWrap="true" class="rectangle-late"></Label>
