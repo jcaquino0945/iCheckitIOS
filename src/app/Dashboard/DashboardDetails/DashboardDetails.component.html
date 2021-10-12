@@ -92,8 +92,12 @@
                         <Image text="{{task.submissionLink}}" (tap)="onTap(task.submissionLink)" textWrap="true"
                             class="p-10 task-submission" *ngIf="task.submissionLink != ''"></Image>
                     </FlexboxLayout>
-                    <Button text="&#xf2ed; Cancel your Submission" class="fas icon-cancel"
-                        *ngIf="task.submissionLink != ''"></Button>
+                    <!-- <Button text="&#xf2ed; Cancel your Submission" class="fas icon-cancel"
+                        *ngIf="task.submissionLink != ''"></Button> -->
+                    <FlexboxLayout class="icon-cancel" *ngIf="task.submissionLink != ''" (tap)="onDel()">
+                        <Label text="&#xf2ed;" textWrap="true" class="p-10 fas h3 icon"></Label>
+                        <Label text="Cancel your Submission" textWrap="true" class="m-y-10 p-10 h3" style="color: white;"></Label>
+                    </FlexboxLayout>
                 </StackLayout>
 
                 <!-- <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()"
