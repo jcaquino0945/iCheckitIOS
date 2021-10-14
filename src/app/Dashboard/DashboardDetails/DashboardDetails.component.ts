@@ -10,7 +10,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Http, HttpResponse } from "@nativescript/core";
 import { ViewContainerRef } from "@angular/core";
 import { ModalDialogService } from "@nativescript/angular";
-
 import {
   Mediafilepicker,
   FilePickerOptions
@@ -99,8 +98,12 @@ export class DashboardDetailsComponent implements OnInit {
 
   submitTask() {
     let extensions = [];
-
-    extensions = ["png", "pdf", "jpg"];
+ 
+    if (Application.ios) {
+        extensions = [kUTTypePDF, kUTTypeText,kUTTypeImage]; // you can get more types from here: https://developer.apple.com/documentation/mobilecoreservices/uttype
+    } else {
+      extensions = ["png", "pdf", "jpg"];
+    }
 
     let options: FilePickerOptions = {
       android: {
@@ -134,7 +137,7 @@ export class DashboardDetailsComponent implements OnInit {
             const path = `${this.taskData.uid}/${this.myFile.split(/(\\|\/)/g).pop()}/`;
             console.log(path);
             var metadata = ({});
-            
+
             storage.uploadFile({
               remoteFullPath: path,
               localFullPath: result.file,
@@ -163,33 +166,6 @@ export class DashboardDetailsComponent implements OnInit {
                       attemptsLeft: this.taskData.attemptsLeft - 1,
                       deadlineLimit: this.taskData.deadlineLimit
                     }
-
-
-
-              
-
-                    // Http.request({
-                    //   url: "https://us-central1-icheckit-6a8bb.cloudfunctions.net/sendEmail",
-                    //   method: "POST",
-                    //   headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-                    //   content: JSON.stringify({
-                    //     email: updatedTaskData.email,
-                    //     uploadedBy: updatedTaskData.uploadedBy,
-                    //     title: updatedTaskData.uploadedBy,
-                    //     deadline: updatedTaskData.deadline,
-                    //     description: updatedTaskData.description,
-                    //     status: 'For Approval',
-                    //     message: 'Your task status has been updated to For Approval!',
-                    //     instructions: 'Your submission was received! Please wait for the admin to verify your submission.'
-                    //   }),
-                    // }).then(
-                    //   (response: HttpResponse) => {
-                    //     const result = response.content.toJSON();
-                    //     console.log(`Http POST Result: ${result}`)
-                    //   },
-                    //   (e) => {
-                    //     console.log(e)
-                    //   })
 
                       firestore.collection("tasks").doc(this.taskData.taskId)
                         .update({                       
@@ -223,109 +199,8 @@ export class DashboardDetailsComponent implements OnInit {
                               console.log("No such document!");
                             }
                           });
-                        })
-                          // const fn = firebaseFunctions.httpsCallable("helloName");
-
-                          // // firebaseFunctions.httpsCallable
-                          // Http.request({
-                          //   url: "https://us-central1-icheckit-6a8bb.cloudfunctions.net/sendEmail",
-                          //   method: "POST",
-                          //   headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-                          //   content: new URLSearchParams({
-                          //     "username": viewModel.get("username"),
-                          //     "firstname": viewModel.get("firstname"),
-                          //     "lastname": viewModel.get("lastname"),
-                          //     "email": viewModel.get("email"),
-                          //     "password": viewModel.get("password")
-                          //   }),
-                          // }).then(
-                          //   (response: HttpResponse) => {
-                          //     const result = response.content.toJSON();
-                          //     console.log(`Http POST Result: ${result}`)
-                          //   },
-                          //   (e) => {
-                          //     console.log(e)
-                          //   }
-                          // );
-
-
-                          // const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-                          // const params: URLSearchParams = new URLSearchParams();
-
-                          //   // console.log(newData.email);
-                          // let email = this.taskData.email;
-                          // let uploadedBy = this.taskData.uploadedBy;
-                          // let title = this.taskData.title;
-                          // let deadline = this.taskData.deadline;
-                          // let description = this.taskData.description;
-                          // let status = 'For Approval';
-                          // let message = 'Your task status has been updated to ' + status + '!';
-                          // let instructions = 'Your submission was received! Please wait for the admin to verify your submission.'
-
-                          // params.set('email', email);
-                          // params.set('uploadedBy', uploadedBy);
-                          // params.set('title', title);
-                          // params.set('deadline', deadline);
-                          // params.set('description', description);
-                          // params.set('status', status);
-                          // params.set('message', message);
-                          // params.set('instructions', instructions);
-
-
-                          // return this.http.post(`https://us-central1-icheckit-6a8bb.cloudfunctions.net/sendEmail`, {
-                          // email,
-                          // uploadedBy,
-                          // title,
-                          // deadline,
-                          // description,
-                          // status,
-                          // message,
-                          // instructions
-                          // }, {
-                          //   headers
-                          // }).toPromise().then(
-                          //   () => {
-                          //     console.log('Email has been sent to ' + email)
-                          //   }
-                          // ).catch((err) => {
-                          //   console.log(err)
-                          // })
-
-                          
-              } 
-                  // function (url) {
-                  //   let updatedTaskData = {
-                  //     createdAt: this.taskData.createdAt,
-                  //     deadline: this.taskData.deadline,                      
-                  //     description: this.taskData.description,
-                  //     displayName: this.taskData.displayName,
-                  //     email: this.taskData.email,
-                  //     section: this.taskData.section,
-                  //     status: 'For Approval',
-                  //     submissionLink: url,
-                  //     taskId: this.taskData.taskId,
-                  //     title: this.taskData.title,
-                  //     uid: this.taskData.uid,
-                  //     uploadedBy: this.taskData.uploadedBy,
-                  //   }
-                    
-                  //   firestore.collection("tasks").doc(this.taskData.taskId)
-                  //     .update({                       
-                  //       colors2: firestore.FieldValue.arrayRemove(this.taskData)
-                  //     }).then(() => {
-                  //       firestore.collection("tasks").doc(this.taskData.taskId)
-                  //     .update({                       
-                  //       colors2: firestore.FieldValue.arrayUnion(updatedTaskData)
-                  //     })
-                  //     })
-                  //     .then(() => {
-                  //       alert('File has been uploaded')
-                  //     })
-                  //   console.log("Remote URL: " + url);
-                  // },
-                  // function (error) {
-                  //   console.log("Error: " + error);
-                  // }
+                        })  
+                }   
               );
             }).catch((err) => {
               alert(err)

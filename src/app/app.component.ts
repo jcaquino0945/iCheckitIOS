@@ -36,7 +36,6 @@ export class AppComponent implements OnInit {
       .init({
         showNotifications: true,
         showNotificationsWhenInForeground: true,
-        iOSEmulatorFlush: true,
         onPushTokenReceivedCallback: (token) => {
           console.log('[Firebase] onPushTokenReceivedCallback:', { token });
           console.log('my push token:' + token);

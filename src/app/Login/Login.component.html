@@ -4,11 +4,11 @@
 <button text="Log in" class="btn-registrationButton" (tap)="login()" ></button>
 a-->
 <StackLayout>
-<StackLayout>
+<!-- <StackLayout>
     <FlexboxLayout class="page">
         <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="bg-image"></Image>
     </FlexboxLayout>
-</StackLayout>
+</StackLayout> -->
 
 <StackLayout>
     <ScrollView>
@@ -30,7 +30,7 @@ a-->
     
                         <GridLayout columns="*, *, auto" rows="auto, auto" colspan="2" class="m-y-10">
     
-                            <Label text="Email" class="email-text"></Label>
+                            <Label class="email-text"></Label>
                             <TextField class="input" hint="Enter your email" colspan="2" formControlName="_email">
                             </TextField>
                             <StackLayout class="hr-light"></StackLayout>
@@ -44,7 +44,7 @@ a-->
     
                         <GridLayout columns="auto, *, auto" colspan="2" rows="auto, 1" class="m-y-10">
     
-                            <Label text="Password" class="password-text"></Label>
+                            <Label class="password-text"></Label>
                             <TextField #passwordField class="input" hint="Enter your password" secure="True" colspan="2"
                                 formControlName="_password">
                             </TextField>
