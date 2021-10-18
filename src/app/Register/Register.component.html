@@ -33,6 +33,7 @@
                                     class="validation-error"></Label>
         
                                 <GridLayout columns="*, *" rows="auto, auto" colspan="2">
+                                    <Label class="email-text" col="0"></Label>
                                     <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
                                     <TextField class="input" hint="Enter your email:" formControlName="_email" colspan="2">
                                     </TextField>
@@ -44,7 +45,7 @@
                                     class="validation-error"></Label>
         
                                 <GridLayout columns="*, *, auto" rows="auto, 1" colspan="2">
-                                    <Label text="Enter Full Name:" class="FullName-text"></Label>
+                                    <Label class="FullName-text"></Label>
                                     <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
                                     <TextField class="input" hint="Enter your Fullname:" formControlName="_fullName"
                                         colspan="2">
@@ -57,7 +58,7 @@
                                     class="validation-error"></Label>
         
                                 <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
-                                    <Label text="Enter Contact Number:" class="contactNum-text"></Label>
+                                    <Label class="contactNum-text"></Label>
                                     <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
                                     <TextField class="input" hint="Enter your Contact Number:" formControlName="_contactNumber"
                                         colspan="2">
@@ -70,7 +71,7 @@
                                     class="validation-error"></Label>
         
                                 <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
-                                    <Label text="Password:" class="password-text"></Label>
+                                    <Label class="password-text"></Label>
                                     <TextField #passwordField class="input" hint="Enter your password" secure="true"
                                         formControlName="_password" colspan="2"></TextField>
                                     <Label class="fas" text="&#xf06e;" colspan="2" *ngIf="!isToggled"

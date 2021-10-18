@@ -97,6 +97,8 @@ export class DashboardDetailsComponent implements OnInit {
   // }
 
   submitTask() {
+    // var fs = require("tns-core-modules/file-system");
+
     let extensions = [];
  
     if (Application.ios) {
@@ -112,8 +114,8 @@ export class DashboardDetailsComponent implements OnInit {
       },
       ios: {
         extensions: extensions,
-        multipleSelection: true,
-        hostView: this._hostView
+        multipleSelection: false,
+        // hostView: this._hostView
       }
     };
 
@@ -129,18 +131,24 @@ export class DashboardDetailsComponent implements OnInit {
         if (results) {
           for (let i = 0; i < results.length; i++) {
             let result = results[i];
-            console.log(result.file);
+            // console.log(result.file);
             this.myFile = result.file;
+            // console.log(this.myFile)
+            // .replace(/ /g, "%20")
+            // this.myFile = this.myFile.replace(/ /g, "%20")
             // this.myFile = this.myFile.split(/(\\|\/)/g).pop()
-            console.log(this.myFile);
+            let iosUrl = result.file.replace("file:///", "")
+            // alert(iosUrl);
 
             const path = `${this.taskData.uid}/${this.myFile.split(/(\\|\/)/g).pop()}/`;
-            console.log(path);
+            // console.log(path);
             var metadata = ({});
 
+            // alert(path)
+            // alert(result.file)
             storage.uploadFile({
               remoteFullPath: path,
-              localFullPath: result.file,
+              localFullPath: iosUrl,
               metadata
             }).then(() => {
               storage.getDownloadUrl({
@@ -204,6 +212,7 @@ export class DashboardDetailsComponent implements OnInit {
               );
             }).catch((err) => {
               alert(err)
+              console.log(err)
             })
           }
         }
@@ -240,3 +249,4 @@ export class DashboardDetailsComponent implements OnInit {
     openUrl(url);
   }
 }
+// /Users/chescaestonido/Library/Developer/CoreSimulator/Devices/927991DE-DB29-48B3-8BA9-DB2DC66F3865/data/Containers/Data/Application/062B2B21-C5A7-4062-87FA-3D6A65D22C71/tmp/org.nativescript.iCheckit-Inbox/IMG_0008.JPG
