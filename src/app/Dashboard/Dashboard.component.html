@@ -1,4 +1,3 @@
-<StackLayout>
   <FlexboxLayout flexDirection="column">
     <StackLayout>
       <GridLayout height="500">
@@ -108,7 +107,7 @@
           <ScrollView height="1000" *ngIf="myLateTasks">
             <StackLayout>
               <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks"> 
-                <GridLayout columns="*,*">
+                <GridLayout columns="*,auto">
                   <FlexboxLayout col="0">
                     <!-- <Label text=" " textWrap="true" class="rectangle-late"></Label>
                     <StackLayout>
@@ -131,7 +130,7 @@
           <ScrollView height="1000" *ngIf="myForApprovalTasks">
             <StackLayout>
               <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(forApproval.taskId)" *ngFor="let forApproval of myForApprovalTasks">
-                <GridLayout columns="*,*">
+                <GridLayout columns="*,auto">
                   <FlexboxLayout col="0">
                     <!-- <Label text=" " textWrap="true" class="rectangle-approval"></Label>
                     <StackLayout>
@@ -155,7 +154,7 @@
           <ScrollView height="1000" *ngIf="myAccomplishedTasks">
             <StackLayout>
               <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(accomplished.taskId)" *ngFor="let accomplished of myAccomplishedTasks">
-                <GridLayout columns="*,*">
+                <GridLayout columns="*,auto">
                   <FlexboxLayout col="0">
                     <!-- <Label text=" " textWrap="true" class="rectangle-ok"></Label>
                     <StackLayout>
@@ -177,5 +176,4 @@
       </TabView>
     </GridLayout>
   </FlexboxLayout>
-</StackLayout>
 

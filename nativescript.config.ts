@@ -1,7 +1,7 @@
 import { NativeScriptConfig } from '@nativescript/core';
 
 export default {
-  id: 'org.nativescript.iCheckit',
+  id: 'org.nativescript.iCheckitIOS',
   appPath: 'src',
   appResourcesPath: 'App_Resources',
   android: {
