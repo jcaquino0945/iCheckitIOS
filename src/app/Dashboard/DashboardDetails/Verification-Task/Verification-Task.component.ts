@@ -73,7 +73,11 @@ export class VerificationTaskComponent implements OnInit {
 
 			let extensions = [];
 
-			extensions = ["png", "pdf", "jpg"];
+			if (Application.ios) {
+				extensions = [kUTTypePDF, kUTTypeText,kUTTypeImage]; // you can get more types from here: https://developer.apple.com/documentation/mobilecoreservices/uttype
+			} else {
+			  extensions = ["png", "pdf", "jpg"];
+			}
 		
 			let options: FilePickerOptions = {
 			  android: {
@@ -82,8 +86,7 @@ export class VerificationTaskComponent implements OnInit {
 			  },
 			  ios: {
 				extensions: extensions,
-				multipleSelection: true,
-				hostView: this._hostView
+        		multipleSelection: false,
 			  }
 			};
 		
@@ -103,14 +106,15 @@ export class VerificationTaskComponent implements OnInit {
 					this.myFile = result.file;
 					// this.myFile = this.myFile.split(/(\\|\/)/g).pop()
 					console.log(this.myFile);
-		
+		            let iosUrl = result.file.replace("file:///", "")
+
 					const path = `60ThDEIPXLwWD8aHYs8E/${this.myFile.split(/(\\|\/)/g).pop()}/`;
 					console.log(path);
 					var metadata = ({});
 					
 					storage.uploadFile({
 					  remoteFullPath: path,
-					  localFullPath: result.file,
+					  localFullPath: iosUrl,
 					  metadata
 					}).then(() => {
 					  storage.getDownloadUrl({
