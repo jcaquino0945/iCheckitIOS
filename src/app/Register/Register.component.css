@@ -14,8 +14,8 @@
 .form {
   margin-left: 23;
   margin-right: 23;
-  margin-top: 10;
-  margin-bottom: 10;
+  margin-top: 15;
+  margin-bottom: 5;
   opacity: 1;
   vertical-align: middle;
   background-color: white;
@@ -31,16 +31,12 @@
   padding-bottom: 15;
   font-family: Abel;
 }
-.fas {
-  font-size: 17;
-  margin-left: 1;
-  margin-top: 15;
-  padding-right: 10;
-}
+
 .fas {
   font-size: 17;
   margin-right: 35;
   horizontal-align: right;
+  margin-top: 15;
 }
 .header {
   font-size: 20;

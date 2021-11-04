@@ -2,12 +2,13 @@
     <GridLayout rows="*, auto" *ngIf="taskData as task">
         <ScrollView>
             <StackLayout row="0">
-                <GridLayout height="300">
+                <GridLayout height="200">
                     <StackLayout class="top">
                         <Image src="~/app/images/USTbg.png" stretch="aspectFill" class="top-img"> </Image>
                     </StackLayout>
-                    <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
-                    <StackLayout class="section-1">
+                    <StackLayout style="vertical-align: top; padding: 5;">
+                        <Label class="h2 fas p-5 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+                        </StackLayout>                    <StackLayout class="section-1">
                         <Label text="{{task.title}}" textWrap="true" class="h1 title"></Label>
                     </StackLayout>
                 </GridLayout>
@@ -56,7 +57,7 @@
                                 *ngIf="task.status =='For Approval'"></Label>
                             <Label text=" " textWrap="true" class="rectangle-accomplished"
                                 *ngIf="task.status =='Accomplished'"></Label>
-                            <Label text="{{task.description}}" textWrap="true" class="p-10 task-details"></Label>
+                            <Label text="{{task.description}}" textWrap="true" class="p-5"></Label>
                         </FlexboxLayout>
                     </StackLayout>
 
@@ -76,7 +77,7 @@
                             </FlexboxLayout>
                         </StackLayout> -->
 
-                    <StackLayout class="m-y-10 m-x-10 p-10 task-content">
+                    <StackLayout class="m-y-10 m-x-10 p-10 task-content" *ngIf="task.status == 'For Approval' || task.status == 'Accomplished'">
                         <Label text="View Proof of Completion / Attendance" textWrap="true" class="h2 title-1"></Label>
                         <FlexboxLayout>
                             <Label text=" " textWrap="true" class="rectangle-pending"

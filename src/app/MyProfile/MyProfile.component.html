@@ -1,15 +1,17 @@
 <StackLayout>
   <ScrollView>
     <StackLayout>
-      <GridLayout height="300">
+      <GridLayout height="150">
         <StackLayout class="top">
           <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img">
           </Image>
         </StackLayout>
-        <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+        <StackLayout style="vertical-align: top; padding: 5;">
+          <Label class="h2 fas p-5 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+          </StackLayout>
         <StackLayout class="section-1">
           <!-- <Image class="nt-drawer__header-image fas prof-img" src="font://&#xf2bd;"></Image> -->
-          <Label text="{{ userDetails.displayName }}" textWrap="true" class="m-b-30 h1 prof-name"></Label>
+          <Label text="{{ userDetails.displayName }}" textWrap="true" class="h1 prof-name"></Label>
         </StackLayout>
       </GridLayout>
   
@@ -29,7 +31,7 @@
   
             <Label text="Full Name: {{ userDetails.displayName }}" textWrap="true"></Label>
             <Label text="Course: {{ userDetails.course }}" textWrap="true"></Label>
-            <Label text="Section: {{ userDetails.section }}" textWrap="true"></Label>
+            <Label text="Section: {{ section }}" textWrap="true"></Label>
             <Label text="Email: {{ userDetails.email }}" textWrap="true"></Label>
             <Label text="Contact Number: {{ userDetails.contactNumber }}" textWrap="true"></Label>
           </StackLayout>

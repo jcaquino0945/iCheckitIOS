@@ -18,6 +18,7 @@ import { firebase, firestore } from "@nativescript/firebase";
 export class MyProfileComponent implements OnInit {
   userData;
   userDetails;
+  section;
   myTasks = [];
   myPendingTasks = [];
   myLateTasks = [];
@@ -34,9 +35,8 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit() {
     const citiesCollection = firestore.collection("tasks");
-
-    citiesCollection.onSnapshot((snapshot: firestore.QuerySnapshot) => {
-      snapshot.forEach(() => {      
+    this.section = '';
+   
           this.zone.run(() => {
               firebase
               .getCurrentUser()
@@ -49,6 +49,7 @@ export class MyProfileComponent implements OnInit {
                     .then(doc => {
                       if (doc.exists) {
                         this.userDetails = doc.data();
+                        this.section = doc.data().section;
 
                         // this.myAccomplishedTasks = [];
                         // this.myForApprovalTasks = [];
@@ -114,8 +115,7 @@ export class MyProfileComponent implements OnInit {
               })
               .catch(error => console.log("Trouble in paradise: " + error));
             })
-            });
-          });
+           
 
     const userCollection = firestore.collection("users");
 
@@ -133,6 +133,8 @@ export class MyProfileComponent implements OnInit {
                     if (doc.exists) {
                       console.log(`Document data: ${JSON.stringify(doc.data())}`);
                       this.userDetails = doc.data();
+                      this.section = doc.data().section;
+
                     } else {
                       console.log("No such document!");
                     }

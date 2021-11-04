@@ -27,22 +27,27 @@ a-->
                         <Label text="This Field is Required"
                             *ngIf="loginForm.controls._email.errors?.required && loginForm.controls._email.touched"
                             class="validation-error"></Label>
-    
-                        <GridLayout columns="*, *, auto" rows="auto, auto" colspan="2" class="m-y-10">
+                            <TextField class="input" hint="Enter your email" colspan="2" formControlName="_email">
+                            </TextField>
+
+                        <!-- <GridLayout columns="*, *, auto" rows="auto, auto" colspan="2" class="m-y-10">
     
                             <Label class="email-text"></Label>
                             <TextField class="input" hint="Enter your email" colspan="2" formControlName="_email">
-                            </TextField>
                             <StackLayout class="hr-light"></StackLayout>
                             <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
     
-                        </GridLayout>
+                        </GridLayout> -->
     
                         <Label text="This field is required"
                             *ngIf="loginForm.controls._password.errors?.required && loginForm.controls._password.touched || loginForm.controls._password.errors?.email"
                             class="validation-error"></Label>
+
+                            <TextField #passwordField class="input" hint="Enter your password" secure="True" colspan="2"
+                                formControlName="_password">
+                            </TextField>
     
-                        <GridLayout columns="auto, *, auto" colspan="2" rows="auto, 1" class="m-y-10">
+                        <!-- <GridLayout columns="auto, *, auto" colspan="2" rows="auto, 1" class="m-y-10">
     
                             <Label class="password-text"></Label>
                             <TextField #passwordField class="input" hint="Enter your password" secure="True" colspan="2"
@@ -51,7 +56,7 @@ a-->
                             <Label class="fas" text="&#xf06e;" colspan="2" *ngIf="!isToggled" (tap)="toggleShow()"></Label>
                             <Label class="fas" text="&#xf070;" colspan="2" *ngIf="isToggled" (tap)="toggleShow()"></Label>
                             <StackLayout class="hr-light"></StackLayout>
-                        </GridLayout>
+                        </GridLayout> -->
                     </StackLayout>
     
                     <StackLayout class="input-field">

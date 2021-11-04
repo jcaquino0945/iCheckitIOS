@@ -4,11 +4,13 @@
 <StackLayout>
     <ScrollView>
         <StackLayout>
-            <GridLayout height="300">
+            <GridLayout height="175">
                 <StackLayout class="top">
                     <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img"> </Image>
                 </StackLayout>
-                <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+                <StackLayout style="vertical-align: top; padding: 5;">
+          <Label class="h2 fas p-5 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+          </StackLayout>
                 <StackLayout class="section-1">
                     <Label text="Frequently Asked Questions" textWrap="true" class="h1 title"></Label>
                     <Label text="{{ dateToday | date }}" textWrap="true" class="h2 date"></Label>
